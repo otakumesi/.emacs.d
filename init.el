@@ -24,3 +24,7 @@
 (key-chord-mode 1)
 
 (load "evil-setting")
+
+(load "powerline-setting")
+
+(load "auto-complete-setting")
