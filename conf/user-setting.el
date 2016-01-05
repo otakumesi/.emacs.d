@@ -1,6 +1,9 @@
 ;; 対応する括弧を光らせる
 (show-paren-mode 1)
 
+;; バッファの終端を明示する
+(setq indicate-empty-lines t)
+
 ;; yes-noをy-nに置き換え
 (fset 'yes-or-no-p 'y-or-n-p)
 
