@@ -6,13 +6,19 @@
 ;; (require 'drill-instructor)
 ;; (setq drill-instructor-global t)
 
-;; パッケージの読み込み
+;; Magitの読み込み
+(require 'magit)
+(require 'evil-magit)
+
+;; パッケージリストの読み込み
 (require 'package)
 (add-to-list 'package-archives
 	     '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
+
+(package-refresh-contents)
 
 ;; カラーテーマ
 (when (require 'color-theme)
@@ -23,4 +29,14 @@
 (require 'key-chord)
 (key-chord-mode 1)
 
+;; パッケージの読み込み・ユーザー設定のロード
+
 (load "evil-setting")
+
+(load "powerline-setting")
+
+(load "auto-complete-setting")
+
+(load "helm-setting")
+
+(load "ruby-setting")

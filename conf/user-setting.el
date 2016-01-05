@@ -1,3 +1,6 @@
+;; 行番号を表示させる
+(global-linum-mode t)
+
 ;; 対応する括弧を光らせる
 (show-paren-mode 1)
 
