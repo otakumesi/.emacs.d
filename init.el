@@ -37,6 +37,8 @@
 
 (load "ruby-setting")
 
+(load "javascript-setting")
+
 (load "elisp-setting")
 
 ;; Magitの読み込み
