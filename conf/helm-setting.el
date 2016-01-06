@@ -2,6 +2,12 @@
 (helm-mode 1)
 (global-set-key (kbd "M-x") 'helm-M-x)
 
+(require 'projectile)
+(require 'helm-projectile)
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+
 ;; helm-gtagsの設定
 (require 'helm-gtags)
 (add-hook 'c-mode-hook 'helm-gtags-mode)

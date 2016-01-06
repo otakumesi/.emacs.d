@@ -44,3 +44,7 @@
 ;; Magitの読み込み
 (require 'magit)
 (require 'evil-magit)
+
+;; TreeのElisp
+(require 'neotree)
+(global-set-key "\C-x4" 'neotree-toggle)

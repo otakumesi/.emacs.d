@@ -35,3 +35,5 @@
 ;; ウィンドウの大きさ変更キーの簡易化割当（オプションキー + 矢印キー）
 (global-set-key [(s up)] '(lambda (arg) (interactive "p") (shrink-window arg)))
 (global-set-key [(s down)] '(lambda (arg) (interactive "p") (shrink-window (- arg))))
+(global-set-key [(s left)] '(lambda (arg) (interactive "p") (shrink-window-horizontally (- arg))))
+(global-set-key [(s right)] '(lambda (arg) (interactive "p") (shrink-window-horizontally arg)))

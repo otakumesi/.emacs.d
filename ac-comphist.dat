@@ -1,22 +1,26 @@
-((("coffee-mode" .
-   [1 0 0 0 0 0 0 0 0 0 0])
-  ("coffee" .
-   [0 0 0 0 1 0])
-  ("nil" .
-   [1 0 0])
-  ("autoload" .
-   [0 0 0 0 1 0 0 0])
-  ("load" .
-   [1 0 0 0])
-  ("interpreter-mode-alist" .
-   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
-  ("auto-mode-alist" .
-   [0 0 0 0 0 0 1 1 0 0 0 0 0 0 0])
-  ("add-to-list" .
-   [1 0 0 0 0 0 2 0 0 0 0])
-  ("emacs-lisp" .
-   [2 0 0 0 0 0 0 0 0 0])
+((("helm-projectile" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("require" .
+   [3 0 0 0 0 0 0])
   ("auto-complete" .
    [0 0 0 0 0 0 0 0 1 0 0 0 0])
-  ("require" .
-   [1 0 0 0 0 0 0])))
+  ("emacs-lisp" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("add-to-list" .
+   [1 0 0 0 0 0 2 0 0 0 0])
+  ("auto-mode-alist" .
+   [0 0 0 0 0 0 1 1 0 0 0 0 0 0 0])
+  ("interpreter-mode-alist" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("load" .
+   [1 0 0 0])
+  ("autoload" .
+   [0 0 0 0 1 0 0 0])
+  ("nil" .
+   [1 0 0])
+  ("coffee" .
+   [0 0 0 0 1 0])
+  ("coffee-mode" .
+   [1 0 0 0 0 0 0 0 0 0 0])
+  ("projectile" .
+   [1 0 0 0 0 0 0 0 0 0])))
