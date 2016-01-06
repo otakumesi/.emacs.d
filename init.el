@@ -6,10 +6,6 @@
 ;; (require 'drill-instructor)
 ;; (setq drill-instructor-global t)
 
-;; Magitの読み込み
-(require 'magit)
-(require 'evil-magit)
-
 ;; パッケージリストの読み込み
 (require 'package)
 (add-to-list 'package-archives
@@ -40,3 +36,9 @@
 (load "helm-setting")
 
 (load "ruby-setting")
+
+(load "elisp-setting")
+
+;; Magitの読み込み
+(require 'magit)
+(require 'evil-magit)

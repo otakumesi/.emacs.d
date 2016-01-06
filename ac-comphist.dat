@@ -1,4 +1,14 @@
-((("auto-complete" .
+((("require" .
+   [1 0 0 0 0 0 0])
+  ("auto-complete" .
    [0 0 0 0 0 0 0 0 1 0 0 0 0])
-  ("require" .
-   [1 0 0 0 0 0 0])))
+  ("emacs-lisp" .
+   [2 0 0 0 0 0 0 0 0 0])
+  ("add-to-list" .
+   [1 0 0 0 0 0 1 0 0 0 0])
+  ("auto-mode-alist" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("interpreter-mode-alist" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("load" .
+   [1 0 0 0])))

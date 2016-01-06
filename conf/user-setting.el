@@ -31,3 +31,7 @@
 
 ;; 行末の空白をハイライト
 (setq-default show-trailing-whitespace t)
+
+;; ウィンドウの大きさ変更キーの簡易化割当（オプションキー + 矢印キー）
+(global-set-key [(s up)] '(lambda (arg) (interactive "p") (shrink-window arg)))
+(global-set-key [(s down)] '(lambda (arg) (interactive "p") (shrink-window (- arg))))
