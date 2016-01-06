@@ -1,0 +1,1 @@
+(define-package "abyss-theme" "20151007.408" "A dark theme with contrasting colours." '((emacs "24")) :url "https://github.com/mgrbyte/emacs-abyss-theme" :keywords '("theme" "dark" "contrasting colours"))
