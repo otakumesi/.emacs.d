@@ -19,6 +19,12 @@
   (when (require 'color-theme-solarized)
     (color-theme-solarized-dark)))
 
+;; yasnippet
+(require 'yasnippet)
+(setq yas-snippet-dirs
+      '("~/emacs.d/snippets"))
+(yas-global-mode 1)
+
 (require 'key-chord)
 (key-chord-mode 1)
 
