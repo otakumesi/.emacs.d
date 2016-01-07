@@ -19,12 +19,6 @@
   (when (require 'color-theme-solarized)
     (color-theme-solarized-dark)))
 
-;; yasnippet
-(require 'yasnippet)
-(setq yas-snippet-dirs
-      '("~/emacs.d/snippets"))
-(yas-global-mode 1)
-
 (require 'key-chord)
 (key-chord-mode 1)
 
@@ -45,3 +39,12 @@
 (require 'neotree)
 (global-set-key "\C-x4" 'neotree-toggle)
 
+;; yasnippet
+(require 'yasnippet)
+(setq yas-snippet-dirs
+      '("~/.emacs.d/snippets"))
+(yas-global-mode 1)
+
+;; twitter
+(require 'twittering-mode)
+(setq twittering-use-master-password t)

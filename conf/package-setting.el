@@ -16,6 +16,9 @@
     ;;;; tree
     neotree undo-tree
 
+    ;;;; smartparens
+    smartparens evil-smartparens
+
     ;;;; magit/git
     magit gitignore-mode
 
@@ -57,6 +60,12 @@
 
     ;;; packages
     pkg-info auto-async-byte-compile
+
+    ;;;; yasnippet
+    yasnippet
+
+    ;;;; twitter
+    twittering-mode
 
     ;;;; etc
     with-editor
