@@ -6,7 +6,8 @@
 # Packaging
 .cask
 
-/url/*
+# chache
+/url/
 
 ### https://raw.github.com/github/gitignore/be3333655bffe9507d66cc864aee95ed6052b4ed/Global/Emacs.gitignore
 
@@ -19,6 +20,7 @@
 auto-save-list
 tramp
 .\#*
+/elpa/
 
 # Org-mode
 .org-id-locations

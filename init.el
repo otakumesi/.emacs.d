@@ -13,8 +13,8 @@
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
-
 (package-refresh-contents)
+(load "package-setting")
 
 ;; カラーテーマ
 (when (require 'color-theme)
@@ -26,19 +26,12 @@
 (key-chord-mode 1)
 
 ;; パッケージの読み込み・ユーザー設定のロード
-
 (load "evil-setting")
-
 (load "powerline-setting")
-
 (load "auto-complete-setting")
-
 (load "helm-setting")
-
 (load "ruby-setting")
-
 (load "javascript-setting")
-
 (load "elisp-setting")
 
 ;; Magitの読み込み
