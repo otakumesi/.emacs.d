@@ -1,4 +1,12 @@
-((("right" .
+((("color-theme-solarized-dark" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0])
+  ("package-setting" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("set-frame-parameter" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("package" .
+   [0 0 0 0 1 0 0])
+  ("right" .
    [1 0 0 0 0])
   ("projectile" .
    [1 0 0 0 0 0 0 0 0 0])
@@ -7,11 +15,11 @@
   ("coffee" .
    [0 0 0 0 1 0])
   ("nil" .
-   [1 0 0])
+   [2 0 0])
   ("autoload" .
    [0 0 0 0 1 0 0 0])
   ("load" .
-   [1 0 0 0])
+   [3 0 0 0])
   ("interpreter-mode-alist" .
    [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
   ("auto-mode-alist" .
@@ -23,6 +31,30 @@
   ("auto-complete" .
    [0 0 0 0 0 0 0 0 1 0 0 0 0])
   ("require" .
-   [3 0 0 0 0 0 0])
+   [6 0 0 0 0 0 0])
   ("helm-projectile" .
-   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])))
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("pkg-info" .
+   [0 0 0 0 1 0 0 0])
+  ("auto-async-byte-cmpile" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("auto-async-byte-compile" .
+   [0 0 0 0 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("setq" .
+   [3 0 0 0])
+  ("add-hook" .
+   [0 0 0 0 0 1 0 0])
+  ("emacs-lisp-mode-hook" .
+   [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("default-frame-alist" .
+   [0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 0 0])
+  ("append" .
+   [1 0 0 0 0 0])
+  ("list" .
+   [1 0 0 0])
+  ("foreground-color" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("background-color" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  (":quit-when-no-cand" .
+   [0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0])))

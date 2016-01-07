@@ -1,3 +1,12 @@
+;; パッケージリストの読み込み
+(require 'package)
+(add-to-list 'package-archives
+	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(package-initialize)
+(package-refresh-contents)
+
 ;; インストールするパッケージ
 (defvar my-packages
   '(
@@ -8,7 +17,7 @@
     neotree undo-tree
 
     ;;;; magit/git
-    magit magit-tree gitignore-mode
+    magit gitignore-mode
 
     ;;;; keychord
     key-chord
@@ -29,7 +38,7 @@
     projectile
 
     ;;;; evil
-    evil evil-magic
+    evil evil-magit
 
     ;;;; color-theme
     color-theme color-theme-solarized
@@ -46,11 +55,18 @@
     ;;;; goto-change
     goto-chg goto-last-change
 
+    ;;; packages
+    pkg-info auto-async-byte-compile
+
     ;;;; etc
-    pkg-ingo with-editor
+    with-editor
     ))
 
-;; my-packagesからインストールしていないパッケージをインストール
 (dolist (package my-packages)
   (unless (package-installed-p package)
     (package-install package)))
+
+;; パッケージの設定・インストール等
+(require 'auto-async-byte-compile)
+(setq auto-async-byte-compile-init-file "~/.emacs.d/init.el")
+(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)

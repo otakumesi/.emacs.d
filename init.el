@@ -2,18 +2,15 @@
 (setq load-path(append load-path'("~/.emacs.d/conf")))
 (load "user-setting")
 
+(setq default-frame-alist
+      (append (list '(width . 182)
+                    '(height . 48))
+              default-frame-alist))
+
 ;; 鬼軍曹の設置
 ;; (require 'drill-instructor)
 ;; (setq drill-instructor-global t)
 
-;; パッケージリストの読み込み
-(require 'package)
-(add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
-(package-refresh-contents)
 (load "package-setting")
 
 ;; カラーテーマ
@@ -41,3 +38,4 @@
 ;; TreeのElisp
 (require 'neotree)
 (global-set-key "\C-x4" 'neotree-toggle)
+
