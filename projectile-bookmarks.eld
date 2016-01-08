@@ -1,1 +1,1 @@
-("~/.emacs.d/" "/usr/local/" "~/")
+("~/.emacs.d/" "~/" "/usr/local/")
