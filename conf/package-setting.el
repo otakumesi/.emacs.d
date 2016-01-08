@@ -31,6 +31,9 @@
     ;;;; gtags
     gtags
 
+    ;;;; flycheck
+    flycheck
+
     ;;;; helm
     helm helm-core helm-projectile helm-gtags
 

@@ -1,4 +1,8 @@
-;; ロードパス
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
+
+;;; ロードパス:
 (setq load-path(append load-path'("~/.emacs.d/conf")))
 (load "user-setting")
 
@@ -17,7 +21,7 @@
 (when (require 'color-theme)
   (color-theme-initialize)
   (when (require 'color-theme-solarized)
-    (color-theme-solarized-dark)))
+    (load-theme 'color-theme-solarized-dark)))
 
 ;; yasnippet
 (require 'yasnippet)
@@ -45,3 +49,10 @@
 (require 'neotree)
 (global-set-key "\C-x4" 'neotree-toggle)
 
+(require 'flycheck)
+(add-hook 'after-init-hook #'global-flycheck-mode)
+(flycheck-add-next-checker 'javascript-jshint
+                           'javascript-gjslint)
+
+(provide 'init)
+;;; init.el ends here
