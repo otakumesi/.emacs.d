@@ -2,6 +2,8 @@
 (require 'evil)
 (evil-mode 1)
 
+(require 'powerline-evil)
+
 (setq key-chord-two-keys-delay 0.3)
 (key-chord-define evil-insert-state-map "jj" 'evil-normal-state)
 

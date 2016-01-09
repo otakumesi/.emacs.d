@@ -1,3 +1,7 @@
+;;; package --- Summary
+;;; Commentary:
+;;; Code:
+
 ;; パッケージリストの読み込み
 (require 'package)
 (add-to-list 'package-archives
@@ -47,7 +51,10 @@
     projectile
 
     ;;;; evil
-    evil evil-magit
+    evil evil-magit powerline-evil
+
+    ;;;; powerline
+    powerline
 
     ;;;; color-theme
     color-theme color-theme-solarized
@@ -88,3 +95,6 @@
 (require 'auto-async-byte-compile)
 (setq auto-async-byte-compile-init-file "~/.emacs.d/init.el")
 (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
+
+(provide 'package-setting)
+;;; package-setting.el ends here

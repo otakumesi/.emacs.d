@@ -17,12 +17,18 @@
 
 (load "package-setting")
 
+;; powerline
+(require 'powerline)
+(powerline-center-evil-theme)
+
 ;; カラーテーマ
 (when (require 'color-theme)
   (color-theme-initialize)
   (when (require 'color-theme-solarized)
-    (color-theme-solarized-dark)))
+    (color-theme-solarized)
+    (set-frame-parameter nil 'background-mode 'dark)))
 
+;; key-chordの読み込み
 (require 'key-chord)
 (key-chord-mode 1)
 
@@ -36,13 +42,14 @@
 (load "elisp-setting")
 (load "flycheck-setting")
 (load "yasnippet-setting")
+
 ;; Magitの読み込み
 (require 'magit)
 (require 'evil-magit)
 
 ;; TreeのElisp
-(require 'neotree)
-(global-set-key "\C-x4" 'neotree-toggle)
+;(require 'neotree)
+;(global-set-key "\C-x4" 'neotree-toggle)
 
 ;; twitter
 (require 'twittering-mode)
@@ -51,6 +58,9 @@
 ;; undo-tree
 (require 'undo-tree)
 (global-undo-tree-mode)
+
+;; shell
+(require 'multi-term)
 
 (provide 'init)
 ;;; init.el ends here
