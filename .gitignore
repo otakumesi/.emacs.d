@@ -42,4 +42,7 @@ tramp
 # cask packages
 .cask/
 
+# AutoComplete
+ac-comphist.dat
+
 

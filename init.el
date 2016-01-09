@@ -1,4 +1,4 @@
-;;; package --- Summary
+;; package --- Summary
 ;;; Commentary:
 ;;; Code:
 
@@ -21,7 +21,7 @@
 (when (require 'color-theme)
   (color-theme-initialize)
   (when (require 'color-theme-solarized)
-    (load-theme 'color-theme-solarized-dark)))
+    (color-theme-solarized-dark)))
 
 (require 'key-chord)
 (key-chord-mode 1)
@@ -34,7 +34,8 @@
 (load "ruby-setting")
 (load "javascript-setting")
 (load "elisp-setting")
-
+(load "flycheck-setting")
+(load "yasnippet-setting")
 ;; Magitの読み込み
 (require 'magit)
 (require 'evil-magit)
@@ -43,21 +44,13 @@
 (require 'neotree)
 (global-set-key "\C-x4" 'neotree-toggle)
 
-;; yasnippet
-(require 'yasnippet)
-(setq yas-snippet-dirs
-      '("~/.emacs.d/snippets"))
-(yas-global-mode 1)
-
 ;; twitter
 (require 'twittering-mode)
 (setq twittering-use-master-password t)
 
-;; flycheck
-(require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
-(flycheck-add-next-checker 'javascript-jshint
-                           'javascript-gjslint)
+;; undo-tree
+(require 'undo-tree)
+(global-undo-tree-mode)
 
 (provide 'init)
 ;;; init.el ends here

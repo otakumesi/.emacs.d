@@ -25,6 +25,9 @@
     ;;;; keychord
     key-chord
 
+    ;;;; undo-tree
+    undo-tree
+
     ;;;; ruby
     enh-ruby-mode ruby-electric ruby-block
 
@@ -35,7 +38,7 @@
     gtags
 
     ;;;; flycheck
-    flycheck
+    flycheck helm-flycheck
 
     ;;;; helm
     helm helm-core helm-projectile helm-gtags
@@ -53,7 +56,7 @@
     powerline abyss-theme popup
 
     ;;;; elisp-library
-    dash epl
+    dash epl seq
 
     ;;;; async
     async
@@ -69,6 +72,9 @@
 
     ;;;; twitter
     twittering-mode
+
+    ;;; etc-mode
+    gitignore-mode markdown-mode
 
     ;;;; etc
     with-editor
