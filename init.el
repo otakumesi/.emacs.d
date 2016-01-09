@@ -59,8 +59,5 @@
 (require 'undo-tree)
 (global-undo-tree-mode)
 
-;; shell
-(require 'multi-term)
-
 (provide 'init)
 ;;; init.el ends here
