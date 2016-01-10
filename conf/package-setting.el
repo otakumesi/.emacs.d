@@ -83,8 +83,17 @@
     ;;; etc-mode
     gitignore-mode markdown-mode
 
+    ;;; shell
+    exec-path-from-shell
+
+    ;;; todo
+    org
+
+    ;;; japanese
+    ddskk migemo
+
     ;;;; etc
-    with-editor
+    with-editor popup tabbar
     ))
 
 (dolist (package my-packages)

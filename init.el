@@ -60,7 +60,13 @@
 (global-undo-tree-mode)
 
 ;; shell
-(require 'multi-term)
+;(load-file "~/.emacs.d/shellenv.el")
+(exec-path-from-shell-initialize)
+
+(when (require 'skk nil t)
+  (global-set-key "\C-xj" 'skk-auto-fill-mode)
+  (setq default-input-method "japanese-skk")
+  (require 'skk-study))
 
 (provide 'init)
 ;;; init.el ends here
