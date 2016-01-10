@@ -35,6 +35,9 @@
     ;;;; ruby
     enh-ruby-mode ruby-electric ruby-block
 
+    ;;; rails
+    rinari evil-rails helm-rails
+
     ;;;; javascript
     js2-mode coffee-mode
 

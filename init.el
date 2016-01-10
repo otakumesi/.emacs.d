@@ -63,6 +63,11 @@
 ;(load-file "~/.emacs.d/shellenv.el")
 (exec-path-from-shell-initialize)
 
+;; rails
+(require 'helm-rails)
+(require 'evil-rails:)
+(require 'rinari)
+
 (when (require 'skk nil t)
   (global-set-key "\C-xj" 'skk-auto-fill-mode)
   (setq default-input-method "japanese-skk")
