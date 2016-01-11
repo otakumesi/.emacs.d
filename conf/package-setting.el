@@ -1,4 +1,4 @@
-;;; package --- Summary
+;;; package-setting.el --- package.el's setting file
 ;;; Commentary:
 ;;; Code:
 
@@ -106,6 +106,8 @@
 ;; パッケージの設定・インストール等
 (require 'auto-async-byte-compile)
 (setq auto-async-byte-compile-init-file "~/.emacs.d/init.el")
+(setq auto-async-byte-compile-exclude-files-regexp "~/emacs.d/init.el")
+(setq auto-async-byte-compile-exclude-files-regexp "~/Emacs.d/conf/package-setting.el")
 (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 
 (provide 'package-setting)

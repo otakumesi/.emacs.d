@@ -48,8 +48,8 @@
 (require 'evil-magit)
 
 ;; TreeのElisp
-;(require 'neotree)
-;(global-set-key "\C-x4" 'neotree-toggle)
+(require 'neotree)
+(global-set-key "\C-x4" 'neotree-toggle)
 
 ;; twitter
 (require 'twittering-mode)
@@ -65,7 +65,6 @@
 
 ;; rails
 (require 'helm-rails)
-(require 'evil-rails:)
 (require 'rinari)
 
 (when (require 'skk nil t)
