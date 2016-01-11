@@ -44,5 +44,9 @@ tramp
 
 # AutoComplete
 ac-comphist.dat
+
+# SSK
 /viper/
+
+# eshell
 /eshell/
