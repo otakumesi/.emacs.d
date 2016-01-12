@@ -2,7 +2,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(add-hook 'after-save-hook 'glonal-company-mode)
+(add-hook 'after-save-hook 'global-company-mode)
 
 (provide 'company-mode-setting)
 ;;; company-mode-setting ends here
