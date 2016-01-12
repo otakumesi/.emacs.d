@@ -35,7 +35,8 @@
 ;; パッケージの読み込み・ユーザー設定のロード
 (load "evil-setting")
 (load "powerline-setting")
-(load "auto-complete-setting")
+(load "company-mode-setting")
+;(load "auto-complete-setting")
 (load "helm-setting")
 (load "ruby-setting")
 (load "javascript-setting")

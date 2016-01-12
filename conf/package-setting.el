@@ -15,7 +15,10 @@
 (defvar my-packages
   '(
     ;;;; auto-complete
-    auto-complete fuzzy
+    ;auto-complete fuzzy
+
+    ;;;; company-mode
+    company
 
     ;;;; tree
     neotree undo-tree
@@ -33,7 +36,7 @@
     undo-tree
 
     ;;;; ruby
-    enh-ruby-mode ruby-electric ruby-block
+    enh-ruby-mode ruby-electric ruby-block slim-mode
 
     ;;; rails
     rinari evil-rails helm-rails
@@ -84,7 +87,7 @@
     twittering-mode
 
     ;;; etc-mode
-    gitignore-mode markdown-mode
+    gitignore-mode markdown-mode web-mode
 
     ;;; shell
     exec-path-from-shell
@@ -106,8 +109,8 @@
 ;; パッケージの設定・インストール等
 (require 'auto-async-byte-compile)
 (setq auto-async-byte-compile-init-file "~/.emacs.d/init.el")
-(setq auto-async-byte-compile-exclude-files-regexp "~/emacs.d/init.el")
-(setq auto-async-byte-compile-exclude-files-regexp "~/Emacs.d/conf/package-setting.el")
+(setq auto-async-byte-compile-exclude-files-regexp "~/.emacs.d/init.el")
+(setq auto-async-byte-compile-exclude-files-regexp "~/.emacs.d/conf/package-setting.el")
 (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
 
 (provide 'package-setting)
