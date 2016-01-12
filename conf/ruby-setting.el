@@ -12,12 +12,15 @@
 (add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
 
 ;; Rubyのブロックハイライト
-; (require 'ruby-block)
-; (ruby-block-mode t)
+(require 'ruby-block)
+(ruby-block-mode t)
 
 ;; 括弧のシンタックスハイライト
 (require 'ruby-electric)
 (add-hook 'enh-ruby-mode-hook '(lambda() (ruby-electric-mode t)))
+
+;; Robeの起動
+(add-hook 'enh-ruby-mode-hook 'robe-mode)
 
 (provide 'ruby-setting)
 ;;; ruby-setting.el ends here

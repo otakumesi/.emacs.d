@@ -16,9 +16,11 @@
   '(
     ;;;; auto-complete
     ;auto-complete fuzzy
+    readline-complete ac-js2
 
     ;;;; company-mode
-    company
+    company jquery-doc company-web company-edbi
+    company-restclient helm-company
 
     ;;;; tree
     neotree undo-tree
@@ -36,7 +38,7 @@
     undo-tree
 
     ;;;; ruby
-    enh-ruby-mode ruby-electric ruby-block slim-mode
+    enh-ruby-mode ruby-electric ruby-block slim-mode robe
 
     ;;; rails
     rinari evil-rails helm-rails
@@ -81,13 +83,13 @@
     pkg-info auto-async-byte-compile
 
     ;;;; yasnippet
-    yasnippet
+    yasnippet yasnippet-bundle
 
     ;;;; twitter
     twittering-mode
 
     ;;; etc-mode
-    gitignore-mode markdown-mode web-mode
+    gitignore-mode markdown-mode web-mode restclient
 
     ;;; shell
     exec-path-from-shell
@@ -99,7 +101,7 @@
     ddskk migemo
 
     ;;;; etc
-    with-editor popup tabbar
+    with-editor popup tabbar know-your-http-well
     ))
 
 (dolist (package my-packages)

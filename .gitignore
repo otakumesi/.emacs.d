@@ -47,3 +47,6 @@ ac-comphist.dat
 
 # SKK
 /viper/
+
+# npm
+conf/npm-debug.log

@@ -1,4 +1,4 @@
-;; package --- Summary
+re
 ;;; Commentary:
 ;;; Code:
 
@@ -68,6 +68,10 @@
 (require 'helm-rails)
 (require 'rinari)
 
+;; etc
+(require 'restclient)
+
+;;; skk
 (when (require 'skk nil t)
   (global-set-key "\C-xj" 'skk-auto-fill-mode)
   (setq default-input-method "japanese-skk")
