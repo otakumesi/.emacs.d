@@ -20,7 +20,7 @@
 
     ;;;; company-mode
     company jquery-doc company-web company-edbi
-    company-restclient helm-company
+    company-restclient helm-company company-quickhelp
 
     ;;;; tree
     neotree undo-tree

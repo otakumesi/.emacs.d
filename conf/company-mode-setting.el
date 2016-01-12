@@ -10,6 +10,8 @@
 (require 'jquery-doc)
 (add-hook 'js2-mode-hook 'jquery-doc-setup)
 
+(company-quickhelp-mode +1)
+
 ;(require 'helm-company)
 ;(eval-after-load 'company
 ;  '(progn
