@@ -83,7 +83,7 @@
     pkg-info auto-async-byte-compile
 
     ;;;; yasnippet
-    yasnippet yasnippet-bundle
+    yasnippet helm-c-yasnippet
 
     ;;;; twitter
     twittering-mode

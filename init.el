@@ -33,11 +33,11 @@
 (key-chord-mode 1)
 
 ;; パッケージの読み込み・ユーザー設定のロード
+(load "helm-setting")
 (load "evil-setting")
 (load "powerline-setting")
 (load "company-mode-setting")
 ;(load "auto-complete-setting")
-(load "helm-setting")
 (load "ruby-setting")
 (load "javascript-setting")
 (load "elisp-setting")

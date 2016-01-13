@@ -1,3 +1,8 @@
+;;; helm-setting.el --- helm's settings.
+;;; Commentary:
+
+;;; Code:
+(require 'helm)
 (require 'helm-config)
 (helm-mode 1)
 (global-set-key (kbd "M-x") 'helm-M-x)
@@ -25,3 +30,6 @@
              (local-set-key (kbd "M-s") 'helm-gtags-find-symbol)
              ;; ジャンプ前に戻る
              (local-set-key (kbd "C-t") 'helm-gtsgs-pop-stack)))
+
+(provide 'helm-setting)
+;;; helm-setting.el ends here
