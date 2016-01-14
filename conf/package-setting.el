@@ -1,7 +1,7 @@
 ;;; package-setting.el --- package.el's setting file
 ;;; Commentary:
-;;; Code:
 
+;;; Code:
 ;; パッケージリストの読み込み
 (require 'package)
 (add-to-list 'package-archives
@@ -16,11 +16,12 @@
   '(
     ;;;; auto-complete
     ;auto-complete fuzzy
-    readline-complete ac-js2
+    readline-complete ac-js2 ac-html-csswatcher ac-html-bootstrap
 
     ;;;; company-mode
     company jquery-doc company-web company-edbi
     company-restclient helm-company company-quickhelp
+    company-web
 
     ;;;; tree
     neotree undo-tree
@@ -47,13 +48,13 @@
     js2-mode coffee-mode
 
     ;;;; gtags
-    gtags
+    gtags helm-gtags
 
     ;;;; flycheck
     flycheck helm-flycheck
 
     ;;;; helm
-    helm helm-core helm-projectile helm-gtags
+    helm helm-core helm-projectile helm-css-scss
 
     ;;;; projectile
     projectile
@@ -88,8 +89,11 @@
     ;;;; twitter
     twittering-mode
 
+    ;;; web-mode
+    web-mode scss-mode yaml-mode
+
     ;;; etc-mode
-    gitignore-mode markdown-mode web-mode restclient
+    gitignore-mode markdown-mode restclient
 
     ;;; shell
     exec-path-from-shell

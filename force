@@ -1,0 +1,55 @@
+Reading '/Users/takelow/.cpan/Metadata'
+  Database was generated on Thu, 14 Jan 2016 10:29:02 GMT
+Running install for module 'CSS::Watcher'
+Running make for O/OS/OSV/CSS-Watcher-0.4.9.tar.gz
+Checksum for /Users/takelow/.cpan/sources/authors/id/O/OS/OSV/CSS-Watcher-0.4.9.tar.gz ok
+
+  CPAN.pm: Building O/OS/OSV/CSS-Watcher-0.4.9.tar.gz
+
+Checking if your kit is complete...
+Looks good
+Writing Makefile for CSS::Watcher
+Writing MYMETA.yml and MYMETA.json
+cp lib/CSS/Watcher/Parser.pm blib/lib/CSS/Watcher/Parser.pm
+cp lib/CSS/Watcher/Monitor.pm blib/lib/CSS/Watcher/Monitor.pm
+cp lib/CSS/Watcher.pm blib/lib/CSS/Watcher.pm
+cp lib/CSS/Watcher/ParserLess.pm blib/lib/CSS/Watcher/ParserLess.pm
+cp csswatcher blib/script/csswatcher
+/usr/bin/perl -MExtUtils::MY -e 'MY->fixin(shift)' -- blib/script/csswatcher
+Manifying blib/man1/csswatcher.1
+Manifying blib/man3/CSS::Watcher::ParserLess.3pm
+Manifying blib/man3/CSS::Watcher.3pm
+Manifying blib/man3/CSS::Watcher::Monitor.3pm
+Manifying blib/man3/CSS::Watcher::Parser.3pm
+  OSV/CSS-Watcher-0.4.9.tar.gz
+  /usr/bin/make -- OK
+'YAML' not installed, will not store persistent state
+Running make test
+PERL_DL_NONLAZY=1 /usr/bin/perl "-MExtUtils::Command::MM" "-e" "test_harness(0, 'blib/lib', 'blib/arch')" t/*.t
+t/01_css_parser.t .... ok
+t/01_less_parser.t ... 
+Dubious, test returned 1 (wstat 256, 0x100)
+Failed 1/4 subtests 
+t/02_monitor.t ....... ok
+t/03_watcher.t ....... ok
+t/04_watcher_less.t .. 
+Dubious, test returned 2 (wstat 512, 0x200)
+Failed 1/3 subtests 
+t/manifest.t ......... skipped: Test::CheckManifest 0.9 required
+
+Test Summary Report
+-------------------
+t/01_less_parser.t (Wstat: 256 Tests: 4 Failed: 1)
+  Failed test:  4
+  Non-zero exit status: 1
+t/04_watcher_less.t (Wstat: 512 Tests: 3 Failed: 1)
+  Failed test:  3
+  Non-zero exit status: 2
+Files=6, Tests=26,  4 wallclock secs ( 0.04 usr  0.02 sys +  1.96 cusr  0.25 csys =  2.27 CPU)
+Result: FAIL
+  OSV/CSS-Watcher-0.4.9.tar.gz
+  /usr/bin/make test -- NOT OK
+//hint// to see the cpan-testers results for installing this module, try:
+  reports OSV/CSS-Watcher-0.4.9.tar.gz
+Running make install
+  make test had returned bad status, won't install without force

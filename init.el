@@ -17,10 +17,6 @@
 
 (load "package-setting")
 
-;; powerline
-(require 'powerline)
-(powerline-center-evil-theme)
-
 ;; カラーテーマ
 (when (require 'color-theme)
   (color-theme-initialize)
@@ -37,16 +33,18 @@
 (load "evil-setting")
 (load "powerline-setting")
 (load "company-mode-setting")
+(load "flycheck-setting")
+(load "yasnippet-setting")
 ;(load "auto-complete-setting")
 (load "ruby-setting")
 (load "javascript-setting")
 (load "elisp-setting")
-(load "flycheck-setting")
-(load "yasnippet-setting")
+(load "web-mode-setting")
 
 ;; Magitの読み込み
 (require 'magit)
 (require 'evil-magit)
+(define-key global-map (kbd "M-m") 'magit-status)
 
 ;; TreeのElisp
 (require 'neotree)

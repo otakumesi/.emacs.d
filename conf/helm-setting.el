@@ -5,13 +5,17 @@
 (require 'helm)
 (require 'helm-config)
 (helm-mode 1)
-(global-set-key (kbd "M-x") 'helm-M-x)
+(define-key global-map (kbd "M-x") 'helm-M-x)
+(define-key global-map (kbd "C-x C-f") 'helm-find-files)
+(define-key global-map (kbd "C-x C-r") 'helm-recentf)
 
 (require 'projectile)
 (require 'helm-projectile)
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
+
+(require 'helm-css-scss)
 
 ;; helm-gtagsの設定
 (require 'helm-gtags)

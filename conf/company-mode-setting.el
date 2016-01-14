@@ -2,7 +2,10 @@
 ;;; Commentary:
 
 ;;; Code:
-(add-hook 'after-save-hook 'global-company-mode)
+(global-company-mode)
+(setq company-idle-delay 0)
+(setq company-selection-wrap-around t)
+
 (eval-after-load 'company
   '(push 'company-robe company-backends))
 (add-hook 'js2-mode-hook 'ac-js2-mode)
