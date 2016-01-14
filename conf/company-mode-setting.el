@@ -2,16 +2,10 @@
 ;;; Commentary:
 
 ;;; Code:
-(global-company-mode)
+(add-hook 'after-init-hook 'global-company-mode)
 (setq company-idle-delay 0)
+(setq company-begin-commands '(self-insert-command))
 (setq company-selection-wrap-around t)
-
-(eval-after-load 'company
-  '(push 'company-robe company-backends))
-(add-hook 'js2-mode-hook 'ac-js2-mode)
-(setq ac-js2-evaluate-calls t)
-(require 'jquery-doc)
-(add-hook 'js2-mode-hook 'jquery-doc-setup)
 
 (company-quickhelp-mode +1)
 

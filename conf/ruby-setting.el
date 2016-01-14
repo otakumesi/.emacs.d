@@ -22,5 +22,8 @@
 ;; Robeの起動
 (add-hook 'enh-ruby-mode-hook 'robe-mode)
 
+(eval-after-load 'company
+  '(push 'company-robe company-backends))
+
 (provide 'ruby-setting)
 ;;; ruby-setting.el ends here

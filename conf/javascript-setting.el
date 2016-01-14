@@ -9,6 +9,12 @@
 (autoload 'coffee-mode "coffee-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.coffee" . coffee-mode))
 
+(add-hook 'js2-mode-hook 'ac-js2-mode)
+(add-to-list 'company-backends 'ac-js2-company)
+
+(require 'jquery-doc)
+(add-hook 'js2-mode-hook 'jquery-doc-setup)
+
 (provide 'javascript-setting)
 ;;; javascript-setting ends here
 
