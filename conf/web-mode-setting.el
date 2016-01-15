@@ -15,9 +15,12 @@
 ;;; company-web
 (require 'company-web)
 (require 'company-web-html)
-(add-to-list 'company-backends 'company-web-html)
-(add-to-list 'company-backends 'comapny-web-slim)
-(define-key web-mode-map (kbd "C-x w") 'company-web-html)
+(add-to-list 'company-backends '(company-web-html company-css company-web-bootstrap+ company-web-fa+))
+(add-to-list 'company-backends '(comapny-web-slim company-css company-web-bootstrap+ company-web-fa+))
+
+;; skewer
+(add-hook 'web-mode-hook 'skewer-html-mode)
+(add-hook 'scss-mode-hook 'skewer-css-mode)
 
 (provide 'web-mode-setting)
 ;;; web-mode-setting.el ends here

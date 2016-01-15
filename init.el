@@ -44,7 +44,9 @@
 ;; Magitの読み込み
 (require 'magit)
 (require 'evil-magit)
-(define-key global-map (kbd "M-m") 'magit-status)
+(global-set-key (kbd "M-m") prefix-arg)
+(global-set-key (kbd "M-m m") 'magit-status)
+(global-set-key (kbd "M-m i") 'magit-init)
 
 ;; TreeのElisp
 (require 'neotree)

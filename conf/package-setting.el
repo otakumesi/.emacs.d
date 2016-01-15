@@ -21,7 +21,7 @@
     ;;;; company-mode
     company jquery-doc company-web company-edbi
     company-restclient helm-company company-quickhelp
-    company-web
+    company-web company-statistics
 
     ;;;; tree
     neotree undo-tree
@@ -45,7 +45,7 @@
     rinari evil-rails helm-rails
 
     ;;;; javascript
-    js2-mode coffee-mode
+    js2-mode coffee-mode jquery-doc js2-refactor
 
     ;;;; gtags
     gtags helm-gtags

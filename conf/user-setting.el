@@ -43,3 +43,12 @@
 (global-set-key [(s down)] '(lambda (arg) (interactive "p") (shrink-window (- arg))))
 (global-set-key [(s left)] '(lambda (arg) (interactive "p") (shrink-window-horizontally (- arg))))
 (global-set-key [(s right)] '(lambda (arg) (interactive "p") (shrink-window-horizontally arg)))
+
+;; ブラウザを開く設定
+(defun open-browser ()
+  (interactive)
+  (shell-command (concat "open " (buffer-file-name))))
+(global-set-key (kbd "M-n") 'open-browser)
+
+(provide 'user-setting)
+;;; user-setting.el ends here
