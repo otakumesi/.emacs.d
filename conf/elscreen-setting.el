@@ -28,5 +28,10 @@
         ("dict" . "OnlineDict")
         ("*WL:Message*" . "Wanderlust")))
 
+(global-set-key (kbd "M-<right>") 'elscreen-next)
+(global-set-key (kbd "M-<left>") 'elscreen-previous)
+(global-set-key (kbd "M-<up>") 'elscreen-clone)
+(global-set-key (kbd "M-<down>") 'elscreen-kill)
+
 (provide 'elscreen-setting)
 ;;; elscreen-setting.el ends here

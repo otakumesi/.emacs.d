@@ -1,3 +1,7 @@
+;;; evil-setting.el --- evil's settings.
+;;; Commentary:
+
+;;; Code:
 ;; Evilの読み込み
 (require 'evil)
 (evil-mode 1)
@@ -11,4 +15,7 @@
 (require 'smartparens-config)
 (smartparens-global-mode t)
 (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+
+(provide 'evil-setting)
+;;; evil-setting.el ends here
 

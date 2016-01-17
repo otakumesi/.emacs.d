@@ -73,11 +73,15 @@
 ;; etc
 (require 'restclient)
 
-;;; skk
+                ;;; skk
 (when (require 'skk nil t)
   (global-set-key "\C-xj" 'skk-auto-fill-mode)
   (setq default-input-method "japanese-skk")
   (require 'skk-study))
+
+;;; open init.el
+(global-set-key (kbd "M-I") (lambda () (interactive)
+                              (switch-to-buffer (find-file-noselect "~/.emacs.d/init.el"))))
 
 (provide 'init)
 ;;; init.el ends here
