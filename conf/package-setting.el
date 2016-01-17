@@ -105,7 +105,7 @@
     ddskk migemo
 
     ;;;; etc
-    with-editor popup tabbar know-your-http-well
+    with-editor popup know-your-http-well elscreen restart-emacs
     ))
 
 (dolist (package my-packages)

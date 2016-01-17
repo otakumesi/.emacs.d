@@ -30,6 +30,7 @@
 
 ;; パッケージの読み込み・ユーザー設定のロード
 (load "helm-setting")
+(load "elscreen-setting")
 (load "evil-setting")
 (load "powerline-setting")
 (load "company-mode-setting")
@@ -40,6 +41,7 @@
 (load "javascript-setting")
 (load "elisp-setting")
 (load "web-mode-setting")
+;(load "tabbar-setting")
 
 ;; Magitの読み込み
 (require 'magit)
