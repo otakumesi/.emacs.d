@@ -82,6 +82,8 @@
 ;;; open init.el
 (global-set-key (kbd "M-I") (lambda () (interactive)
                               (switch-to-buffer (find-file-noselect "~/.emacs.d/init.el"))))
+(global-set-key (kbd "M-W") (lambda () (interactive)
+                              (switch-to-buffer (find-file-noselect "~/workspace"))))
 
 (provide 'init)
 ;;; init.el ends here
