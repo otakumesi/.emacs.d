@@ -50,3 +50,9 @@ ac-comphist.dat
 
 # npm
 conf/npm-debug.log
+/force/
+
+/auto-save-list/
+
+# company
+company-statistics-cache.el
