@@ -4,9 +4,6 @@
                     :family "Roboto Mono Light for Powerline"
                     :height 120)
 
-; 行番号を表示させる
-(global-linum-mode t)
-
 ;; 対応する括弧を光らせる
 (show-paren-mode 1)
 

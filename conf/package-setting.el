@@ -2,14 +2,8 @@
 ;;; Commentary:
 
 ;;; Code:
-;; パッケージリストの読み込み
 (require 'package)
-(add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
-(package-refresh-contents)
 
 ;; インストールするパッケージ
 (defvar my-packages
@@ -62,9 +56,6 @@
     ;;;; evil
     evil evil-magit powerline-evil
 
-    ;;;; powerline
-    powerline
-
     ;;;; color-theme
     color-theme color-theme-solarized
 
@@ -105,12 +96,26 @@
     ddskk migemo
 
     ;;;; etc
-    with-editor popup know-your-http-well elscreen restart-emacs font-lock+
+    with-editor popup know-your-http-well elscreen restart-emacs
+    font-lock+ rainbow-delimiters volatile-highlights hlinum
     ))
 
 (dolist (package my-packages)
   (unless (package-installed-p package)
-    (package-install package)))
+    (funcall #'(lambda ()
+      ;; パッケージリストの読み込み
+        (add-to-list 'package-archives
+                    '("marmalade" . "http://marmalade-repo.org/packages/") t)
+        (add-to-list 'package-archives
+                    '("melpa" . "http://melpa.milkbox.net/packages/") t)
+        (add-to-list 'package-archives
+                    '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+        (add-to-list 'package-archives
+                    '("org" . "http://orgmode.org/elpa/") t)
+        (package-initialize)
+        (package-install package)))
+    ))
+
 
 ;; パッケージの設定・インストール等
 (require 'auto-async-byte-compile)

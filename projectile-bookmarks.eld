@@ -1,1 +1,1 @@
-("~/.emacs.d/" "~/workspace/JavaScript/" "/usr/local/" "~/" "~/workspace/ruby/sample_app/" "~/workSpace/ruby/sample_app/")
+("~/.emacs.d/" "~/workspace/rails/sample_app/" "/usr/local/" "~/workspace/JavaScript/" "~/" "~/workspace/ruby/sample_app/" "~/workSpace/ruby/sample_app/")

@@ -22,5 +22,8 @@
 (add-hook 'web-mode-hook 'skewer-html-mode)
 (add-hook 'scss-mode-hook 'skewer-css-mode)
 
+(add-hook 'scss-mode-hook (lambda ()
+                             (setq css-indent-offset 2)))
+
 (provide 'web-mode-setting)
 ;;; web-mode-setting.el ends here

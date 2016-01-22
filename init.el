@@ -28,6 +28,10 @@
 (require 'key-chord)
 (key-chord-mode 1)
 
+;; projectile
+(projectile-global-mode)
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
+
 ;; パッケージの読み込み・ユーザー設定のロード
 (load "helm-setting")
 (load "elscreen-setting")
@@ -94,10 +98,19 @@
 (global-font-lock-mode 1)
 (setq font-lock-support-mode 'jit-lock-mode)
 
-;; Rubyのシンタックスハイライト
+;; Rubyのシンタックスハイライト等
 (add-hook 'enh-ruby-mode-hook
           '(lambda ()
              (font-lock-mode 1)))
+
+;; rainbow-delimiters
+(require 'rainbow-delimiters)
+(add-hook 'company-mode-hook 'rainbow-delimiters-mode)
+
+;; 行番号
+(require 'hlinum)
+(hlinum-activate)
+(global-linum-mode)
 
 (provide 'init)
 ;;; init.el ends here
