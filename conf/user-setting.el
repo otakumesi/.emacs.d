@@ -19,6 +19,9 @@
 ;; status-barにカーソルの位置を表示
 (column-number-mode t)
 
+;; インデントをタブからスペースに
+(setq-default indent-tabs-mode nil)
+
 ;; バックアップファイルを作らない
 (setq backup-inhibited t)
 

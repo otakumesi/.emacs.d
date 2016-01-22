@@ -25,5 +25,9 @@
 (eval-after-load 'company
   '(push 'company-robe company-backends))
 
+(require 'rspec-mode)
+(eval-after-load 'rspec-mode
+  '(rspec-install-snippets))
+
 (provide 'ruby-setting)
 ;;; ruby-setting.el ends here

@@ -1,1 +1,1 @@
-("~/.emacs.d/" "~/workspace/rails/sample_app/" "/usr/local/" "~/workspace/JavaScript/" "~/" "~/workspace/ruby/sample_app/" "~/workSpace/ruby/sample_app/")
+("~/workspace/rails/sample_app/" "~/.emacs.d/" "/usr/local/" "~/workspace/rails/rails_tutorial/" "~/workspace/rails_tutorial/" "~/workspace/JavaScript/" "~/" "~/workspace/ruby/sample_app/" "~/workSpace/ruby/sample_app/")

@@ -36,7 +36,7 @@
     enh-ruby-mode ruby-electric ruby-block slim-mode robe
 
     ;;; rails
-    rinari evil-rails helm-rails
+    evil-rails helm-rails projectile-rails rbenv rspec-mode
 
     ;;;; javascript
     js2-mode coffee-mode jquery-doc js2-refactor

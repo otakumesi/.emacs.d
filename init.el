@@ -28,11 +28,6 @@
 (require 'key-chord)
 (key-chord-mode 1)
 
-;; projectile
-(projectile-global-mode)
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
-
-;; パッケージの読み込み・ユーザー設定のロード
 (load "helm-setting")
 (load "elscreen-setting")
 (load "evil-setting")
@@ -47,6 +42,18 @@
 (load "web-mode-setting")
 ;(load "tabbar-setting")
 
+;; projectile
+(require 'projectile)
+(require 'helm-projectile)
+(projectile-global-mode)
+(setq projectile-completion-system 'helm)
+(helm-projectile-on)
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
+(require 'evil-rails)
+(require 'rbenv)
+(global-rbenv-mode)
+(rbenv-use-global)
+
 ;; Magitの読み込み
 (require 'magit)
 (require 'evil-magit)
@@ -54,6 +61,7 @@
 (global-set-key (kbd "M-m m") 'magit-status)
 (global-set-key (kbd "M-m i") 'magit-init)
 
+;; TreeのElisp
 (require 'neotree)
 (global-set-key "\C-x4" 'neotree-toggle)
 
@@ -67,19 +75,15 @@
 
 ;; shell
 ;(load-file "~/.emacs.d/shellenv.el")
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
-(let ((envs '("PATH")))
-  (exec-path-from-shell-copy-envs envs))
+(exec-path-from-shell-initialize)
 
 ;; rails
 (require 'helm-rails)
-(require 'rinari)
 
 ;; etc
 (require 'restclient)
 
-;;; skk
+                ;;; skk
 (when (require 'skk nil t)
   (global-set-key "\C-xj" 'skk-auto-fill-mode)
   (setq default-input-method "japanese-skk")
@@ -90,27 +94,6 @@
                               (switch-to-buffer (find-file-noselect "~/.emacs.d/init.el"))))
 (global-set-key (kbd "M-W") (lambda () (interactive)
                               (switch-to-buffer (find-file-noselect "~/workspace"))))
-
-(put 'dired-find-alternate-file 'disabled nil)
-
-;; font-rock
-(require 'font-lock+)
-(global-font-lock-mode 1)
-(setq font-lock-support-mode 'jit-lock-mode)
-
-;; Rubyのシンタックスハイライト等
-(add-hook 'enh-ruby-mode-hook
-          '(lambda ()
-             (font-lock-mode 1)))
-
-;; rainbow-delimiters
-(require 'rainbow-delimiters)
-(add-hook 'company-mode-hook 'rainbow-delimiters-mode)
-
-;; 行番号
-(require 'hlinum)
-(hlinum-activate)
-(global-linum-mode)
 
 (provide 'init)
 ;;; init.el ends here
