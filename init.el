@@ -50,7 +50,6 @@
 (global-set-key (kbd "M-m m") 'magit-status)
 (global-set-key (kbd "M-m i") 'magit-init)
 
-;; TreeのElisp
 (require 'neotree)
 (global-set-key "\C-x4" 'neotree-toggle)
 
@@ -64,7 +63,10 @@
 
 ;; shell
 ;(load-file "~/.emacs.d/shellenv.el")
-(exec-path-from-shell-initialize)
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+(let ((envs '("PATH")))
+  (exec-path-from-shell-copy-envs envs))
 
 ;; rails
 (require 'helm-rails)
@@ -73,7 +75,7 @@
 ;; etc
 (require 'restclient)
 
-                ;;; skk
+;;; skk
 (when (require 'skk nil t)
   (global-set-key "\C-xj" 'skk-auto-fill-mode)
   (setq default-input-method "japanese-skk")
@@ -84,6 +86,18 @@
                               (switch-to-buffer (find-file-noselect "~/.emacs.d/init.el"))))
 (global-set-key (kbd "M-W") (lambda () (interactive)
                               (switch-to-buffer (find-file-noselect "~/workspace"))))
+
+(put 'dired-find-alternate-file 'disabled nil)
+
+;; font-rock
+(require 'font-lock+)
+(global-font-lock-mode 1)
+(setq font-lock-support-mode 'jit-lock-mode)
+
+;; Rubyのシンタックスハイライト
+(add-hook 'enh-ruby-mode-hook
+          '(lambda ()
+             (font-lock-mode 1)))
 
 (provide 'init)
 ;;; init.el ends here

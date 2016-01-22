@@ -105,7 +105,7 @@
     ddskk migemo
 
     ;;;; etc
-    with-editor popup know-your-http-well elscreen restart-emacs
+    with-editor popup know-your-http-well elscreen restart-emacs font-lock+
     ))
 
 (dolist (package my-packages)
