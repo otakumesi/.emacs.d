@@ -53,6 +53,25 @@
 (require 'rbenv)
 (global-rbenv-mode)
 (rbenv-use-global)
+(global-anzu-mode +1)
+
+;; fullscreen
+(require 'fullscreen-mode)
+(global-set-key (kbd "C-;") 'fullscreen-mode-fullscreen-toggle)
+
+;; windmove
+(require 'windmove)
+(global-set-key (kbd "S-<up>") 'windmove-up)
+(global-set-key (kbd "S-<down>") 'windmove-down)
+(global-set-key (kbd "S-<right>") 'windmove-right)
+(global-set-key (kbd "S-<left>") 'windmove-left)
+
+;; buffer-move
+(require 'buffer-move)
+(global-set-key (kbd "<C-S-up>") 'buf-move-up)
+(global-set-key (kbd "<C-S-down>") 'buf-move-down)
+(global-set-key (kbd "<C-S-right>") 'buf-move-right)
+(global-set-key (kbd "<C-S-left>") 'buf-move-left)
 
 ;; Magitの読み込み
 (require 'magit)
@@ -75,7 +94,8 @@
 
 ;; shell
 ;(load-file "~/.emacs.d/shellenv.el")
-(exec-path-from-shell-initialize)
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
 
 ;; rails
 (require 'helm-rails)
@@ -83,11 +103,19 @@
 ;; etc
 (require 'restclient)
 
-                ;;; skk
+;;; skk
 (when (require 'skk nil t)
   (global-set-key "\C-xj" 'skk-auto-fill-mode)
   (setq default-input-method "japanese-skk")
   (require 'skk-study))
+
+;;; linum
+(require 'hlinum)
+(hlinum-activate)
+(global-linum-mode 1)
+
+;;; rainbow-delimiters
+(add-hook 'linum-mode 'rainbow-delimiters-mode)
 
 ;;; open init.el
 (global-set-key (kbd "M-I") (lambda () (interactive)

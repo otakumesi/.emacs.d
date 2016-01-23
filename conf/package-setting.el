@@ -13,8 +13,7 @@
     readline-complete ac-js2 ac-html-csswatcher ac-html-bootstrap
 
     ;;;; company-mode
-    company jquery-doc company-web company-edbi
-    company-restclient helm-company company-quickhelp
+    company jquery-doc company-web company-edbi company-restclient helm-company company-quickhelp
     company-web company-statistics
 
     ;;;; tree
@@ -29,6 +28,12 @@
     ;;;; keychord
     key-chord
 
+    ;;;; anzu
+    anzu
+
+    ;;; screen
+    buffer-move fullscreen-mode
+
     ;;;; undo-tree
     undo-tree
 
@@ -36,10 +41,10 @@
     enh-ruby-mode ruby-electric ruby-block slim-mode robe rubocop inf-ruby
 
     ;;; rails
-    evil-rails helm-rails projectile-rails rbenv rspec-mode
+    evil-rails helm-rails projectile-rails rbenv rspec-mode bundler
 
     ;;;; javascript
-    js2-mode coffee-mode jquery-doc js2-refactor
+    js2-mode coffee-mode jquery-doc js2-refactor coffee-mode
 
     ;;;; gtags
     gtags helm-gtags
@@ -97,7 +102,7 @@
 
     ;;;; etc
     with-editor popup know-your-http-well elscreen restart-emacs
-    font-lock+ rainbow-delimiters volatile-highlights hlinum
+    font-lock+ rainbow-delimiters volatile-highlights hlinum goto-chg
     ))
 
 (dolist (package my-packages)
