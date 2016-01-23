@@ -33,7 +33,7 @@
     undo-tree
 
     ;;;; ruby
-    enh-ruby-mode ruby-electric ruby-block slim-mode robe
+    enh-ruby-mode ruby-electric ruby-block slim-mode robe rubocop inf-ruby
 
     ;;; rails
     evil-rails helm-rails projectile-rails rbenv rspec-mode
@@ -45,7 +45,7 @@
     gtags helm-gtags
 
     ;;;; flycheck
-    flycheck helm-flycheck
+    flycheck helm-flycheck flycheck-color-mode-line
 
     ;;;; helm
     helm helm-core helm-projectile helm-css-scss
@@ -84,7 +84,7 @@
     web-mode scss-mode yaml-mode
 
     ;;; etc-mode
-    gitignore-mode markdown-mode restclient
+    gitignore-mode markdown-mode restclient motion-mode
 
     ;;; shell
     exec-path-from-shell

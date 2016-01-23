@@ -21,5 +21,7 @@
      (define-key company-active-map [?\C-:] 'helm-company)
      ))
 
+(push 'company-robe company-backends)
+
 (provide 'company-mode-setting)
 ;;; company-mode-setting ends here

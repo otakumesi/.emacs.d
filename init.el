@@ -33,7 +33,6 @@
 (load "evil-setting")
 (load "powerline-setting")
 (load "company-mode-setting")
-(load "flycheck-setting")
 (load "yasnippet-setting")
 ;(load "auto-complete-setting")
 (load "ruby-setting")
@@ -41,6 +40,7 @@
 (load "elisp-setting")
 (load "web-mode-setting")
 ;(load "tabbar-setting")
+(load "flycheck-setting")
 
 ;; projectile
 (require 'projectile)

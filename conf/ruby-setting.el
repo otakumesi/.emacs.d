@@ -29,5 +29,7 @@
 (eval-after-load 'rspec-mode
   '(rspec-install-snippets))
 
+(require 'rubocop)
+
 (provide 'ruby-setting)
 ;;; ruby-setting.el ends here
