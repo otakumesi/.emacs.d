@@ -18,11 +18,14 @@
 (load "package-setting")
 
 ;; カラーテーマ
-(when (require 'color-theme)
-  (color-theme-initialize)
-  (when (require 'color-theme-solarized)
-    (color-theme-solarized)
-    (set-frame-parameter nil 'background-mode 'dark)))
+;(when (require 'color-theme)
+;  (color-theme-initialize)
+;  (when (require 'color-theme-solarized)
+;    (color-theme-solarized)
+;    (set-frame-parameter nil 'background-mode 'dark)))
+(require 'solarized)
+(setq solarized-high-contrast-mode-line t)
+(load-theme 'solarized-dark t)
 
 ;; key-chordの読み込み
 (require 'key-chord)
@@ -41,6 +44,12 @@
 (load "web-mode-setting")
 ;(load "tabbar-setting")
 (load "flycheck-setting")
+(global-anzu-mode +1)
+
+;;; rbenv
+(require 'rbenv)
+(global-rbenv-mode)
+(rbenv-use-global)
 
 ;; projectile
 (require 'projectile)
@@ -50,13 +59,8 @@
 (helm-projectile-on)
 (add-hook 'projectile-mode-hook 'projectile-rails-on)
 (require 'evil-rails)
-(require 'rbenv)
-(global-rbenv-mode)
-(rbenv-use-global)
-(global-anzu-mode +1)
 
 ;; fullscreen
-(require 'fullscreen-mode)
 (global-set-key (kbd "C-;") 'fullscreen-mode-fullscreen-toggle)
 
 ;; windmove

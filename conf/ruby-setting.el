@@ -25,11 +25,19 @@
 (eval-after-load 'company
   '(push 'company-robe company-backends))
 
+(require 'ruby-refactor)
+(add-hook 'enh-ruby-mode-hook 'ruby-refactor-mode-launch)
+
 (require 'rspec-mode)
 (eval-after-load 'rspec-mode
   '(rspec-install-snippets))
 
+(require 'ruby-tools)
+(add-hook 'enh-ruby-mode-hook 'ruby-tools-mode)
+
 (require 'rubocop)
+
+(require 'ruby-hash-syntax)
 
 (provide 'ruby-setting)
 ;;; ruby-setting.el ends here

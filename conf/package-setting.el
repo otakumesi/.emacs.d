@@ -3,6 +3,8 @@
 
 ;;; Code:
 (require 'package)
+(add-to-list 'package-archives
+                    '("melpa-stable" . "http://stable.melpa.org/packages/") t)
 (package-initialize)
 
 ;; インストールするパッケージ
@@ -38,7 +40,8 @@
     undo-tree
 
     ;;;; ruby
-    enh-ruby-mode ruby-electric ruby-block slim-mode robe rubocop inf-ruby
+    enh-ruby-mode ruby-electric ruby-block slim-mode robe rubocop inf-ruby ruby-tools
+    ruby-refactor ruby-hash-syntax ruby-additional
 
     ;;; rails
     evil-rails helm-rails projectile-rails rbenv rspec-mode bundler
@@ -62,7 +65,10 @@
     evil evil-magit powerline-evil
 
     ;;;; color-theme
-    color-theme color-theme-solarized
+    ; color-theme color-theme-solarized
+
+    ;;;; solarized
+    solarized-theme
 
     ;;;; powerline/theme/UI
     powerline abyss-theme popup
@@ -107,14 +113,13 @@
 
 (dolist (package my-packages)
   (unless (package-installed-p package)
-    (funcall #'(lambda ()
+    (funcall
+     (lambda ()
       ;; パッケージリストの読み込み
         (add-to-list 'package-archives
                     '("marmalade" . "http://marmalade-repo.org/packages/") t)
         (add-to-list 'package-archives
                     '("melpa" . "http://melpa.milkbox.net/packages/") t)
-        (add-to-list 'package-archives
-                    '("melpa-stable" . "http://stable.melpa.org/packages/") t)
         (add-to-list 'package-archives
                     '("org" . "http://orgmode.org/elpa/") t)
         (package-initialize)
