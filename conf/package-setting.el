@@ -95,7 +95,7 @@
     web-mode scss-mode yaml-mode
 
     ;;; etc-mode
-    gitignore-mode markdown-mode restclient motion-mode
+    gitignore-mode markdown-mode restclient motion-mode emmet-mode
 
     ;;; shell
     exec-path-from-shell

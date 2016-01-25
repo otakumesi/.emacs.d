@@ -17,6 +17,11 @@
 
 (load "package-setting")
 
+;; shell
+;(load-file "~/.emacs.d/shellenv.el")
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
 ;; カラーテーマ
 ;(when (require 'color-theme)
 ;  (color-theme-initialize)
@@ -95,11 +100,6 @@
 ;; undo-tree
 (require 'undo-tree)
 (global-undo-tree-mode)
-
-;; shell
-;(load-file "~/.emacs.d/shellenv.el")
-(when (memq window-system '(mac ns))
-  (exec-path-from-shell-initialize))
 
 ;; rails
 (require 'helm-rails)
