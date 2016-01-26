@@ -33,11 +33,11 @@
     ;;;; anzu
     anzu
 
-    ;;; screen
-    buffer-move fullscreen-mode
-
     ;;;; undo-tree
     undo-tree
+
+    ;;; common lisp
+    slime
 
     ;;;; ruby
     enh-ruby-mode ruby-electric ruby-block slim-mode robe rubocop inf-ruby ruby-tools
@@ -106,9 +106,13 @@
     ;;; japanese
     ddskk migemo
 
+    ;;; window, screen
+    popwin popup elscreen buffer-move fullscreen-mode psession
+
+
     ;;;; etc
-    with-editor popup know-your-http-well elscreen restart-emacs
-    font-lock+ rainbow-delimiters volatile-highlights hlinum goto-chg
+    with-editor know-your-http-well restart-emacs hlinum
+    font-lock+ rainbow-delimiters volatile-highlights goto-chg
     ))
 
 (dolist (package my-packages)

@@ -127,5 +127,14 @@
 (global-set-key (kbd "M-W") (lambda () (interactive)
                               (switch-to-buffer (find-file-noselect "~/workspace"))))
 
+;; popwin
+(require 'popwin)
+(popwin-mode 1)
+;(global-set-key (kbd "A-p") (lambda () (popwin:keymap)))
+
+;; psession
+(require 'psession)
+(psession-mode 1)
+
 (provide 'init)
 ;;; init.el ends here
