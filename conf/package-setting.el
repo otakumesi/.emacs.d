@@ -16,7 +16,7 @@
 
     ;;;; company-mode
     company jquery-doc company-web company-edbi company-restclient helm-company company-quickhelp
-    company-web company-statistics
+    company-web company-statistics slime-company
 
     ;;;; tree
     neotree undo-tree

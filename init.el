@@ -127,6 +127,9 @@
 (global-set-key (kbd "M-W") (lambda () (interactive)
                               (switch-to-buffer (find-file-noselect "~/workspace"))))
 
+(require 'slime)
+(slime-setup '(slime-repl slime-fancy slime-banner slime-company))
+
 ;; popwin
 (require 'popwin)
 (popwin-mode 1)
