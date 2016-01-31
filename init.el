@@ -129,6 +129,7 @@
 
 (require 'slime)
 (slime-setup '(slime-repl slime-fancy slime-banner slime-company))
+(setq inferior-lisp-program (executable-find "clisp"))
 
 ;; popwin
 (require 'popwin)
