@@ -119,7 +119,7 @@
 (global-linum-mode 1)
 
 ;;; rainbow-delimiters
-(add-hook 'linum-mode 'rainbow-delimiters-mode)
+(add-hook 'linum-mode-hook 'rainbow-delimiters-mode)
 
 ;;; open init.el
 (global-set-key (kbd "M-I") (lambda () (interactive)
