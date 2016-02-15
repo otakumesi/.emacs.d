@@ -37,7 +37,7 @@
     undo-tree
 
     ;;; common lisp
-    slime
+    slime flylisp
 
     ;;;; ruby
     enh-ruby-mode ruby-electric ruby-block slim-mode robe rubocop inf-ruby ruby-tools
@@ -53,7 +53,7 @@
     gtags helm-gtags
 
     ;;;; flycheck
-    flycheck helm-flycheck flycheck-color-mode-line
+    flycheck helm-flycheck flycheck-color-mode-line flycheck-package flycheck-pos-tip
 
     ;;;; helm
     helm helm-core helm-projectile helm-css-scss
@@ -86,7 +86,7 @@
     pkg-info auto-async-byte-compile
 
     ;;;; yasnippet
-    yasnippet helm-c-yasnippet
+    yasnippet helm-c-yasnippet common-lisp-snippets
 
     ;;;; twitter
     twittering-mode
@@ -111,7 +111,7 @@
 
 
     ;;;; etc
-    with-editor know-your-http-well restart-emacs hlinum
+    with-editor know-your-http-well restart-emacs hlinum elisp-slime-nav
     font-lock+ rainbow-delimiters volatile-highlights goto-chg
     ))
 

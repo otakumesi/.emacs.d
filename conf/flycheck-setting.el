@@ -13,6 +13,12 @@
 (eval-after-load "flycheck"
   '(add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode))
 
+(eval-after-load 'flycheck
+  '(flycheck-package-setup))
+
+(with-eval-after-load 'flycheck
+  '(flycheck-pos-tip-mode))
+
 (flycheck-define-checker ruby-rubocop
   "A Ruby syantax and style checker using the RuboCop tool."
   :command ("rubocop" "--format" "emacs"

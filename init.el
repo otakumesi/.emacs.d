@@ -127,9 +127,18 @@
 (global-set-key (kbd "M-W") (lambda () (interactive)
                               (switch-to-buffer (find-file-noselect "~/workspace"))))
 
+;; slime
 (require 'slime)
 (slime-setup '(slime-repl slime-fancy slime-banner slime-company))
 (setq inferior-lisp-program (executable-find "clisp"))
+
+(defalias 'sl-restart 'slime-restart-inferior-lisp)
+
+ (require 'elisp-slime-nav) ;; optional if installed via package.el
+ (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
+   (add-hook hook 'turn-on-elisp-slime-nav-mode))
+
+(require 'flylisp)
 
 ;; popwin
 (require 'popwin)
