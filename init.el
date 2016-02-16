@@ -140,9 +140,8 @@
 (add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
 (add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
 (slime-setup '(slime-repl slime-fancy slime-banner slime-company))
-(setq inferior-lisp-program (executable-find "sbcl"))
-(setq slime-lisp-implementations `((sbcl ("sbcl"))
-                              (clisp ("clisp"))))
+(load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
+(setq inferior-lisp-program "ros -L sbcl -Q run")
 (setq slime-net-coding-system 'utf-8-unix)
 (add-hook 'slime-mode-hook 'slime-autodoc-mode)
 
