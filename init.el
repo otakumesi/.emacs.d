@@ -120,6 +120,13 @@
 
 ;;; rainbow-delimiters
 (add-hook 'linum-mode-hook 'rainbow-delimiters-mode)
+(require 'cl-lib)
+(require 'color)
+(cl-loop
+ for index from 1 to rainbow-delimiters-max-face-count
+ do
+ (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+                             (cl-callf color-saturate-name (face-foreground face) 30)))
 
 ;;; open init.el
 (global-set-key (kbd "M-I") (lambda () (interactive)
@@ -129,7 +136,8 @@
 
 ;; slime
 (require 'slime)
-(add-hook 'lisp-mode-hook 'slime-mode)
+(add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
+(add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
 (slime-setup '(slime-repl slime-fancy slime-banner slime-company))
 (setq inferior-lisp-program (executable-find "sbcl"))
 (setq slime-lisp-implementations `((sbcl ("sbcl"))
