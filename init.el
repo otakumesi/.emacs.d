@@ -129,8 +129,17 @@
 
 ;; slime
 (require 'slime)
+(add-hook 'lisp-mode-hook 'slime-mode)
 (slime-setup '(slime-repl slime-fancy slime-banner slime-company))
-(setq inferior-lisp-program (executable-find "clisp"))
+(setq inferior-lisp-program (executable-find "sbcl"))
+(setq slime-lisp-implementations `((sbcl ("sbcl"))
+                              (clisp ("clisp"))))
+(setq slime-net-coding-system 'utf-8-unix)
+(add-hook 'slime-mode-hook 'slime-autodoc-mode)
+
+(setq common-lisp-hyperspec-root (expand-file-name "/usr/local/cellar/hyperspec/7.0/share/doc/hyperspec/HyperSpec"))
+(setq common-lisp-hyperspec-symbol-table
+      (expand-file-name "/usr/local/cellar/hyperspec/7.0/share/doc/hyperspec/HyperSpec/Data/Map_Sym.txt"))
 
 (defalias 'sl-restart 'slime-restart-inferior-lisp)
 
