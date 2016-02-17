@@ -1,1 +1,0 @@
-("~/.emacs.d/" "~/workspace/rails/sample_app/" "~/workspace/rails_tutorial/" "/usr/local/" "~/workspace/rails/rails_tutorial/" "~/workspace/JavaScript/" "~/" "~/workspace/ruby/sample_app/" "~/workSpace/ruby/sample_app/" "~/workspace/lisp/Land_of_Lisp_practice/" "~/workspace/lisp/practice_cl/")
