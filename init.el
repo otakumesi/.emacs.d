@@ -141,7 +141,7 @@
 (add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
 (slime-setup '(slime-repl slime-fancy slime-banner slime-company))
 (load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
-(setq inferior-lisp-program "ros -L sbcl -Q run")
+(setq inferior-lisp-program "ros -L sbcl -Q run -l ~/.sbclrc")
 (setq slime-net-coding-system 'utf-8-unix)
 (add-hook 'slime-mode-hook 'slime-autodoc-mode)
 
