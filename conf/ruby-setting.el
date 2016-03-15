@@ -11,6 +11,11 @@
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
 
+(setq enh-ruby-program "~/.rbenv/shims/ruby")
+(defun enh-ruby-mode-set-encoding () nil)
+(custom-set-variables
+ '(ruby-insert-encoding-magic-comment nil))
+
 ;; Rubyのブロックハイライト
 (require 'ruby-block)
 (ruby-block-mode t)

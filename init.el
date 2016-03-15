@@ -51,10 +51,6 @@
 (load "flycheck-setting")
 (global-anzu-mode +1)
 
-(defun enh-ruby-mode-set-encoding () nil)
-(custom-set-variables
- '(ruby-insert-encoding-magic-comment nil))
-
 ;;; rbenv
 (require 'rbenv)
 (global-rbenv-mode)
