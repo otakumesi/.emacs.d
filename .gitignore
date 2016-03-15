@@ -56,3 +56,9 @@ conf/npm-debug.log
 
 # company
 company-statistics-cache.el
+
+# projectile
+projectile-bookmarks.eld
+
+# ruby
+rake.cache
