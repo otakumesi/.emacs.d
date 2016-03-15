@@ -56,7 +56,7 @@
     flycheck helm-flycheck flycheck-color-mode-line flycheck-package flycheck-pos-tip
 
     ;;;; helm
-    helm helm-core helm-projectile helm-css-scss
+    helm helm-core helm-projectile helm-css-scss helm-rubygems-org
 
     ;;;; projectile
     projectile
