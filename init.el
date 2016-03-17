@@ -45,6 +45,7 @@
 ;(load "auto-complete-setting")
 (load "ruby-setting")
 (load "javascript-setting")
+(load "haskell-setting")
 (load "elisp-setting")
 (load "web-mode-setting")
 ;(load "tabbar-setting")

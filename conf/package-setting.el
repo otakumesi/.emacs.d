@@ -46,6 +46,9 @@
     ;;; rails
     evil-rails helm-rails projectile-rails rbenv rspec-mode bundler
 
+    ;;; haskell
+    haskell-mode ghc hindent company-ghc
+
     ;;;; javascript
     js2-mode coffee-mode jquery-doc js2-refactor coffee-mode
 
@@ -53,7 +56,7 @@
     gtags helm-gtags
 
     ;;;; flycheck
-    flycheck helm-flycheck flycheck-color-mode-line flycheck-package flycheck-pos-tip
+    flycheck helm-flycheck flycheck-color-mode-line flycheck-package flycheck-pos-tip flycheck-haskell
 
     ;;;; helm
     helm helm-core helm-projectile helm-css-scss helm-rubygems-org
