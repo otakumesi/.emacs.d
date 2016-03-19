@@ -47,7 +47,7 @@
     evil-rails helm-rails projectile-rails rbenv rspec-mode bundler
 
     ;;; haskell
-    haskell-mode ghc hindent company-ghc
+    haskell-mode ghc hindent company-ghc shm
 
     ;;;; javascript
     js2-mode coffee-mode jquery-doc js2-refactor coffee-mode
