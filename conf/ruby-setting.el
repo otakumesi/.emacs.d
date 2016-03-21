@@ -11,6 +11,8 @@
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
 
+
+(setq ruby-program "~/.rbenv/shims/ruby")
 (setq enh-ruby-program "~/.rbenv/shims/ruby")
 (defun enh-ruby-mode-set-encoding () nil)
 (custom-set-variables
