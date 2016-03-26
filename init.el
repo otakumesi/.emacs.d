@@ -119,7 +119,7 @@
 (hlinum-activate)
 (global-linum-mode 1)
 
-;;; rainbow-delimiters
+;;; rainbow-delimiterm
 (require 'rainbow-delimiters)
 (add-hook 'linum-mode-hook 'rainbow-delimiters-mode)
 (require 'cl-lib)

@@ -65,7 +65,7 @@
     projectile
 
     ;;;; evil
-    evil evil-magit powerline-evil
+    evil evil-magit powerline-evil evil-org evil-leader
 
     ;;;; color-theme
     ; color-theme color-theme-solarized

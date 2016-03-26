@@ -16,6 +16,11 @@
 (smartparens-global-mode t)
 (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
 
+(require 'org)
+(require 'evil-leader)
+(require 'evil-org)
+
+
 (provide 'evil-setting)
 ;;; evil-setting.el ends here
 
