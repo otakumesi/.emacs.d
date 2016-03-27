@@ -29,8 +29,8 @@
   (add-to-list 'exec-path my-cabal-path))
 (custom-set-variables '(haskell-tags-on-save t))
 
-(require 'shm)
-(add-hook 'haskell-mode-hook 'structured-haskell-mode)
+;;(require 'shm)
+;;(add-hook 'haskell-mode-hook 'structured-haskell-mode)
 
 (autoload 'ghc-init "ghc" nil t)
 (autoload 'ghc-debug "ghc" nil t)
