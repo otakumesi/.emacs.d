@@ -17,6 +17,14 @@
 (add-hook 'ruby-mode-hook 'helm-gtags-mode)
 (add-hook 'emacs-lisp-mode 'helm-gtags-mode)
 (add-hook 'javascript-mode 'helm-gtags-mode)
+(setq helm-gtags-path-style 'root)
+(setq helm-gtags-auto-update t)
+(add-hook 'helm-gtags-mode-hook
+          '(lambda ()
+             (local-key-binding (kbd "M-g") 'helm-gtags-dwim)
+             (local-key-binding (kbd "M-s") 'helm-gtags-show-stack)
+             (local-key-binding (kbd "M-p") 'helm-gtags-previous-history)
+             (local-key-binding (kbd "M-n") 'helm-gtags-next-history)))
 
 (add-hook 'helm-gtags-mode-hook
           '(lambda()

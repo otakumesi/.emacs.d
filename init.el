@@ -123,7 +123,7 @@
 
 ;;; rainbow-delimiterm
 (require 'rainbow-delimiters)
-(add-hook 'linum-mode-hook 'rainbow-delimiters-mode)
+(add-hook 'after-init-hook 'rainbow-delimiters-mode)
 (require 'cl-lib)
 (require 'color)
 (cl-loop
@@ -175,6 +175,14 @@
             (define-key org-mode-map (kbd "M-s-<left>") 'elscreen-previous)
             (define-key org-mode-map (kbd "M-s-<up>") 'elscreen-clone)
             (define-key org-mode-map (kbd "M-s-<down>") 'elscreen-kill)))
+
+;; cc-mode
+(require 'cc-mode)
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (setq c-default-style "k&r")
+            (setq indent-tabs-mode t)
+            (setq c-basic-offset 2)))
 
 (provide 'init)
 ;;; init.el ends here

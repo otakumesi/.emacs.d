@@ -14,9 +14,12 @@
 
 (setq ruby-program "~/.rbenv/shims/ruby")
 (setq enh-ruby-program "~/.rbenv/shims/ruby")
-(defun enh-ruby-mode-set-encoding () nil)
-(custom-set-variables
- '(ruby-insert-encoding-magic-comment nil))
+(ruby-insert-encoding-magic-comment nil)
+
+;; マジックコメントの削除
+(defun remove-enh-magic-comment ()
+  (remove-hook 'before-save-hook 'enh-ruby-mode-set-encoding t))
+(add-hook 'enh-ruby-mode-hook 'remove-enh-magic-comment)
 
 ;; Rubyのブロックハイライト
 (require 'ruby-block)
