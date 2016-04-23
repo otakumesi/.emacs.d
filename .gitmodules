@@ -1,0 +1,3 @@
+[submodule "yasnippet-snippets"]
+	path = yasnippet-snippets
+	url = /Users/takelow/.emacs.d/yasnippet-snippets

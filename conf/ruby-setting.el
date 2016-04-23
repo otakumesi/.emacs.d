@@ -14,7 +14,7 @@
 
 (setq ruby-program "~/.rbenv/shims/ruby")
 (setq enh-ruby-program "~/.rbenv/shims/ruby")
-(ruby-insert-encoding-magic-comment nil)
+;; (ruby-insert-encoding-magic-comment nil)
 
 ;; マジックコメントの削除
 (defun remove-enh-magic-comment ()

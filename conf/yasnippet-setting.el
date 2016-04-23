@@ -4,8 +4,11 @@
 ;;; Code:
 ;(require 'yasnippet-bundle)
 (require 'yasnippet)
-(yas-global-mode 1)
-(setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+(setq yas-snippet-dirs '("~/.emacs.d/yasnippet-snippets"))
+(yas-global-mode t)
+
+(define-key yas-minor-mode-map (kbd "C-x y i") 'yas-insert-snippet)
+(define-key yas-minor-mode-map (kbd "C-x y v") 'yas-visit-snippet-file)
 
 (require 'common-lisp-snippets)
 
