@@ -184,5 +184,7 @@
             (setq indent-tabs-mode t)
             (setq c-basic-offset 2)))
 
+(require 'quickrun)
+
 (provide 'init)
 ;;; init.el ends here
