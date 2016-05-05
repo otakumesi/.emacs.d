@@ -31,15 +31,15 @@
 (require 'solarized)
 (setq solarized-high-contrast-mode-line t)
 (load-theme 'solarized-dark t)
+(setq ns-use-srgb-colorspace nil)
 
 ;; key-chordの読み込み
 (require 'key-chord)
 (key-chord-mode 1)
 
 (load "helm-setting")
-(load "elscreen-setting")
+(load "elscreen-SETTING")
 (load "evil-setting")
-(load "powerline-setting")
 (load "company-mode-setting")
 (load "yasnippet-setting")
 ;(load "auto-complete-setting")
@@ -51,11 +51,14 @@
 ;(load "tabbar-setting")
 (load "flycheck-setting")
 (global-anzu-mode +1)
+(load "powerline-setting")
+
 
 ;;; rbenv
 (require 'rbenv)
 (global-rbenv-mode)
 (rbenv-use-global)
+(setq rbenv-modeline-function 'rbenv--modeline-plain)
 
 ;; projectile
 (require 'projectile)

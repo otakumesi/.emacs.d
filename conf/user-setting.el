@@ -1,3 +1,7 @@
+;;; package --- Summary
+;;; Commentary:
+
+;;; Code:
 ;; フォント設定
 (set-face-attribute 'default
                     nil
@@ -59,6 +63,12 @@
 (setq global-hl-line-timer
     (run-with-idle-timer 0.03 t 'global-hl-line-timer-function))
 ;; (cancel-timer global-hl-line-timer)
+
+;;; modeline
+;; (defun modeline-formating ()
+  ;; (interactive)
+  ;; (setq mode-line-format
+        ;; '()))
 
 (provide 'user-setting)
 ;;; user-setting.el ends here
