@@ -36,8 +36,6 @@
 (require 'key-chord)
 (key-chord-mode 1)
 
-(require 'org)
-
 (load "helm-setting")
 (load "elscreen-setting")
 (load "evil-setting")
@@ -169,12 +167,7 @@
 (require 'psession)
 (psession-mode 1)
 
-(add-hook 'org-mode-hook
-          (lambda ()
-            (define-key org-mode-map (kbd "M-s-<right>") 'elscreen-next)
-            (define-key org-mode-map (kbd "M-s-<left>") 'elscreen-previous)
-            (define-key org-mode-map (kbd "M-s-<up>") 'elscreen-clone)
-            (define-key org-mode-map (kbd "M-s-<down>") 'elscreen-kill)))
+(require 'org)
 
 ;; cc-mode
 (require 'cc-mode)
