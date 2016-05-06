@@ -1,1 +1,0 @@
-(setq psession--winconf-alist (eval-when-compile psession--winconf-alist))

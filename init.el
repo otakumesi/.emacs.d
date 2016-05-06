@@ -3,7 +3,7 @@
 ;;; Code:
 
 ;;; ロードパス:
-(setq load-path(append load-path'("~/.emacs.d/conf")))
+(add-to-list 'load-path "~/.emacs.d/conf")
 (setq gc-cons-threshold (* 128 1024 1024))
 (load "user-setting")
 
