@@ -51,5 +51,19 @@
 
 (require 'ruby-hash-syntax)
 
+;; projectile-rails
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
+(require 'evil-rails)
+
+;; rails
+(require 'helm-rails)
+
+;;; rbenv
+(require 'rbenv)
+(global-rbenv-mode)
+(rbenv-use-global)
+(setq rbenv-modeline-function 'rbenv--modeline-plain)
+
+
 (provide 'ruby-setting)
 ;;; ruby-setting.el ends here

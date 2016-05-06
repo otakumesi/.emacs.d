@@ -116,6 +116,7 @@
     ;;;; etc
     with-editor know-your-http-well restart-emacs hlinum elisp-slime-nav
     font-lock+ rainbow-delimiters volatile-highlights goto-chg w3 quickrun
+    esup
     ))
 
 (dolist (package my-packages)

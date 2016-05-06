@@ -4,6 +4,7 @@
 
 ;;; ロードパス:
 (setq load-path(append load-path'("~/.emacs.d/conf")))
+(setq gc-cons-threshold (* 128 1024 1024))
 (load "user-setting")
 
 (setq default-frame-alist
@@ -33,32 +34,10 @@
 (load-theme 'solarized-dark t)
 (setq ns-use-srgb-colorspace nil)
 
-;; key-chordの読み込み
+;; key-chordの読み込Process *esup* killed: 9
+
 (require 'key-chord)
 (key-chord-mode 1)
-
-(load "helm-setting")
-(load "elscreen-SETTING")
-(load "evil-setting")
-(load "company-mode-setting")
-(load "yasnippet-setting")
-;(load "auto-complete-setting")
-(load "ruby-setting")
-(load "javascript-setting")
-(load "haskell-setting")
-(load "elisp-setting")
-(load "web-mode-setting")
-;(load "tabbar-setting")
-(load "flycheck-setting")
-(global-anzu-mode +1)
-(load "powerline-setting")
-
-
-;;; rbenv
-(require 'rbenv)
-(global-rbenv-mode)
-(rbenv-use-global)
-(setq rbenv-modeline-function 'rbenv--modeline-plain)
 
 ;; projectile
 (require 'projectile)
@@ -66,8 +45,21 @@
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
-(require 'evil-rails)
+
+(load "helm-setting")
+(load "elscreen-setting")
+(load "evil-setting")
+(load "company-mode-setting")
+(load "yasnippet-setting")
+(autoload 'ruby-mode "ruby-setting" nil t)
+(autoload 'js-mode "javascript-setting" nil t)
+(load "haskell-setting")
+(autoload 'lisp-mode "elisp-setting")
+(autoload 'c-mode "c-setting")
+(load "web-mode-setting")
+(load "flycheck-setting")
+(global-anzu-mode +1)
+(load "powerline-setting")
 
 ;; fullscreen
 (global-set-key (kbd "C-;") 'fullscreen-mode-fullscreen-toggle)
@@ -97,16 +89,10 @@
 (require 'neotree)
 (global-set-key "\C-x4" 'neotree-toggle)
 
-;; twitter
-(require 'twittering-mode)
-(setq twittering-use-master-password t)
-
 ;; undo-tree
-(require 'undo-tree)
-(global-undo-tree-mode)
-
-;; rails
-(require 'helm-rails)
+;; (require 'undo-tree)
+;; (global-undo-tree-mode)
+(autoload 'global-undo-tree-mode 'undo-tree)
 
 ;; etc
 (require 'restclient)
@@ -122,44 +108,11 @@
 (hlinum-activate)
 (global-linum-mode 1)
 
-;;; rainbow-delimiterm
-(require 'rainbow-delimiters)
-(add-hook 'after-init-hook 'rainbow-delimiters-mode)
-(require 'cl-lib)
-(require 'color)
-(cl-loop
- for index from 1 to rainbow-delimiters-max-face-count
- do
- (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
-                             (cl-callf color-saturate-name (face-foreground face) 30)))
-
 ;;; open init.el
 (global-set-key (kbd "M-I") (lambda () (interactive)
                               (switch-to-buffer (find-file-noselect "~/.emacs.d/init.el"))))
 (global-set-key (kbd "M-W") (lambda () (interactive)
                               (switch-to-buffer (find-file-noselect "~/workspace"))))
-
-;; slime
-(require 'slime)
-(add-hook 'lisp-mode-hook (lambda () (slime-mode t)))
-(add-hook 'inferior-lisp-mode-hook (lambda () (inferior-slime-mode t)))
-(slime-setup '(slime-repl slime-fancy slime-banner slime-company))
-(load (expand-file-name "~/.roswell/impls/ALL/ALL/quicklisp/slime-helper.el"))
-(setq inferior-lisp-program "ros -L sbcl -Q run -l ~/.sbclrc")
-(setq slime-net-coding-system 'utf-8-unix)
-(add-hook 'slime-mode-hook 'slime-autodoc-mode)
-
-(setq common-lisp-hyperspec-root (expand-file-name "/usr/local/cellar/hyperspec/7.0/share/doc/hyperspec/HyperSpec"))
-(setq common-lisp-hyperspec-symbol-table
-      (expand-file-name "/usr/local/cellar/hyperspec/7.0/share/doc/hyperspec/HyperSpec/Data/Map_Sym.txt"))
-
-(defalias 'sl-restart 'slime-restart-inferior-lisp)
-
-(require 'elisp-slime-nav) ;; optional if installed via package.el
-(dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
-  (add-hook hook 'turn-on-elisp-slime-nav-mode))
-
-(require 'flylisp)
 
 ;; popwin
 (require 'popwin)
@@ -171,14 +124,6 @@
 (psession-mode 1)
 
 (require 'org)
-
-;; cc-mode
-(require 'cc-mode)
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (setq c-default-style "k&r")
-            (setq indent-tabs-mode t)
-            (setq c-basic-offset 2)))
 
 (require 'quickrun)
 
