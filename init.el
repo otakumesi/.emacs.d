@@ -90,9 +90,8 @@
 (global-set-key "\C-x4" 'neotree-toggle)
 
 ;; undo-tree
-;; (require 'undo-tree)
-;; (global-undo-tree-mode)
-(autoload 'global-undo-tree-mode 'undo-tree)
+(require 'undo-tree)
+(global-undo-tree-mode)
 
 ;; etc
 (require 'restclient)
@@ -105,6 +104,9 @@
 
 ;;; linum
 (require 'hlinum)
+(setq linum-delay t)
+(defadvice linum-schedule (around my-linum-schedule () activate)
+  (run-with-idle-timer 0.2 nil #'linum-update-current))
 (hlinum-activate)
 (global-linum-mode 1)
 
