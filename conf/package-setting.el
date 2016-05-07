@@ -136,11 +136,13 @@
 
 
 ;; パッケージの設定・インストール等
-(require 'auto-async-byte-compile)
-(setq auto-async-byte-compile-init-file "~/.emacs.d/init.el")
-(setq auto-async-byte-compile-exclude-files-regexp "~/.emacs.d/init.el")
-(setq auto-async-byte-compile-exclude-files-regexp "~/.emacs.d/conf/package-setting.el")
-(add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode)
+(autoload 'auto-async-byte-compile "auto-async-byte-compile")
+(with-eval-after-load 'auto-async-byte-compile
+  (setq auto-async-byte-compile-init-file "~/.emacs.d/init.el")
+  (setq auto-async-byte-compile-exclude-files-regexp "~/.emacs.d/init.el")
+  (setq auto-async-byte-compile-exclude-files-regexp "~/.emacs.d/conf/package-setting.el")
+  (add-hook 'emacs-lisp-mode-hook 'enable-auto-async-byte-compile-mode))
+(add-hook 'kill-emacs-hook 'auto-async-byte-compile)
 
 (provide 'package-setting)
 ;;; package-setting.el ends here

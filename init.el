@@ -51,11 +51,11 @@
 (load "evil-setting")
 (load "company-mode-setting")
 (load "yasnippet-setting")
-(autoload 'ruby-mode "ruby-setting" nil t)
-(autoload 'js-mode "javascript-setting" nil t)
+(load "ruby-setting")
+(load "javascript-setting")
 (load "haskell-setting")
-(autoload 'lisp-mode "elisp-setting")
-(autoload 'c-mode "c-setting")
+(load "elisp-setting")
+(load "c-setting")
 (load "web-mode-setting")
 (load "flycheck-setting")
 (global-anzu-mode +1)
@@ -86,21 +86,22 @@
 (global-set-key (kbd "M-m i") 'magit-init)
 
 ;; TreeのElisp
-(require 'neotree)
-(global-set-key "\C-x4" 'neotree-toggle)
+;; (require 'neotree)
+;; (global-set-key "\C-x4" 'neotree-toggle)
 
 ;; undo-tree
 (require 'undo-tree)
 (global-undo-tree-mode)
 
 ;; etc
-(require 'restclient)
+;; (require 'restclient)
 
 ;;; skk
 (when (require 'skk nil t)
   (global-set-key "\C-xj" 'skk-auto-fill-mode)
-  (setq default-input-method "japanese-skk")
-  (require 'skk-study))
+  (with-eval-after-load 'skk-auto-fill-mode
+    (setq default-input-method "japanese-skk")
+    (require 'skk-study)))
 
 ;;; linum
 (require 'hlinum)
@@ -128,6 +129,10 @@
 (require 'org)
 
 (require 'quickrun)
+
+(require 'server)
+(unless (server-running-p)
+  (server-start))
 
 (provide 'init)
 ;;; init.el ends here
