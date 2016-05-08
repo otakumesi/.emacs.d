@@ -8,7 +8,7 @@
   (require 'helm-c-yasnippet)
   (setq helm-yas-space-match-any-greedy t)
   (define-key yas-minor-mode-map (kbd "C-c y") 'helm-yas-complete)
-  (setq yas-snippet-dirs '("~/.emacs.d/yasnippet-snippets"))
+;;  (setq yas-snippet-dirs '("~/.emacs.d/yasnippet-snippets"))
   (yas-load-directory "~/.emacs.d/yasnippet-snippets")
   (yas-global-mode t)
   (define-key yas-minor-mode-map (kbd "C-x y i") 'yas-insert-snippet)

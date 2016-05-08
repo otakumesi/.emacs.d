@@ -123,8 +123,8 @@
 ;(global-set-key (kbd "A-p") (lambda () (popwin:keymap)))
 
 ;; psession
-(require 'psession)
-(psession-mode 1)
+;; (require 'psession)
+;; (psession-mode 1)
 
 (require 'org)
 
@@ -133,6 +133,27 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
+
+;; modeline
+(defvar modeline-formating ()
+  (list ""
+   'mode-line-modified
+   'mode-line-buffer-identification
+   "   "
+   'global-mode-string
+   "   %[("
+   'mode-name 'minor-mode-alist "%n" 'mode-line-process
+   ")%]----"
+   '(-3 . "%p")
+   "-%-"))
+
+
+(defun mode-line-setting ()
+  (interactive)
+  (setq mode-line-frame-identification nil)
+  (setq-default mode-line-format modeline-formating)
+  )
+(mode-line-setting)
 
 (provide 'init)
 ;;; init.el ends here

@@ -64,24 +64,5 @@
     (run-with-idle-timer 0.03 t 'global-hl-line-timer-function))
 ;; (cancel-timer global-hl-line-timer)
 
-;; modeline
-(defun modeline-formating ()
-  (list ""
-   'mode-line-modified
-   'mode-line-buffer-identification
-   "   "
-   'global-mode-string
-   "   %[("
-   'mode-name 'minor-mode-alist "%n" 'mode-line-process
-   ")%]----"
-   '(-3 . "%p")
-   "-%-"))
-
-;; (defun mode-line-setting ()
-  ;; (interactive)
-  ;; (setq mode-line-frame-identification nil)
-  ;; (setq-default mode-line-format 'modeline-formating))
-;; (mode-line-setting)
-
 (provide 'user-setting)
 ;;; user-setting.el ends here

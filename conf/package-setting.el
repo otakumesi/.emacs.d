@@ -4,7 +4,7 @@
 ;;; Code:
 (require 'package)
 (add-to-list 'package-archives
-                    '("melpa-stable" . "http://stable.melpa.org/packages/") t)
+                    '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
 ;; インストールするパッケージ
@@ -110,7 +110,7 @@
     ddskk migemo
 
     ;;; window, screen
-    popwin popup elscreen buffer-move fullscreen-mode psession
+    popwin popup elscreen buffer-move fullscreen-mode elscreen-persist
 
 
     ;;;; etc

@@ -34,5 +34,8 @@
 (global-set-key (kbd "C-<up>") 'elscreen-clone)
 (global-set-key (kbd "C-<down>") 'elscreen-kill)
 
+(require 'elscreen-persist)
+(elscreen-persist-mode 1)
+
 (provide 'elscreen-setting)
 ;;; elscreen-setting.el ends here
