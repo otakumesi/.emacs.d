@@ -27,9 +27,6 @@
 (eval-after-load 'enh-ruby-mode '(require 'rubocop))
 (eval-after-load 'enh-ruby-mode '(require 'ruby-hash-syntax))
 
-;; projectile-rails
-(add-hook 'ruby-mode-hook 'projectile-rails-on)
-
 ;; rbenv
 (eval-after-load 'enh-ruby-mode '(require 'rbenv))
 (with-eval-after-load 'rbenv
@@ -50,6 +47,9 @@
 (with-eval-after-load 'robe-mode
   (robe-mode)
   (push 'company-robe company-backends))
+
+;; projectile-rails
+(add-hook 'projectile-mode-hook 'projectile-rails-on)
 
 (eval-after-load 'enh-ruby-mode '(require 'ruby-refactor))
 (eval-after-load 'ruby-refactor (ruby-refactor-mode-launch))
@@ -80,7 +80,7 @@
             (file-name) ":" line ":" (or "C" "W") ":" (message)
             line-end))
     :modes (enh-ruby-mode motion-mode))
-  
+
   (flycheck-define-checker ruby-rubylint
     "A Ruby syantax and style checker using the rubyline tool."
     :command ("ruby-lint" source)
