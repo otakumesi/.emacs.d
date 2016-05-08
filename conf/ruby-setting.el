@@ -3,14 +3,14 @@
 
 ;;; Code:
 ;; enh-ruby-modeでRubyモードを導入する
-(autoload 'enh-ruby-mode "enh-ruby-mode"
-  "Major mode for ruby files" t)
-
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile$" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
+
+(autoload 'enh-ruby-mode "enh-ruby-mode"
+  "Major mode for ruby files" t)
 
 (with-eval-after-load 'ruby-mode-hook
   (setq ruby-program "~/.rbenv/shims/ruby")
@@ -80,7 +80,7 @@
             (file-name) ":" line ":" (or "C" "W") ":" (message)
             line-end))
     :modes (enh-ruby-mode motion-mode))
-  
+
   (flycheck-define-checker ruby-rubylint
     "A Ruby syantax and style checker using the rubyline tool."
     :command ("ruby-lint" source)
