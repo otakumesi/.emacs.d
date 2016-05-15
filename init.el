@@ -148,7 +148,7 @@
    "-%-"))
 
 
-(defun mode-line-setting ()
+(DEFUN mode-line-setting ()
   (interactive)
   (setq mode-line-frame-identification nil)
   (setq-default mode-line-format modeline-formating)
