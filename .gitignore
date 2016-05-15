@@ -42,6 +42,10 @@ tramp
 # cask packages
 .cask/
 
+# elscreen
+elscreen
+/elisp-object/
+
 # AutoComplete
 ac-comphist.dat
 

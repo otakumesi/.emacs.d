@@ -12,50 +12,9 @@
 (autoload 'enh-ruby-mode "enh-ruby-mode"
   "Major mode for ruby files" t)
 
-(with-eval-after-load 'ruby-mode-hook
+(with-eval-after-load 'ruby-mode
   (setq ruby-program "~/.rbenv/shims/ruby")
   (custom-set-variables '(ruby-insert-encoding-magic-comment nil)))
-
-(autoload 'rspec-mode "rspec-mode" "" t)
-(eval-after-load 'rspec-mode
-  '(rspec-install-snippets))
-
-;; rails
-(eval-after-load 'enh-ruby-mode '(require 'helm-rails))
-
-;; ruby-etc
-(eval-after-load 'enh-ruby-mode '(require 'rubocop))
-(eval-after-load 'enh-ruby-mode '(require 'ruby-hash-syntax))
-
-;; rbenv
-(eval-after-load 'enh-ruby-mode '(require 'rbenv))
-(with-eval-after-load 'rbenv
-  (global-rbenv-mode)
-  (rbenv-use-global)
-  (setq rbenv-modeline-function 'rbenv--modeline-plain))
-
-;; Rubyのブロックハイライト
-(eval-after-load 'enh-ruby-mode '(require 'ruby-block))
-(eval-after-load 'ruby-block '(ruby-block-mode t))
-
-;; 括弧のシンタックスハイライト
-(eval-after-load 'enh-ruby-mode '(require 'ruby-electric))
-(eval-after-load 'ruby-electric-mode '(ruby-electric-mode t))
-
-;; Robeの起動
-(eval-after-load 'enh-ruby-mode '(require 'robe))
-(with-eval-after-load 'robe-mode
-  (robe-mode)
-  (push 'company-robe company-backends))
-
-;; projectile-rails
-(add-hook 'projectile-mode-hook 'projectile-rails-on)
-
-(eval-after-load 'enh-ruby-mode '(require 'ruby-refactor))
-(eval-after-load 'ruby-refactor (ruby-refactor-mode-launch))
-
-(eval-after-load 'enh-ruby-mode '(require 'ruby-tools))
-(eval-after-load 'ruby-tools 'ruby-tools-mode)
 
 (with-eval-after-load 'enh-ruby-mode
   (setq enh-ruby-program "~/.rbenv/shims/ruby")
@@ -65,6 +24,43 @@
       (remove-hook 'before-save-hook 'enh-ruby-mode-set-encoding t))
     (add-hook 'enh-ruby-mode-hook 'remove-enh-magic-comment)
     (setq enh-ruby-use-encoding-map nil))
+
+  ;; rails
+  (require 'helm-rails)
+
+  ;; Rubyのブロックハイライト
+  (require 'ruby-block)
+  (add-hook 'enh-ruby-mode-hook 'ruby-block-mode)
+  (add-hook 'enh-ruby-mode-hook 'ruby-toggle-hash-syntax)
+
+  ;; ruby-etc
+  (require 'ruby-refactor)
+  (eval-after-load 'ruby-refactor (ruby-refactor-mode-launch))
+  (require 'ruby-tools)
+  (add-hook 'enh-ruby-mode-hook 'ruby-tools-mode)
+  (eval-after-load 'ruby-tools-mode 'ruby-tools-mode)
+  ;; 括弧のシンタックスハイライト
+  (require 'ruby-electric)
+  (eval-after-load 'ruby-electric-mode '(ruby-electric-mode t))
+
+  ;; Robeの起動
+  (require 'robe)
+  (add-hook 'enh-ruby-mode-hook 'robe-mode)
+  (with-eval-after-load 'robe-mode
+    (robe-mode)
+    (push 'company-robe company-backends))
+
+  ;; rbenv
+  (require 'rbenv)
+  (add-hook 'enh-ruby-mode-hook 'global-rbenv-mode)
+  (with-eval-after-load 'global-rbenv-mode
+    (rbenv-use-global)
+    (setq rbenv-modeline-function 'rbenv--modeline-plain))
+
+  ;; ruby-etc
+  (require 'ruby-hash-syntax)
+  ;; rubocop
+  (require 'rubocop)
 
   (flycheck-define-checker ruby-rubocop
     "A Ruby syantax and style checker using the RuboCop tool."
@@ -92,6 +88,13 @@
             (file-name) ":" line ":" column ":" (or "C" "W") ":" (message)
             line-end))
     :modes (enh-ruby-mode ruby-mode)))
+
+;; projectile-rails
+(add-hook 'enh-ruby-mode-hook 'projectile-rails-on)
+
+(autoload 'rspec-mode "rspec-mode" "" t)
+(eval-after-load 'rspec-mode
+  '(rspec-install-snippets))
 
 (provide 'ruby-setting)
 ;;; ruby-setting.el ends here
