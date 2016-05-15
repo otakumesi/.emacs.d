@@ -57,6 +57,7 @@
 (load "elisp-setting")
 (load "c-setting")
 (load "web-mode-setting")
+(load "markdown-setting")
 (load "flycheck-setting")
 (global-anzu-mode +1)
 (load "powerline-setting")
