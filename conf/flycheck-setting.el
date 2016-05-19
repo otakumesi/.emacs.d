@@ -5,7 +5,7 @@
 
 ;; flycheck
 (require 'flycheck)
-(add-hook 'after-init-hook #'global-flycheck-mode)
+(add-hook 'after-init-hook 'global-flycheck-mode)
 
 (with-eval-after-load 'flycheck
   (require 'flycheck-color-mode-line)

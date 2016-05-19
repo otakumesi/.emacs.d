@@ -50,7 +50,10 @@
     haskell-mode ghc hindent company-ghc shm
 
     ;;;; javascript
-    js2-mode coffee-mode jquery-doc js2-refactor coffee-mode
+    js2-mode coffee-mode jquery-doc js2-refactor coffee-mode stylus-mode jade-mode
+
+    ;;; json
+    json-mode json-reformat
 
     ;;;; gtags
     gtags helm-gtags
@@ -89,7 +92,7 @@
     pkg-info auto-async-byte-compile
 
     ;;;; yasnippet
-    yasnippet helm-c-yasnippet common-lisp-snippets
+    yasnippet helm-c-yasnippet common-lisp-snippets react-snippets
 
     ;;;; twitter
     twittering-mode
