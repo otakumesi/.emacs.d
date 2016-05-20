@@ -8,7 +8,7 @@
 (add-hook 'js2-mode-hook 'js2-refactor-mode)
 (add-hook 'js2-mode-hook 'ac-js2-mode)
 
-(add-to-list 'auto-mode-alist '("\\.jsx" . js2-js))
+(add-to-list 'auto-mode-alist '("\\.jsx" . js2-jsx-mode))
 (flycheck-add-mode 'javascript-eslint 'js2-jsx-mode)
 
 (add-to-list 'auto-mode-alist '("\\.jade'" . js2-mode))
