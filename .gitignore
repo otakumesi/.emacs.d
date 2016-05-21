@@ -45,6 +45,7 @@ tramp
 # elscreen
 elscreen
 /elisp-object/
+/desktops/
 
 # AutoComplete
 ac-comphist.dat
