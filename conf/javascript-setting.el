@@ -20,7 +20,10 @@
 (autoload 'json-mode "json-mode")
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 
-(setq-default flycheck-disable-checkers (append flycheck-disable-checker '(javascript-jshint)))
+(eval-after-load 'flycheck
+  '(custom-set-variables
+    '(flycheck-disable-checkers '(javascript-jshint javascript-jscs))
+    ))
 
 (with-eval-after-load 'js2-mode
   (flycheck-add-next-checker 'javascript-eslint)
