@@ -52,7 +52,6 @@
 (load "company-mode-setting")
 (load "yasnippet-setting")
 (load "ruby-setting")
-(load "javascript-setting")
 (load "haskell-setting")
 (load "elisp-setting")
 (load "c-setting")
@@ -134,6 +133,8 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
+
+(load "javascript-setting")
 
 ;; modeline
 (defvar modeline-formating ()
