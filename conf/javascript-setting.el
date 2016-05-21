@@ -8,7 +8,7 @@
 (add-hook 'js2-mode-hook 'js2-refactor-mode)
 (add-hook 'js2-mode-hook 'ac-js2-mode)
 
-(add-to-list 'auto-mode-alist '("\\.jsx$" . js2-jsx-mode))
+(add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 (flycheck-add-mode 'javascript-eslint 'js2-jsx-mode)
 (add-hook 'js2-jsx-mode-hook 'ac-js2-mode)
 
@@ -20,15 +20,9 @@
 (autoload 'json-mode "json-mode")
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 
-(eval-after-load 'flycheck
-  '(custom-set-variables
-    '(flycheck-disable-checkers '(javascript-jshint javascript-jscs))
-    ))
-
 (with-eval-after-load 'js2-mode
-  (flycheck-add-next-checker 'javascript-eslint)
   (setq js2-strict-trailing-comma-warning nil)
-  (setq js2-strict-missing-semi-warning nil)
+  (setq js2-strict-missing-semi-warning t)
   (setq js2-missing-semi-one-line-override t)
   (setq js2-strict-inconsistent-return-warning nil))
 

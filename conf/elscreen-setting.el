@@ -1,5 +1,5 @@
 ;;; elscreen-setting.el --- elscreen's settings.
-;;; Commentary:
+;;; COMMENTARY
 
 ;;; Code:
 ;; elscreenの読み込み
@@ -34,8 +34,9 @@
 (global-set-key (kbd "C-<up>") 'elscreen-clone)
 (global-set-key (kbd "C-<down>") 'elscreen-kill)
 
-(require 'elscreen-persist)
-(elscreen-persist-mode 1)
+(require 'desktop+)
+(desktop+-create-auto)
+(desktop+-load-auto)
 
 (provide 'elscreen-setting)
 ;;; elscreen-setting.el ends here

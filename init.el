@@ -12,10 +12,6 @@
                     '(height . 48))
               default-frame-alist))
 
-;; 鬼軍曹の設置
-;; (require 'drill-instructor)
-;; (setq drill-instructor-global t)
-
 (load "package-setting")
 
 ;; shell
@@ -24,17 +20,12 @@
   (exec-path-from-shell-initialize))
 
 ;; カラーテーマ
-;(when (require 'color-theme)
-;  (color-theme-initialize)
-;  (when (require 'color-theme-solarized)
-;    (color-theme-solarized)
-;    (set-frame-parameter nil 'background-mode 'dark)))
 (require 'solarized)
 (setq solarized-high-contrast-mode-line t)
 (load-theme 'solarized-dark t)
 (setq ns-use-srgb-colorspace nil)
 
-;; key-chordの読み込Process *esup* killed: 9
+;; key-chordの読み込み
 
 (require 'key-chord)
 (key-chord-mode 1)
@@ -49,17 +40,18 @@
 (load "helm-setting")
 (load "elscreen-setting")
 (load "evil-setting")
+(load "powerline-setting")
+(load "flycheck-setting")
 (load "company-mode-setting")
 (load "yasnippet-setting")
 (load "ruby-setting")
+(load "javascript-setting")
 (load "haskell-setting")
 (load "elisp-setting")
 (load "c-setting")
 (load "web-mode-setting")
 (load "markdown-setting")
-(load "flycheck-setting")
 (global-anzu-mode +1)
-(load "powerline-setting")
 
 ;; fullscreen
 (global-set-key (kbd "C-;") 'fullscreen-mode-fullscreen-toggle)
@@ -122,10 +114,6 @@
 (popwin-mode 1)
 ;(global-set-key (kbd "A-p") (lambda () (popwin:keymap)))
 
-;; psession
-;; (require 'psession)
-;; (psession-mode 1)
-
 (require 'org)
 
 (require 'quickrun)
@@ -133,29 +121,6 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
-
-(load "javascript-setting")
-
-;; modeline
-(defvar modeline-formating ()
-  (list ""
-   'mode-line-modified
-   'mode-line-buffer-identification
-   "   "
-   'global-mode-string
-   "   %[("
-   'mode-name 'minor-mode-alist "%n" 'mode-line-process
-   ")%]----"
-   '(-3 . "%p")
-   "-%-"))
-
-
-(defun mode-line-setting ()
-  (interactive)
-  (setq mode-line-frame-identification nil)
-  (setq-default mode-line-format modeline-formating)
-  )
-(mode-line-setting)
 
 (provide 'init)
 ;;; init.el ends here

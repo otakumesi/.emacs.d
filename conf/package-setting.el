@@ -50,7 +50,7 @@
     haskell-mode ghc hindent company-ghc shm
 
     ;;;; javascript
-    js2-mode coffee-mode jquery-doc js2-refactor coffee-mode stylus-mode jade-mode
+    js2-mode coffee-mode jquery-doc js2-refactor coffee-mode stylus-mode jade-mode jsfmt
 
     ;;; json
     json-mode json-reformat

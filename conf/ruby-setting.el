@@ -57,8 +57,6 @@
     (rbenv-use-global)
     (setq rbenv-modeline-function 'rbenv--modeline-plain))
 
-  ;; ruby-etc
-  (require 'ruby-hash-syntax)
   ;; rubocop
   (require 'rubocop)
 

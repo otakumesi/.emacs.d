@@ -10,6 +10,7 @@
 (with-eval-after-load 'flycheck
   (require 'flycheck-color-mode-line)
   (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
+  (setq-default flycheck-disable-checkers '(javascript-jshint))
   (flycheck-package-setup)
   (flycheck-pos-tip-mode))
 
