@@ -51,6 +51,7 @@
 
     ;;;; javascript
     js2-mode coffee-mode jquery-doc js2-refactor coffee-mode stylus-mode jade-mode jsfmt
+    tern company-tern
 
     ;;; json
     json-mode json-reformat
@@ -113,7 +114,7 @@
     ddskk migemo
 
     ;;; window, screen
-    popwin popup elscreen buffer-move fullscreen-mode elscreen-persist
+    popwin popup elscreen buffer-move fullscreen-mode desktop+
 
 
     ;;;; etc
