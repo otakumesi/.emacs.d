@@ -1,3 +1,6 @@
 [submodule "yasnippet-snippets"]
 	path = yasnippet-snippets
 	url = /Users/takelow/.emacs.d/yasnippet-snippets
+[submodule "es6-snippets"]
+	path = es6-snippets
+	url = https://github.com/CodyReichert/es6-snippets
