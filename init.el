@@ -122,5 +122,7 @@
 (unless (server-running-p)
   (server-start))
 
+(add-to-list 'company-backends '(company-yasnippet))
+
 (provide 'init)
 ;;; init.el ends here
