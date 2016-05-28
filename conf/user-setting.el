@@ -25,7 +25,7 @@
 
 ;; インデントをタブからスペースに
 (setq-default indent-tabs-mode nil)
-(setq tab-width 2)
+;; (setq-default tab-width 2)
 
 ;; バックアップファイルを作らない
 (setq backup-inhibited t)

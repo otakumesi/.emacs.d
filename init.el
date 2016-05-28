@@ -26,7 +26,6 @@
 (setq ns-use-srgb-colorspace nil)
 
 ;; key-chordの読み込み
-
 (require 'key-chord)
 (key-chord-mode 1)
 
