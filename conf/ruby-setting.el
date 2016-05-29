@@ -18,12 +18,12 @@
 
 (with-eval-after-load 'enh-ruby-mode
   (setq enh-ruby-program "~/.rbenv/shims/ruby")
-  (lambda ()
-    ;; マジックコメントの削除
-    (defun remove-enh-magic-comment ()
-      (remove-hook 'before-save-hook 'enh-ruby-mode-set-encoding t))
-    (add-hook 'enh-ruby-mode-hook 'remove-enh-magic-comment)
-    (setq enh-ruby-use-encoding-map nil))
+
+  ;; マジックコメントの削除
+  (defun remove-enh-magic-comment ()
+    (remove-hook 'before-save-hook 'enh-ruby-mode-set-encoding t))
+  (add-hook 'enh-ruby-mode-hook 'remove-enh-magic-comment)
+  (setq enh-ruby-use-encoding-map nil)
 
   ;; rails
   (require 'helm-rails)
@@ -31,7 +31,6 @@
   ;; Rubyのブロックハイライト
   (require 'ruby-block)
   (add-hook 'enh-ruby-mode-hook 'ruby-block-mode)
-  (add-hook 'enh-ruby-mode-hook 'ruby-toggle-hash-syntax)
 
   ;; ruby-etc
   (require 'ruby-refactor)
@@ -63,8 +62,8 @@
   (flycheck-define-checker ruby-rubocop
     "A Ruby syantax and style checker using the RuboCop tool."
     :command ("rubocop" "--format" "emacs"
-             (config-file "--config" flycheck-rubocoprc)
-             source)
+              (config-file "--config" flycheck-rubocoprc)
+              source)
     :standard-input t
     :error-patterns
     ((warning line-start

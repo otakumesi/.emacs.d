@@ -26,7 +26,6 @@
 (setq ns-use-srgb-colorspace nil)
 
 ;; key-chordの読み込み
-
 (require 'key-chord)
 (key-chord-mode 1)
 
@@ -42,8 +41,8 @@
 (load "evil-setting")
 (load "powerline-setting")
 (load "flycheck-setting")
-(load "company-mode-setting")
 (load "yasnippet-setting")
+(load "company-mode-setting")
 (load "ruby-setting")
 (load "javascript-setting")
 (load "haskell-setting")
@@ -121,6 +120,8 @@
 (require 'server)
 (unless (server-running-p)
   (server-start))
+
+(add-to-list 'company-backends '(company-yasnippet))
 
 (provide 'init)
 ;;; init.el ends here
