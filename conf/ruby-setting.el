@@ -12,7 +12,6 @@
 (autoload 'enh-ruby-mode "enh-ruby-mode"
   "Major mode for ruby files" t)
 
-
 (with-eval-after-load 'ruby-mode
   (setq ruby-program "~/.rbenv/shims/ruby")
   (custom-set-variables '(ruby-insert-encoding-magic-comment nil)))
@@ -45,13 +44,14 @@
 
   ;; inf-ruby
   (require 'inf-ruby)
+  (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
   (inf-ruby)
 
   ;; Robeの起動
   (require 'robe)
   (robe-start)
 
-  (add-to-list 'company-backends '(company-robe company-inf-ruby company-yasnippet))
+  (add-to-list 'company-backends '(company-robe company-inf-ruby company-yasnippet company-files))
 
   ;; rbenv
   (require 'rbenv)
