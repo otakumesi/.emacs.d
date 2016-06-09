@@ -12,6 +12,7 @@
 (autoload 'enh-ruby-mode "enh-ruby-mode"
   "Major mode for ruby files" t)
 
+
 (with-eval-after-load 'ruby-mode
   (setq ruby-program "~/.rbenv/shims/ruby")
   (custom-set-variables '(ruby-insert-encoding-magic-comment nil)))
@@ -42,12 +43,15 @@
   (require 'ruby-electric)
   (eval-after-load 'ruby-electric-mode '(ruby-electric-mode t))
 
+  ;; inf-ruby
+  (require 'inf-ruby)
+  (inf-ruby)
+
   ;; Robeの起動
   (require 'robe)
-  (add-hook 'enh-ruby-mode-hook 'robe-mode)
-  (with-eval-after-load 'robe-mode
-    (robe-mode)
-    (push 'company-robe company-backends))
+  (robe-start)
+
+  (add-to-list 'company-backends '(company-robe company-inf-ruby company-yasnippet))
 
   ;; rbenv
   (require 'rbenv)
