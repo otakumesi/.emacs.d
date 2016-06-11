@@ -2,15 +2,19 @@
 ;;; Commentary:
 
 ;;; Code:
+
+;; (autoload 'enh-ruby-mode "enh-ruby-mode"
+;;   "Major mode for ruby files" t)
+
 ;; enh-ruby-modeでRubyモードを導入する
+(require 'enh-ruby-mode)
+(setq enh-ruby-program "~/.rbenv/shims/ruby")
+
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile$" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
-
-(autoload 'enh-ruby-mode "enh-ruby-mode"
-  "Major mode for ruby files" t)
 
 ;; rbenv
 (require 'rbenv)
@@ -20,12 +24,21 @@
     (setq rbenv-installation-dir "/usr/local/var/rbenv")
     (setq rbenv-modeline-function 'rbenv--modeline-plain))
 
-(with-eval-after-load 'ruby-mode
-  (setq ruby-program "~/.rbenv/shims/ruby")
-  (custom-set-variables '(ruby-insert-encoding-magic-comment nil)))
+;; inf-ruby
+(require 'inf-ruby)
+(add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
+(setq inf-ruby-default-implementation "pry")
+(setq inf-ruby-eval-binding "Pry.toplevel_binding")
+
+;; Robeの起動
+(require 'robe)
+
+;; (with-eval-after-load 'ruby-mode
+;;   (setq ruby-program "~/.rbenv/shims/ruby")
+;;   (custom-set-variables '(ruby-insert-encoding-magic-comment nil)))
 
 (with-eval-after-load 'enh-ruby-mode
-  (setq enh-ruby-program "~/.rbenv/shims/ruby")
+  (add-to-list 'company-backends '(company-robe company-inf-ruby company-yasnippet company-files))
 
   ;; マジックコメントの削除
   (defun remove-enh-magic-comment ()
@@ -49,19 +62,6 @@
   ;; 括弧のシンタックスハイライト
   (require 'ruby-electric)
   (eval-after-load 'ruby-electric-mode '(ruby-electric-mode t))
-
-  ;; inf-ruby
-  (require 'inf-ruby)
-  (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
-  (setq inf-ruby-default-implementation "pry")
-  (setq inf-ruby-eval-binding "Pry.toplevel_binding")
-  (inf-ruby)
-
-  ;; Robeの起動
-  (require 'robe)
-  (robe-start)
-
-  (add-to-list 'company-backends '(company-robe company-inf-ruby company-yasnippet company-files))
 
   ;; rubocop
   (require 'rubocop)
@@ -91,7 +91,7 @@
      (error line-start
             (file-name) ":" line ":" column ":" (or "C" "W") ":" (message)
             line-end))
-    :modes (enh-ruby-mode ruby-mode)))
+  :modes (enh-ruby-mode ruby-mode)))
 
 ;; projectile-rails
 (add-hook 'enh-ruby-mode-hook 'projectile-rails-on)
