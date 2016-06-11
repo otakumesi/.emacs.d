@@ -27,7 +27,7 @@
    (tern-mode t)
    (with-eval-after-load 'tern
      (require 'company-tern)
-     (add-to-list 'company-backends '(company-tern)))))
+     (add-to-list 'company-backends '(company-tern ac-js2-company company-jquery)))))
 
 (add-hook 'js2-mode-hook 'switch-tern)
 (add-hook 'js2-jsx-mode-hook 'switch-tern)

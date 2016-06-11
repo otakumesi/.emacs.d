@@ -27,18 +27,22 @@
 ;; inf-ruby
 (require 'inf-ruby)
 (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
-(setq inf-ruby-default-implementation "pry")
-(setq inf-ruby-eval-binding "Pry.toplevel_binding")
+;; (setq inf-ruby-default-implementation "pry")
+;; (setq inf-ruby-eval-binding "Pry.toplevel_binding")
 
 ;; Robeの起動
 (require 'robe)
+(add-hook 'enh-ruby-mode-hook 'robe-mode)
 
-;; (with-eval-after-load 'ruby-mode
-;;   (setq ruby-program "~/.rbenv/shims/ruby")
-;;   (custom-set-variables '(ruby-insert-encoding-magic-comment nil)))
+(add-hook 'enh-ruby-mode-hook (lambda ()
+                                     (robe-rails-refresh)
+                                     (add-to-list 'company-backends '(company-robe company-files company-yasnippet))))
+
+(with-eval-after-load 'ruby-mode
+  (setq ruby-program "~/.rbenv/shims/ruby")
+  (custom-set-variables '(ruby-insert-encoding-magic-comment nil)))
 
 (with-eval-after-load 'enh-ruby-mode
-  (add-to-list 'company-backends '(company-robe company-inf-ruby company-yasnippet company-files))
 
   ;; マジックコメントの削除
   (defun remove-enh-magic-comment ()

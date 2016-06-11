@@ -1,7 +1,7 @@
 ;;; package --- Summary
 ;;; Commentary:
 
-;;; Code:
+;; Code:
 (require 'auto-complete)
 (require 'auto-complete-config)
 (auto-complete-mode t)
