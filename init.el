@@ -55,7 +55,7 @@
 ;; fullscreen
 (global-set-key (kbd "C-;") 'fullscreen-mode-fullscreen-toggle)
 
-;; windmove
+;; windmov
 (require 'windmove)
 (global-set-key (kbd "S-<up>") 'windmove-up)
 (global-set-key (kbd "S-<down>") 'windmove-down)
