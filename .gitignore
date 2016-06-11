@@ -16,6 +16,7 @@
 \#*\#
 /.emacs.desktop
 /.emacs.desktop.lock
+/.emacs-buffers
 *.elc
 auto-save-list
 tramp
