@@ -41,7 +41,7 @@
 
     ;;;; ruby
     enh-ruby-mode ruby-electric ruby-block slim-mode robe rubocop inf-ruby ruby-tools
-    ruby-refactor ruby-hash-syntax ruby-additional
+    ruby-refactor ruby-hash-syntax ruby-additional company-inf-ruby
 
     ;;; rails
     evil-rails helm-rails projectile-rails rbenv rspec-mode bundler

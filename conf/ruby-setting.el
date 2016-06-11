@@ -12,6 +12,14 @@
 (autoload 'enh-ruby-mode "enh-ruby-mode"
   "Major mode for ruby files" t)
 
+;; rbenv
+(require 'rbenv)
+(add-hook 'enh-ruby-mode-hook 'global-rbenv-mode)
+(with-eval-after-load 'global-rbenv-mode
+    (rbenv-use-global)
+    (setq rbenv-installation-dir "/usr/local/var/rbenv")
+    (setq rbenv-modeline-function 'rbenv--modeline-plain))
+
 (with-eval-after-load 'ruby-mode
   (setq ruby-program "~/.rbenv/shims/ruby")
   (custom-set-variables '(ruby-insert-encoding-magic-comment nil)))
@@ -42,19 +50,18 @@
   (require 'ruby-electric)
   (eval-after-load 'ruby-electric-mode '(ruby-electric-mode t))
 
+  ;; inf-ruby
+  (require 'inf-ruby)
+  (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
+  (setq inf-ruby-default-implementation "pry")
+  (setq inf-ruby-eval-binding "Pry.toplevel_binding")
+  (inf-ruby)
+
   ;; Robeの起動
   (require 'robe)
-  (add-hook 'enh-ruby-mode-hook 'robe-mode)
-  (with-eval-after-load 'robe-mode
-    (robe-mode)
-    (push 'company-robe company-backends))
+  (robe-start)
 
-  ;; rbenv
-  (require 'rbenv)
-  (add-hook 'enh-ruby-mode-hook 'global-rbenv-mode)
-  (with-eval-after-load 'global-rbenv-mode
-    (rbenv-use-global)
-    (setq rbenv-modeline-function 'rbenv--modeline-plain))
+  (add-to-list 'company-backends '(company-robe company-inf-ruby company-yasnippet company-files))
 
   ;; rubocop
   (require 'rubocop)
