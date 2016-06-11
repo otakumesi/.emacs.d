@@ -16,6 +16,7 @@
 \#*\#
 /.emacs.desktop
 /.emacs.desktop.lock
+/.emacs-buffers
 *.elc
 auto-save-list
 tramp
@@ -44,7 +45,7 @@ tramp
 
 # elscreen
 elscreen
-/elisp-object/
+/elisp-objects/
 /desktops/
 
 # AutoComplete
