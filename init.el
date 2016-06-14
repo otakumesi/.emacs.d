@@ -114,6 +114,7 @@
 ;(global-set-key (kbd "A-p") (lambda () (popwin:keymap)))
 
 (require 'org)
+(load "org-setting")
 
 (require 'quickrun)
 
@@ -121,7 +122,8 @@
 (unless (server-running-p)
   (server-start))
 
-(add-to-list 'company-backends '(company-yasnippet))
+(add-to-list 'company-backends '(company-readline company-yasnippet))
+(add-to-list 'company-backends '(company-edbi))
 
 (provide 'init)
 ;;; init.el ends here

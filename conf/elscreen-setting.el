@@ -35,6 +35,7 @@
 (global-set-key (kbd "C-<down>") 'elscreen-kill)
 
 (require 'desktop+)
+;;(add-to-list 'desktop+-globals-to-save 'file-name-histroy)
 (desktop+-create-auto)
 (desktop+-load-auto)
 

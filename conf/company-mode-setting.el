@@ -15,7 +15,6 @@
 
   ;; company-statistics
   (add-hook 'after-init-hook 'company-statistics-mode)
-  (add-to-list 'company-backends '(company-elisp company-yasnippet))
   (company-quickhelp-mode +1)
   (define-key company-mode-map [?\C-:] 'helm-company)
   (define-key company-active-map [?\C-:] 'helm-company)

@@ -36,7 +36,7 @@
 
 (add-hook 'enh-ruby-mode-hook (lambda ()
                                      (robe-rails-refresh)
-                                     (add-to-list 'company-backends '(company-robe company-files company-yasnippet))))
+                                     (add-to-list 'company-backends '(company-robe company-files company-yasnippet company-restclient))))
 
 (with-eval-after-load 'ruby-mode
   (setq ruby-program "~/.rbenv/shims/ruby")
