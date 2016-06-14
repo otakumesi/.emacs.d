@@ -68,3 +68,8 @@ projectile-bookmarks.eld
 
 # ruby
 rake.cache
+
+# Gtags
+GPATH
+GRTAGS
+GTAGS
