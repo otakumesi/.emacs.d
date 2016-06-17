@@ -10,99 +10,169 @@
 ;; インストールするパッケージ
 (defvar my-packages
   '(
-    ;;;; auto-complete
-    ;auto-complete fuzzy
-    readline-complete ac-js2 ac-html-csswatcher ac-html-bootstrap
+    ;; auto-complete
+    ;;auto-complete
+    fuzzy
+    readline-complete
+    ac-js2
+    ac-html-csswatcher
+    ac-html-bootstrap
 
-    ;;;; company-mode
-    company jquery-doc company-web company-edbi company-restclient helm-company company-quickhelp
-    company-web company-statistics slime-company
+    ;; company-mode
+    company
+    jquery-doc
+    company-web
+    company-edbi
+    company-restclient
+    helm-company
+    company-quickhelp
+    company-web
+    company-statistics
+    ;; slime-company
 
     ;;;; tree
-    neotree undo-tree
-
-    ;;;; smartparens
-    smartparens evil-smartparens
-
-    ;;;; magit/git
-    magit gitignore-mode
-
-    ;;;; keychord
-    key-chord
-
-    ;;;; anzu
-    anzu
-
-    ;;;; undo-tree
+    neotree
     undo-tree
 
-    ;;; common lisp
-    slime flylisp
+    ;; smartparens
+    smartparens
+    evil-smartparens
+
+    ;; magit/git
+    magit
+    gitignore-mode
+
+    ;; keychord
+    key-chord
+
+    ;; anzu
+    anzu
+
+    ;; plant-uml
+    puml-mode
+
+    ;; undo-tree
+    undo-tree
+
+    ;; common lisp
+    ;; slime
+    ;; flylisp
 
     ;;;; ruby
-    enh-ruby-mode ruby-electric ruby-block slim-mode robe rubocop inf-ruby ruby-tools
-    ruby-refactor ruby-hash-syntax ruby-additional company-inf-ruby
+    enh-ruby-mode
+    ruby-electric
+    ruby-block
+    slim-mode
+    robe
+    rubocop
+    inf-ruby
+    ruby-tools
+    ruby-refactor
+    ruby-hash-syntax
+    ruby-additional
+    company-inf-ruby
+    rbenv
 
     ;;; rails
-    evil-rails helm-rails projectile-rails rbenv rspec-mode bundler
+    evil-rails
+    helm-rails
+    projectile-rails
+    rspec-mode
+    bundler
 
     ;;; haskell
-    haskell-mode ghc hindent company-ghc shm
+    ;; haskell-mode ghc hindent company-ghc shm
 
     ;;;; javascript
-    js2-mode coffee-mode jquery-doc js2-refactor coffee-mode stylus-mode jade-mode jsfmt
-    tern company-tern react-snippets
+    js2-mode
+    coffee-mode
+    jquery-doc
+    js2-refactor
+    ;; coffee-mode
+    stylus-mode
+    jade-mode
+    jsfmt
+    tern
+    company-tern
+    react-snippets
 
     ;;; json
-    json-mode json-reformat
+    json-mode
+    json-reformat
 
     ;;;; gtags
-    gtags helm-gtags
+    gtags
+    helm-gtags
 
     ;;;; flycheck
-    flycheck helm-flycheck flycheck-color-mode-line flycheck-package flycheck-pos-tip flycheck-haskell
+    flycheck
+    helm-flycheck
+    flycheck-color-mode-line
+    flycheck-package
+    flycheck-pos-tip
+    ;; flycheck-haskell
 
     ;;;; helm
-    helm helm-core helm-projectile helm-css-scss helm-rubygems-org
+    helm
+    helm-core
+    helm-projectile
+    helm-css-scss
+    helm-rubygems-org
 
     ;;;; projectile
     projectile
 
     ;;;; evil
-    evil evil-magit powerline-evil evil-org evil-leader
-
-    ;;;; color-theme
-    ; color-theme color-theme-solarized
+    evil
+    evil-magit
+    powerline-evil
+    evil-org
+    evil-leader
 
     ;;;; solarized
     solarized-theme
 
     ;;;; powerline/theme/UI
-    powerline abyss-theme popup
+    powerline
+    abyss-theme
+    popup
 
     ;;;; elisp-library
-    dash epl seq
+    dash
+    epl
+    seq
 
     ;;;; async
     async
 
     ;;;; goto-change
-    goto-chg goto-last-change
+    goto-chg
+    goto-last-change
 
     ;;; packages
-    pkg-info auto-async-byte-compile
+    pkg-info
+    auto-async-byte-compile
 
     ;;;; yasnippet
-    yasnippet helm-c-yasnippet common-lisp-snippets react-snippets
+    yasnippet
+    helm-c-yasnippet
+    ;; common-lisp-snippets
+    react-snippets
 
     ;;;; twitter
-    twittering-mode
+    ;; twittering-mode
 
     ;;; web-mode
-    web-mode scss-mode yaml-mode
+    web-mode
+    scss-mode
+    yaml-mode
 
     ;;; etc-mode
-    gitignore-mode markdown-mode restclient motion-mode emmet-mode
+    gitignore-mode
+    markdown-mode
+    restclient
+    motion-mode
+    emmet-mode
 
     ;;; shell
     exec-path-from-shell
@@ -111,15 +181,28 @@
     org
 
     ;;; japanese
-    ddskk migemo
+    ddskk
+    migemo
 
     ;;; window, screen
-    popwin popup elscreen buffer-move fullscreen-mode desktop+
-
+    popwin
+    popup
+    elscreen
+    buffer-move
+    fullscreen-mode
+    desktop+
 
     ;;;; etc
-    with-editor know-your-http-well restart-emacs hlinum elisp-slime-nav
-    font-lock+ rainbow-delimiters volatile-highlights goto-chg w3 quickrun
+    with-editor
+    know-your-http-well
+    restart-emacs
+    hlinum
+    elisp-slime-nav
+    font-lock+
+    rainbow-delimiters
+    volatile-highlights
+    w3
+    quickrun
     esup
     ))
 

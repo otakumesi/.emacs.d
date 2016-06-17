@@ -37,7 +37,6 @@
 (helm-projectile-on)
 
 (load "helm-setting")
-(load "elscreen-setting")
 (load "evil-setting")
 (load "powerline-setting")
 (load "flycheck-setting")
@@ -45,12 +44,13 @@
 (load "company-mode-setting")
 (load "ruby-setting")
 (load "javascript-setting")
-(load "haskell-setting")
+;; (load "haskell-setting")
 (load "elisp-setting")
 (load "c-setting")
 (load "web-mode-setting")
 (load "markdown-setting")
 (global-anzu-mode +1)
+(load "elscreen-setting")
 
 ;; fullscreen
 (global-set-key (kbd "C-;") 'fullscreen-mode-fullscreen-toggle)
@@ -115,6 +115,9 @@
 
 (require 'org)
 (load "org-setting")
+
+(autoload 'puml-mode "puml-mode" "" t)
+(add-to-list 'auto-mode-alist '("\\.puml$" . puml-mode))
 
 (require 'quickrun)
 
