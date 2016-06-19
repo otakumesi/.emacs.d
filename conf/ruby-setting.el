@@ -54,8 +54,8 @@
   (require 'helm-rails)
 
   ;; Rubyのブロックハイライト
-  (require 'ruby-block)
-  (add-hook 'enh-ruby-mode-hook 'ruby-block-mode)
+  ;; (require 'ruby-block)
+  ;; (add-hook 'enh-ruby-mode-hook 'ruby-block-mode)
 
   ;; ruby-etc
   (require 'ruby-refactor)

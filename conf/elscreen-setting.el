@@ -34,10 +34,10 @@
 (global-set-key (kbd "C-<up>") 'elscreen-clone)
 (global-set-key (kbd "C-<down>") 'elscreen-kill)
 
-(require 'desktop+)
+;; (require 'desktop+)
 ;;(add-to-list 'desktop+-globals-to-save 'file-name-histroy)
-(desktop+-create-auto)
-(desktop+-load-auto)
+;; (desktop+-create-auto)
+;; (desktop+-load-auto)
 
 (provide 'elscreen-setting)
 ;;; elscreen-setting.el ends here
