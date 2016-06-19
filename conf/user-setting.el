@@ -65,5 +65,11 @@
     (run-with-idle-timer 0.03 t 'global-hl-line-timer-function))
 ;; (cancel-timer global-hl-line-timer)
 
+;; (require 'smartparens-config)
+;; (smartparens-global-mode t)
+;; (add-hook 'after-init-hook 'smartparens-mode)
+;; (sp-pair "#{" "}")
+;; (sp-pair "{" "}")
+
 (provide 'user-setting)
 ;;; user-setting.el ends here

@@ -12,7 +12,9 @@
 
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.watchr$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("Guardfile$" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
 
@@ -27,8 +29,8 @@
 ;; inf-ruby
 (require 'inf-ruby)
 (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
-;; (setq inf-ruby-default-implementation "pry")
-;; (setq inf-ruby-eval-binding "Pry.toplevel_binding")
+(setq inf-ruby-default-implementation "pry")
+(setq inf-ruby-eval-binding "Pry.toplevel_binding")
 
 ;; Robeの起動
 (require 'robe)
