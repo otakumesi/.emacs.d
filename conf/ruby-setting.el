@@ -17,6 +17,7 @@
 (add-to-list 'auto-mode-alist '("Guardfile$" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
+(remove-hook 'enh-ruby-mode-hook 'erm-define-faces)
 
 ;; rbenv
 (require 'rbenv)
@@ -29,6 +30,7 @@
 ;; inf-ruby
 (require 'inf-ruby)
 (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
+(add-to-list 'inf-ruby-implementations '("pry" . "pry"))
 (setq inf-ruby-default-implementation "pry")
 (setq inf-ruby-eval-binding "Pry.toplevel_binding")
 

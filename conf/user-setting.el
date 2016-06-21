@@ -71,5 +71,8 @@
 ;; (sp-pair "#{" "}")
 ;; (sp-pair "{" "}")
 
+(require 'font-lock)
+(global-font-lock-mode t)
+
 (provide 'user-setting)
 ;;; user-setting.el ends here
