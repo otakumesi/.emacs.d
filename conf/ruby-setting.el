@@ -17,7 +17,6 @@
 (add-to-list 'auto-mode-alist '("Guardfile$" . enh-ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
-(remove-hook 'enh-ruby-mode-hook 'erm-define-faces)
 
 ;; rbenv
 (require 'rbenv)
@@ -46,7 +45,39 @@
   (setq ruby-program "~/.rbenv/shims/ruby")
   (custom-set-variables '(ruby-insert-encoding-magic-comment nil)))
 
+(defun erm-define-faces ()
+  (defface enh-ruby-string-delimiter-face
+    `((t :foreground ,(erm-darken-color font-lock-string-face)))
+    "Face used to highlight string delimiters like \" and %Q."
+    :group 'enh-ruby)
+
+  (defface enh-ruby-heredoc-delimiter-face
+    `((t :foreground ,(erm-darken-color font-lock-string-face)))
+    "Face used to highlight string heredoc anchor strings like <<END and END"
+    :group 'enh-ruby)
+
+  (defface enh-ruby-regexp-delimiter-face
+    `((t :foreground ,(erm-darken-color font-lock-string-face)))
+    "Face used to highlight regexp delimiters like / and %r."
+    :group 'enh-ruby)
+
+  (defface enh-ruby-op-face
+    `((t :foreground ,(erm-darken-color font-lock-keyword-face)))
+    "Face used to highlight operators like + and ||"
+    :group 'enh-ruby)
+
+  (defface erm-syn-errline
+    '((t (:box (:line-width 1 :color "red"))))
+    "Face used for marking error lines."
+    :group 'enh-ruby)
+
+  (defface erm-syn-warnline
+    '((t (:box (:line-width 1 :color "orange"))))
+    "Face used for marking warning lines."
+    :group 'enh-ruby))
+
 (with-eval-after-load 'enh-ruby-mode
+  (add-hook 'enh-ruby-mode-hook 'erm-define-faces)
 
   ;; マジックコメントの削除
   (defun remove-enh-magic-comment ()

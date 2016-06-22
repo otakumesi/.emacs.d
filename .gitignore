@@ -22,6 +22,7 @@ auto-save-list
 tramp
 .\#*
 /elpa/
+recentf
 
 # Org-mode
 .org-id-locations
