@@ -26,6 +26,7 @@
 ;; (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
 ;;   (add-hook hook 'turn-on-elisp-slime-nav-mode))
 
+(add-hook 'emacs-list-mode-hook 'eldoc-mode)
 ;;; rainbow-delimiterm
 (require 'rainbow-delimiters)
 (add-hook 'after-init-hook 'rainbow-delimiters-mode)

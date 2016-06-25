@@ -36,6 +36,11 @@
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 
+(require 'eldoc)
+(require 'eldoc-extension)
+(setq eldoc-idle-delay 0)
+(setq eldoc-echo-area-use-multiline-p t)
+
 (load "helm-setting")
 (load "evil-setting")
 (load "powerline-setting")
@@ -44,6 +49,7 @@
 (load "company-mode-setting")
 (load "ruby-setting")
 (load "javascript-setting")
+(load "golang-setting")
 ;; (load "haskell-setting")
 (load "elisp-setting")
 (load "c-setting")

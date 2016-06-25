@@ -29,6 +29,7 @@
     company-web
     company-statistics
     ;; slime-company
+    company-go
 
     ;;;; tree
     neotree
@@ -79,6 +80,14 @@
     projectile-rails
     rspec-mode
     bundler
+
+    ;; go
+    go-mode
+    go-projectile
+    go-snippets
+    golint
+    helm-go-package
+    go-eldoc
 
     ;;; haskell
     ;; haskell-mode ghc hindent company-ghc shm
@@ -204,6 +213,8 @@
     w3
     quickrun
     esup
+    eldoc-eval
+    eldoc-extension
     ))
 
 (dolist (package my-packages)
