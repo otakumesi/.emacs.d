@@ -20,30 +20,36 @@
 
 ;; rbenv
 (require 'rbenv)
-(add-hook 'enh-ruby-mode-hook 'global-rbenv-mode)
-(with-eval-after-load 'global-rbenv-mode
-    (rbenv-use-global)
-    (setq rbenv-installation-dir "/usr/local/var/rbenv")
-    (setq rbenv-modeline-function 'rbenv--modeline-plain))
+
+;; bundler
+(require 'bundler)
 
 ;; inf-ruby
 (require 'inf-ruby)
 (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
-(add-to-list 'inf-ruby-implementations '("pry" . "pry"))
+;; (add-to-list inf-ruby-implementations ("pry" . "pry"))
 (setq inf-ruby-default-implementation "pry")
+; (inf-ruby-console-gem (directory-file-name "/Users/niitsumatakurou/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0"))
 (setq inf-ruby-eval-binding "Pry.toplevel_binding")
 
 ;; Robeの起動
 (require 'robe)
 (add-hook 'enh-ruby-mode-hook 'robe-mode)
 
-(add-hook 'enh-ruby-mode-hook (lambda ()
-                                     (robe-rails-refresh)
-                                     (add-to-list 'company-backends '(company-robe company-files company-yasnippet company-restclient))))
-
 (with-eval-after-load 'ruby-mode
   (setq ruby-program "~/.rbenv/shims/ruby")
   (custom-set-variables '(ruby-insert-encoding-magic-comment nil)))
+
+(add-hook 'enh-ruby-mode-hook '(lambda ()
+                                 (global-rbenv-mode)
+                                 (rbenv-use-global)
+                                 (setq rbenv-installation-dir "/usr/local/var/rbenv")
+                                 (setq rbenv-modeline-function 'rbenv--modeline-plain)
+                                 ;;(robe-rails-refresh)
+                                 (add-to-list 'company-backends '(company-robe company-files company-yasnippet company-restclient))))
+
+(define-key global-map (kbd "C-x C-q") 'inf-ruby-console-rails)
+(add-hook 'inf-ruby-console-rails (lambda () (robe-start)))
 
 (defun erm-define-faces ()
   (defface enh-ruby-string-delimiter-face
@@ -130,7 +136,7 @@
      (error line-start
             (file-name) ":" line ":" column ":" (or "C" "W") ":" (message)
             line-end))
-  :modes (enh-ruby-mode ruby-mode)))
+    :modes (enh-ruby-mode ruby-mode)))
 
 ;; projectile-rails
 (add-hook 'enh-ruby-mode-hook 'projectile-rails-on)
