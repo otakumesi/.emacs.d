@@ -18,6 +18,11 @@
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
 
+;; yard-mode
+(require 'yard-mode)
+(add-hook 'enh-ruby-mode-hook 'yard-mode)
+(add-hook 'enh-ruby-mode-hook 'eldoc-mode)
+
 ;; rbenv
 (require 'rbenv)
 

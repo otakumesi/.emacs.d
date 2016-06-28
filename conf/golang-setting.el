@@ -11,6 +11,8 @@
 (require 'go-eldoc)
 (add-hook 'go-mode-hook 'go-eldoc-setup)
 
+(require 'go-dlv)
+
 (require 'company-go)
 ;;(add-to-list 'company-backends '(company-go company-file company-yasnippet))
 (add-hook 'go-mode-hook (lambda ()

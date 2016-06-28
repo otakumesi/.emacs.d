@@ -88,6 +88,7 @@
     golint
     helm-go-package
     go-eldoc
+    go-dlv
 
     ;;; haskell
     ;; haskell-mode ghc hindent company-ghc shm
