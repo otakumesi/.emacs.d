@@ -50,8 +50,7 @@
                                  (rbenv-use-global)
                                  (setq rbenv-installation-dir "/usr/local/var/rbenv")
                                  (setq rbenv-modeline-function 'rbenv--modeline-plain)
-                                 ;;(robe-rails-refresh)
-                                 (add-to-list 'company-backends '(company-robe company-files company-yasnippet company-restclient))))
+                                 (add-to-list 'company-backends '(company-robe company-files company-restclient))))
 
 (define-key global-map (kbd "C-x C-q") 'inf-ruby-console-rails)
 (add-hook 'inf-ruby-console-rails (lambda () (robe-start)))
@@ -112,6 +111,7 @@
   ;; 括弧のシンタックスハイライト
   (require 'ruby-electric)
   (eval-after-load 'ruby-electric-mode '(ruby-electric-mode t))
+  (remove-hook 'enh-ruby-mode-hook 'ruby-end-mode)
 
   ;; rubocop
   (require 'rubocop)

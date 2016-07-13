@@ -17,6 +17,8 @@
 ;; shell
 ;(load-file "~/.emacs.d/shellenv.el")
 (when (memq window-system '(mac ns))
+  (let ((envs '("PATH" "GOPATH")))
+    (exec-path-from-shell-copy-envs envs))
   (exec-path-from-shell-initialize))
 
 ;; カラーテーマ
@@ -45,8 +47,8 @@
 (load "evil-setting")
 (load "powerline-setting")
 (load "flycheck-setting")
-(load "yasnippet-setting")
 (load "company-mode-setting")
+(load "yasnippet-setting")
 (load "ruby-setting")
 (load "javascript-setting")
 (load "golang-setting")
