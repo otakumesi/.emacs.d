@@ -7,6 +7,10 @@
 (add-hook 'js-mode-hook 'js2-minor-mode)
 (autoload 'typescript-mode "typescript-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+
+(autoload  'web-mode "web-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
+
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
 (add-hook 'js2-mode-hook 'js2-refactor-mode)
 (add-hook 'js2-mode-hook 'ac-js2-mode)
@@ -35,11 +39,16 @@
 (add-hook 'js2-mode-hook 'switch-tern)
 (add-hook 'js2-jsx-mode-hook 'switch-tern)
 
-(defun switch-tide ()
-  (require 'tide)
+(autoload 'tide "tide")
+(defun setup-tide-mode ()
   (tide-setup))
 
-(add-hook 'typescript-mode-hook 'switch-tide)
+(defun switch-tide ()
+  (when (string-equal "tsx" (file-name-extension buffer-file-name))
+   (setup-time-mode)))
+
+(add-hook 'typescript-mode-hook 'setup-tide-mode)
+(add-hook 'web-mode-hook 'switch-tide)
 
 (with-eval-after-load 'js2-mode
   (setq js2-strict-trailing-comma-warning nil)
