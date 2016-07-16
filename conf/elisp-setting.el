@@ -1,6 +1,6 @@
 ;; emacs-lisp-modeの設定
 ;;(add-to-list 'auto-mode-alist '("\\.el$" . emacs-lisp-mode))
-;;(add-hook 'emacs-list-mode-hook 'eldoc-mode)
+(add-hook 'emacs-lisp-mode-hook 'eldoc-mode)
 
 ;; slime
 ;; (with-eval-after-load 'lisp-mode
