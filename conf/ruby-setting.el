@@ -96,7 +96,7 @@
   (setq enh-ruby-use-encoding-map nil)
 
   ;; rails
-  (require 'helm-rails)
+  ;; (require 'helm-rails)
 
   ;; Rubyのブロックハイライト
   ;; (require 'ruby-block)
