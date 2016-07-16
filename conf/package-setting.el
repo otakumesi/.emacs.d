@@ -106,6 +106,10 @@
     company-tern
     react-snippets
 
+    ;; typescript
+    typescript-mode
+    tide
+
     ;;; json
     json-mode
     json-reformat

@@ -1,5 +1,6 @@
 ;; emacs-lisp-modeの設定
-(add-to-list 'auto-mode-alist '("\\.el$" . emacs-lisp-mode))
+;;(add-to-list 'auto-mode-alist '("\\.el$" . emacs-lisp-mode))
+;;(add-hook 'emacs-list-mode-hook 'eldoc-mode)
 
 ;; slime
 ;; (with-eval-after-load 'lisp-mode
@@ -26,15 +27,14 @@
 ;; (dolist (hook '(emacs-lisp-mode-hook ielm-mode-hook))
 ;;   (add-hook hook 'turn-on-elisp-slime-nav-mode))
 
-(add-hook 'emacs-list-mode-hook 'eldoc-mode)
 ;;; rainbow-delimiterm
-(require 'rainbow-delimiters)
-(add-hook 'after-init-hook 'rainbow-delimiters-mode)
-(require 'cl-lib)
-(require 'color)
-(cl-loop
- for index from 1 to rainbow-delimiters-max-face-count
- do
- (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
-                             (cl-callf color-saturate-name (face-foreground face) 30)))
+;;(require 'rainbow-delimiters)
+;;(add-hook 'after-init-hook 'rainbow-delimiters-mode)
+;;(require 'cl-lib)
+;;(require 'color)
+;;(cl-loop
+;; for index from 1 to rainbow-delimiters-max-face-count
+;; do
+;; (let ((face (intern (format "rainbow-delimiters-depth-%d-face" index))))
+;;                             (cl-callf color-saturate-name (face-foreground face) 30)))
 

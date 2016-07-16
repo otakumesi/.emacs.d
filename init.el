@@ -129,12 +129,9 @@
 
 (require 'quickrun)
 
-(require 'server)
-(unless (server-running-p)
-  (server-start))
-
-(add-to-list 'company-backends '(company-readline company-yasnippet))
-(add-to-list 'company-backends '(company-edbi))
+;; (require 'server)
+;; (unless (server-running-p)
+;;   (server-start))
 
 (provide 'init)
 ;;; init.el ends here
