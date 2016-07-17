@@ -12,6 +12,7 @@
   (setq company-begin-commands '(self-insert-command))
   (setq company-minimum-prefix-length 2)
   (setq company-selection-wrap-around t)
+  (setq company-dabbrev-downcase nil)
 
   ;; company-statistics
   (add-hook 'after-init-hook 'company-statistics-mode)
@@ -20,7 +21,6 @@
   (define-key company-active-map [?\C-:] 'helm-company)
   (define-key company-mode-map [?\C-:] 'helm-company)
   (define-key company-active-map [?\C-:] 'helm-company))
-
 
 (provide 'company-mode-setting)
 ;;; company-mode-setting ends here

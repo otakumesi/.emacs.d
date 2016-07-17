@@ -30,6 +30,7 @@
 
 (defun switch-tern ()
  (when (locate-library "tern")
+   (setq default-tab-width 2)
    (setq tern-command '("tern" "--no-port-file"))
    (tern-mode t)
    (with-eval-after-load 'tern
@@ -41,14 +42,17 @@
 
 (autoload 'tide "tide")
 (defun setup-tide-mode ()
+  (setq default-tab-width 2)
   (tide-setup))
 
 (defun switch-tide ()
   (when (string-equal "tsx" (file-name-extension buffer-file-name))
-   (setup-time-mode)))
+    (add-to-list 'company-backends '(company-web-html company-css company-web-fa+))
+   (setup-tide-mode)))
 
-(add-hook 'typescript-mode-hook 'setup-tide-mode)
-(add-hook 'web-mode-hook 'switch-tide)
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+
+(add-hook 'web-mode-hook #'switch-tide)
 
 (with-eval-after-load 'js2-mode
   (setq js2-strict-trailing-comma-warning nil)

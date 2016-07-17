@@ -17,12 +17,15 @@
     ;; company-web
     (require 'company-web)
     (require 'company-web-html)
-    (add-to-list 'company-backends '(company-web-html company-css company-web-bootstrap+ company-web-fa+))
-    (add-to-list 'company-backends '(comapny-web-slim company-css company-web-bootstrap+ company-web-fa+))))
+    (require 'company-web-slim)
+    (add-to-list 'company-backends '(company-web-html company-css company-web-bootstrap+ company-web-fa+))))
 
 (eval-company-after-load 'web-mode)
 (eval-company-after-load 'scss-mode)
 (eval-company-after-load 'slim-mode)
+
+(add-hook 'slim-mode-hook (lambda ()
+                            (add-to-list 'company-backends '(comapny-web-slim company-css company-robe company-web-bootstrap+ company-web-fa+))))
 
 ;; skewer
 (add-hook 'web-mode-hook 'skewer-html-mode)

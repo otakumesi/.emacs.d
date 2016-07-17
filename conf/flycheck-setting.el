@@ -11,6 +11,7 @@
   (require 'flycheck-color-mode-line)
   (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
   (setq-default flycheck-disable-checkers '(javascript-jshint))
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
   (flycheck-package-setup)
   (flycheck-pos-tip-mode))
 
