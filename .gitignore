@@ -5,6 +5,7 @@
 
 # Packaging
 .cask
+/el-get/*
 
 # chache
 /url/

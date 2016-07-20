@@ -12,6 +12,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.jbuilder$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.watchr$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Gemfile$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("Guardfile$" . enh-ruby-mode))

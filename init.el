@@ -13,6 +13,7 @@
               default-frame-alist))
 
 (load "package-setting")
+;;(load "el-get-setting")
 
 ;; shell
 ;(load-file "~/.emacs.d/shellenv.el")
@@ -49,13 +50,13 @@
 (load "flycheck-setting")
 (load "company-mode-setting")
 (load "yasnippet-setting")
+(load "web-mode-setting")
 (load "ruby-setting")
 (load "javascript-setting")
 (load "golang-setting")
 ;; (load "haskell-setting")
 (load "elisp-setting")
 (load "c-setting")
-(load "web-mode-setting")
 (load "markdown-setting")
 (global-anzu-mode +1)
 (load "elscreen-setting")
