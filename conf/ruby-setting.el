@@ -56,6 +56,17 @@
                                  (setq rbenv-modeline-function 'rbenv--modeline-plain)
                                  (add-to-list 'company-backends '(company-robe company-files company-restclient))))
 
+(add-hook 'slim-mode-hook '(lambda ()
+                                 (global-rbenv-mode)
+                                 (rbenv-use-global)
+                                 (company-quickhelp-mode nil)
+                                 (eldoc-mode)
+                                 (robe-eldoc)
+                                 (projectile-rails-on)
+                                 (setq rbenv-installation-dir "/usr/local/var/rbenv")
+                                 (setq rbenv-modeline-function 'rbenv--modeline-plain)
+                                 (add-to-list 'company-backends '(company-robe company-files company-restclient))))
+
 (define-key global-map (kbd "C-x C-q") 'inf-ruby-console-rails)
 (add-hook 'inf-ruby-console-rails (lambda () (robe-start)))
 
