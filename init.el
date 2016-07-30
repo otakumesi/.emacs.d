@@ -7,6 +7,9 @@
 (setq gc-cons-threshold (* 128 1024 1024))
 (load "user-setting")
 
+(let ((gls "/usr/local/bin/gls"))
+  (if (file-exists-p gls) (setq insert-directory-program gls)))
+
 (setq default-frame-alist
       (append (list '(width . 182)
                     '(height . 48))

@@ -45,6 +45,8 @@
   (setq default-tab-width 2)
   (tide-setup))
 
+(add-hook 'tide-mode-hook (lambda () (tide-restart-server)))
+
 (defun switch-tide ()
   (when (string-equal "tsx" (file-name-extension buffer-file-name))
     (add-to-list 'company-backends '(company-web-html company-css company-web-fa+))
