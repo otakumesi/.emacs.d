@@ -6,6 +6,7 @@
 (add-to-list 'load-path "~/.emacs.d/conf")
 (setq gc-cons-threshold (* 128 1024 1024))
 (load "user-setting")
+(tool-bar-mode -1)
 
 (let ((gls "/usr/local/bin/gls"))
   (if (file-exists-p gls) (setq insert-directory-program gls)))
