@@ -51,7 +51,6 @@
                                  (company-quickhelp-mode nil)
                                  (eldoc-mode)
                                  (robe-eldoc)
-                                 (projectile-rails-mode)
                                  (setq rbenv-installation-dir "/usr/local/var/rbenv")
                                  (setq rbenv-modeline-function 'rbenv--modeline-plain)
                                  (add-to-list 'company-backends '(company-robe company-files company-restclient))))
@@ -62,7 +61,6 @@
                                  (company-quickhelp-mode nil)
                                  (eldoc-mode)
                                  (robe-eldoc)
-                                 (projectile-rails-mode)
                                  (setq rbenv-installation-dir "/usr/local/var/rbenv")
                                  (setq rbenv-modeline-function 'rbenv--modeline-plain)
                                  (add-to-list 'company-backends '(company-robe company-files company-restclient))))
@@ -160,6 +158,7 @@
 
 ;; projectile-rails
 (add-hook 'enh-ruby-mode-hook 'projectile-rails-on)
+(add-hook 'slim-mode-hook 'projectile-rails-on)
 
 (autoload 'rspec-mode "rspec-mode" "" t)
 (eval-after-load 'rspec-mode
