@@ -66,7 +66,14 @@
                                  (add-to-list 'company-backends '(company-robe company-files company-restclient))))
 
 (define-key global-map (kbd "C-x C-q") 'inf-ruby-console-rails)
-(add-hook 'inf-ruby-console-rails (lambda () (robe-start)))
+
+;; projectile-rails
+(add-hook 'enh-ruby-mode-hook 'projectile-rails-on)
+(add-hook 'slim-mode-hook 'projectile-rails-on)
+(add-hook 'scss-mode-hook 'projectile-rails-on)
+(add-hook 'coffee-mode-hook 'projectile-rails-on)
+
+(remove-hook 'enh-ruby-mode-hook 'ruby-end-mode)
 
 (defun erm-define-faces ()
   (defface enh-ruby-string-delimiter-face
@@ -123,8 +130,8 @@
   (eval-after-load 'ruby-tools-mode 'ruby-tools-mode)
   ;; 括弧のシンタックスハイライト
   (require 'ruby-electric)
-  (eval-after-load 'ruby-electric-mode '(ruby-electric-mode t))
-  (remove-hook 'enh-ruby-mode-hook 'ruby-end-mode)
+  (ruby-electric-mode t)
+  (setq ruby-electric-expand-delimiters-list nil)
 
   ;; rubocop
   (require 'rubocop)
@@ -155,10 +162,6 @@
             (file-name) ":" line ":" column ":" (or "C" "W") ":" (message)
             line-end))
     :modes (enh-ruby-mode ruby-mode)))
-
-;; projectile-rails
-(add-hook 'enh-ruby-mode-hook 'projectile-rails-on)
-(add-hook 'slim-mode-hook 'projectile-rails-on)
 
 (autoload 'rspec-mode "rspec-mode" "" t)
 (eval-after-load 'rspec-mode

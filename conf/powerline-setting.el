@@ -51,6 +51,5 @@
                     :background "#859900"
                     :inherit 'mode-line)
 
-
 (provide 'powerline-setting)
 ;;; powerline-setting.el ends here

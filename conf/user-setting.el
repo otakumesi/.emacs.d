@@ -35,7 +35,7 @@
 (setq read-file-name-completion-ignore-case t)
 
 ;; C-jで補完
-(global-set-key "\C-j" 'dabbrev-expand)
+;; (global-set-key "\C-j" 'dabbrev-expand)
 
 ;; インデントをタブからスペースに変更
 (setq-default indent-tabs-mode nil)
