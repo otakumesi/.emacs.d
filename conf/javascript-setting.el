@@ -17,7 +17,9 @@
 
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 (flycheck-add-mode 'javascript-eslint 'js2-jsx-mode)
-(add-hook 'js2-jsx-mode-hook 'ac-js2-mode)
+;;(add-hook 'js2-jsx-mode-hook 'ac-js2-mode)
+(eval-after-load 'flycheck
+  '(custom-set-variables '(flycheck-disable-checker '(javascript-jshint javascript-jscs))))
 
 (add-to-list 'auto-mode-alist '("\\.jade$" . js2-mode))
 (autoload 'jade-mode "jade-mode")
