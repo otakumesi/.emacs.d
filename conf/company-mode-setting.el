@@ -16,7 +16,8 @@
 
   ;; company-statistics
   (add-hook 'after-init-hook 'company-statistics-mode)
-  (company-quickhelp-mode +1)
+  (company-quickhelp-mode 1)
+  (custom-set-variables '(company-quickhelp-delay nil))
   (define-key company-mode-map [?\C-:] 'helm-company)
   (define-key company-active-map [?\C-:] 'helm-company)
   (define-key company-mode-map [?\C-:] 'helm-company)
