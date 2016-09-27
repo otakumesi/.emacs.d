@@ -40,40 +40,38 @@
 ;; Robeの起動
 (require 'robe)
 (add-hook 'enh-ruby-mode-hook 'robe-mode)
+(add-hook 'slim-mode-hook 'robe-mode)
 
 (with-eval-after-load 'ruby-mode
-  (setq ruby-program "~/.rbenv/shims/ruby")
+  (custom-set-variables '(ruby-program "~/.rbenv/shims/ruby"))
   (custom-set-variables '(ruby-insert-encoding-magic-comment nil)))
 
-(add-hook 'enh-ruby-mode-hook '(lambda ()
-                                 (global-rbenv-mode)
-                                 (rbenv-use-global)
-                                 (company-quickhelp-mode nil)
-                                 (eldoc-mode)
-                                 (robe-eldoc)
-                                 (setq rbenv-installation-dir "/usr/local/var/rbenv")
-                                 (setq rbenv-modeline-function 'rbenv--modeline-plain)
-                                 (add-to-list 'company-backends '(company-robe company-files company-restclient))))
+(defun common-ruby-settings ()
+  "Provide common ruby settings"
+  (progn
+    (global-rbenv-mode)
+    (rbenv-use-global)
+    (robe-start)
+    (robe-eldoc)
+    (setq rbenv-installation-dir "/usr/local/var/rbenv")
+    (setq rbenv-modeline-function 'rbenv--modeline-plain)
+    (add-to-list 'company-backends '(company-robe company-files company-restclient))))
 
-(add-hook 'slim-mode-hook '(lambda ()
-                                 (global-rbenv-mode)
-                                 (rbenv-use-global)
-                                 (company-quickhelp-mode nil)
-                                 (eldoc-mode)
-                                 (robe-eldoc)
-                                 (setq rbenv-installation-dir "/usr/local/var/rbenv")
-                                 (setq rbenv-modeline-function 'rbenv--modeline-plain)
-                                 (add-to-list 'company-backends '(company-robe company-files company-restclient))))
-
-(define-key global-map (kbd "C-x C-q") 'inf-ruby-console-rails)
+(add-hook 'enh-ruby-mode-hook 'common-ruby-settings)
+(add-hook 'slim-mode-hook 'common-ruby-settings)
 
 ;; projectile-rails
 (add-hook 'enh-ruby-mode-hook 'projectile-rails-on)
 (add-hook 'slim-mode-hook 'projectile-rails-on)
 (add-hook 'scss-mode-hook 'projectile-rails-on)
 (add-hook 'coffee-mode-hook 'projectile-rails-on)
+(add-hook 'web-mode-hook 'projectile-rails-on)
 
 (remove-hook 'enh-ruby-mode-hook 'ruby-end-mode)
+
+(define-key robe-mode-map (kbd "C-c r d") 'robe-jump)
+(define-key robe-mode-map (kbd "C-c r w") 'robe-ask)
+(define-key robe-mode-map (kbd "C-c r q") 'robe-doc)
 
 (defun erm-define-faces ()
   (defface enh-ruby-string-delimiter-face

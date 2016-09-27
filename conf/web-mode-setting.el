@@ -12,17 +12,23 @@
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
 
+(require 'company-web)
+(require 'company-web-html)
+(require 'company-web-slim)
+
 (defun eval-company-after-load (mode-symbol)
   (with-eval-after-load mode-symbol
     ;; company-web
-    (require 'company-web)
-    (require 'company-web-html)
-    (require 'company-web-slim)
     (add-to-list 'company-backends '(company-web-html company-css company-web-bootstrap+ company-web-fa+))))
 
-(eval-company-after-load 'web-mode)
-(eval-company-after-load 'scss-mode)
-(eval-company-after-load 'slim-mode)
+(with-eval-after-load 'company-web
+  '(add-to-list 'company-backends '(company-css company-web-fa+ company-web-bootstrap+)))
+
+(with-eval-after-load 'company-web-html
+  '(add-to-list 'company-backends '(company-web-html)))
+
+(with-eval-after-load 'company-web-slim
+  '(add-to-list 'company-backends '(company-web-slim)))
 
 (add-hook 'slim-mode-hook (lambda ()
                             (add-to-list 'company-backends '(comapny-web-slim company-css company-robe company-web-bootstrap+ company-web-fa+))))

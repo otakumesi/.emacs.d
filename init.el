@@ -44,6 +44,7 @@
 (helm-projectile-on)
 
 (require 'eldoc)
+(eldoc-mode)
 (require 'eldoc-extension)
 (setq eldoc-idle-delay 0)
 (setq eldoc-echo-area-use-multiline-p t)
