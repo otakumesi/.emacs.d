@@ -122,14 +122,14 @@
 
   ;; ruby-etc
   (require 'ruby-refactor)
-  (eval-after-load 'ruby-refactor (ruby-refactor-mode-launch))
+  (eval-after-load "ruby-refactor" (ruby-refactor-mode-launch))
   (require 'ruby-tools)
   (add-hook 'enh-ruby-mode-hook 'ruby-tools-mode)
-  (eval-after-load 'ruby-tools-mode 'ruby-tools-mode)
+  (eval-after-load "ruby-tools-mode" (ruby-tools-mode t))
   ;; 括弧のシンタックスハイライト
   (require 'ruby-electric)
   (ruby-electric-mode t)
-  (setq ruby-electric-expand-delimiters-list nil)
+  (custom-set-variables '(ruby-electric-expand-delimiters-list nil))
 
   ;; rubocop
   (require 'rubocop)
