@@ -21,9 +21,11 @@
 (setq helm-gtags-auto-update t)
 (add-hook 'helm-gtags-mode-hook
           (lambda ()
-             (local-set-key (kbd "M-t") 'helm-gtags-tag)
-             (local-set-key (kbd "M-s") 'helm-gtags-find-rtag)
-             (local-set-key (kbd "M-p") 'helm-gtags-select)))
+             (local-set-key (kbd "C-c g t") 'helm-gtags-find-tag)
+             (local-set-key (kbd "C-c g r") 'helm-gtags-find-rtag)
+             (local-set-key (kbd "C-c g s") 'helm-gtags-select)
+             (local-set-key (kbd "C-c g p") 'helm-gtags-pop-stack)
+             (local-set-key (kbd "C-c g c") 'helm-gtags-clear-stack)))
 
 (provide 'helm-setting)
 ;;; helm-setting.el ends here
