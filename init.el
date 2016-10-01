@@ -20,7 +20,7 @@
 ;;(load "el-get-setting")
 
 ;; shell
-;(load-file "~/.emacs.d/shellenv.el")
+(load-file "~/.emacs.d/shellenv.el")
 (when (memq window-system '(mac ns))
   (let ((envs '("PATH" "GOPATH")))
     (exec-path-from-shell-copy-envs envs))
@@ -134,6 +134,11 @@
 (add-to-list 'auto-mode-alist '("\\.puml$" . puml-mode))
 
 (require 'quickrun)
+
+;;; open memo
+(global-set-key (kbd "C-c m") (lambda () (interactive)
+                              (switch-to-buffer (find-file-noselect "~/memo/memo.org"))))
+
 
 ;; (require 'server)
 ;; (unless (server-running-p)
