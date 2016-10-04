@@ -20,11 +20,11 @@
 ;;(load "el-get-setting")
 
 ;; shell
-(load-file "~/.emacs.d/shellenv.el")
 (when (memq window-system '(mac ns))
   (let ((envs '("PATH" "GOPATH")))
     (exec-path-from-shell-copy-envs envs))
   (exec-path-from-shell-initialize))
+(load-file "~/.emacs.d/shellenv.el")
 
 ;; カラーテーマ
 (require 'solarized)
@@ -136,7 +136,7 @@
 (require 'quickrun)
 
 ;;; open memo
-(global-set-key (kbd "C-c m") (lambda () (interactive)
+(global-set-key (kbd "C-c C-m") (lambda () (interactive)
                               (switch-to-buffer (find-file-noselect "~/memo/memo.org"))))
 
 

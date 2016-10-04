@@ -53,7 +53,7 @@
     (rbenv-use-global)
     (robe-start)
     (robe-eldoc)
-    (setq rbenv-installation-dir "/usr/local/var/rbenv")
+    (setq rbenv-installation-dir "/usr/local/var/homebrew/linked/rbenv")
     (setq rbenv-modeline-function 'rbenv--modeline-plain)
     (add-to-list 'company-backends '(company-robe company-files company-restclient))))
 
