@@ -69,6 +69,8 @@
 
 (remove-hook 'enh-ruby-mode-hook 'ruby-end-mode)
 
+(setq enh-ruby-deep-indent-paren nil)
+
 (define-key robe-mode-map (kbd "C-c r d") 'robe-jump)
 (define-key robe-mode-map (kbd "C-c r w") 'robe-ask)
 (define-key robe-mode-map (kbd "C-c r q") 'robe-doc)
