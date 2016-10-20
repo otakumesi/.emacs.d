@@ -33,6 +33,10 @@
 (global-set-key (kbd "C-<left>") 'elscreen-previous)
 (global-set-key (kbd "C-<up>") 'elscreen-clone)
 (global-set-key (kbd "C-<down>") 'elscreen-kill)
+(define-key evil-normal-state-map (kbd "g t") 'elscreen-next)
+(define-key evil-insert-state-map (kbd "C-g t") 'elscreen-next)
+(define-key evil-normal-state-map (kbd "gT") 'elscreen-previous)
+(define-key evil-insert-state-map (kbd "C-g T") 'elscreen-previous)
 
 ;; (require 'desktop+)
 ;; (add-to-list 'desktop+-globals-to-save 'file-name-histroy)
