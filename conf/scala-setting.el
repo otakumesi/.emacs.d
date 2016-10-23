@@ -1,5 +1,8 @@
+(el-get-bundle sbt-mode)
+(el-get-bundle ensime/emacs-sbt-mode)
 (el-get-bundle ensime/emacs-scala-mode)
 (use-package scala-mode)
+(use-package sbt-mode)
 
 (el-get-bundle ensime/ensime-emacs)
 (use-package ensime

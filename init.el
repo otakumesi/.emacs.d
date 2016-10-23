@@ -72,7 +72,7 @@
 (load "ruby-setting")
 (load "javascript-setting")
 (load "golang-setting")
-(load "scala-setting")
+;; (load "scala-setting")
 ;; (load "haskell-setting")
 (load "elisp-setting")
 (load "c-setting")
