@@ -10,7 +10,7 @@
 (with-eval-after-load 'company
   (setq company-idle-delay 0)
   (setq company-begin-commands '(self-insert-command))
-  (setq company-minimum-prefix-length 2)
+  (setq company-minimum-prefix-length 3)
   (setq company-selection-wrap-around t)
   (setq company-dabbrev-downcase nil)
 

@@ -55,7 +55,7 @@
     (robe-eldoc)
     (setq rbenv-installation-dir "/usr/local/var/homebrew/linked/rbenv")
     (setq rbenv-modeline-function 'rbenv--modeline-plain)
-    (add-to-list 'company-backends '(company-robe company-files company-restclient))))
+    (add-to-list 'company-backends '(company-robe))));; company-files company-restclient))))
 
 (add-hook 'enh-ruby-mode-hook 'common-ruby-settings)
 (add-hook 'slim-mode-hook 'common-ruby-settings)
