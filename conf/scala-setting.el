@@ -1,24 +1,21 @@
-(el-get-bundle sbt-mode)
 (el-get-bundle ensime/emacs-sbt-mode)
 (el-get-bundle ensime/emacs-scala-mode)
-(use-package scala-mode)
-(use-package sbt-mode)
+(require 'scala-mode)
+(require 'sbt-mode)
 
-(el-get-bundle ensime/ensime-emacs)
-(use-package ensime
-  :ensure t)
+(el-get-bundle ensime)
+(require 'ensime)
 
-(add-to-list 'exec-path "use/local/bin")
-
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
+(add-hook 'scala-mode-hook 'ensime)
 
 (defun scala/enable-eldoc ()
   "Show error message at point by Eldoc."
   (setq-local eldoc-documentation-function
-              (lambda ()
+              #'(lambda ()
                   (when (ensime-connected-p)
                     (let ((err (ensime-print-errors-at-point)))
-                      (and err (not (string= err "")) err)))))
+                      (or (and err (not (string= err "")) err)
+                          (ensime-print-type-at-point))))))
   (eldoc-mode +1))
 
-(add-hook 'ensime-mode-hook 'scala/enable-eldoc)
+(add-hook 'ensime-mode-hook #'scala/enable-eldoc)

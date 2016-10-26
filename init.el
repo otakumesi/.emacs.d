@@ -14,6 +14,7 @@
     (eval-print-last-sexp)))
 
 (el-get-bundle use-package)
+(el-get-bundle fuzzy)
 
 ;;; ロードパス:
 (add-to-list 'load-path "~/.emacs.d/conf")
@@ -25,7 +26,7 @@
   (if (file-exists-p gls) (setq insert-directory-program gls)))
 
 (setq default-frame-alist
-      (append (list '(width . 182)
+      (append (list '(width . 100)
                     '(height . 48))
               default-frame-alist))
 
@@ -71,7 +72,7 @@
 (load "web-mode-setting")
 (load "ruby-setting")
 (load "javascript-setting")
-(load "golang-setting")
+;; (load "golang-setting")
 (load "scala-setting")
 ;; (load "haskell-setting")
 (load "elisp-setting")

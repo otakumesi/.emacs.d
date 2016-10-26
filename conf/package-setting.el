@@ -49,9 +49,6 @@
     ;; anzu
     anzu
 
-    ;; plant-uml
-    puml-mode
-
     ;; undo-tree
     undo-tree
 
