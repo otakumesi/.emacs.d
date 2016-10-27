@@ -27,5 +27,7 @@
              (local-set-key (kbd "C-c g p") 'helm-gtags-pop-stack)
              (local-set-key (kbd "C-c g c") 'helm-gtags-clear-stack)))
 
+(define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action)
+
 (provide 'helm-setting)
 ;;; helm-setting.el ends here
