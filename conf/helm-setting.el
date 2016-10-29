@@ -2,16 +2,18 @@
 ;;; Commentary:
 
 ;;; Code:
+(el-get-bundle helm)
 (require 'helm)
-(require 'helm-config)
 (helm-mode 1)
 (define-key global-map (kbd "M-x") 'helm-M-x)
 (define-key global-map (kbd "C-x C-f") 'helm-find-files)
 (define-key global-map (kbd "C-x C-r") 'helm-recentf)
 
+(el-get-bundle helm-css-scss)
 (require 'helm-css-scss)
 
 ;; helm-gtagsの設定
+(el-get-bundle helm-gtags)
 (require 'helm-gtags)
 (add-hook 'c-mode-hook 'helm-gtags-mode)
 (add-hook 'enh-ruby-mode-hook 'helm-gtags-mode)

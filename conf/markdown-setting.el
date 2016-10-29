@@ -3,6 +3,8 @@
 
 ;;; Code:
 ;;; markdown
+(el-get-bundle markdown-mode)
+
 (defun eww-open-file-other-window (file)
   (if (one-window-p) (split-window))
     (other-window 1)

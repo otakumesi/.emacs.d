@@ -8,7 +8,7 @@
 
 (add-hook 'scala-mode-hook 'ensime)
 
-(defun scala/enable-eldoc ()
+(defun scala-enable-eldoc ()
   "Show error message at point by Eldoc."
   (setq-local eldoc-documentation-function
               #'(lambda ()
@@ -18,4 +18,4 @@
                           (ensime-print-type-at-point))))))
   (eldoc-mode +1))
 
-(add-hook 'ensime-mode-hook #'scala/enable-eldoc)
+(add-hook 'ensime-mode-hook #'scala-enable-eldoc)

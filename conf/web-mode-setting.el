@@ -2,6 +2,11 @@
 ;;; Commentary:
 
 ;;; Code:
+(el-get-bundle 'web-mode)
+(el-get-bundle 'scss-mode)
+(el-get-bundle 'slim-mode)
+(el-get-bundle 'web-completion-data)
+
 (autoload 'web-mode "web-mode")
 (autoload 'scss-mode "scss-mode")
 (autoload 'slim-mode "slim-mode")
@@ -11,6 +16,8 @@
 (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.scss\\'" . scss-mode))
 (add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+
+(el-get-bundle 'company-web)
 
 (require 'company-web)
 (require 'company-web-html)

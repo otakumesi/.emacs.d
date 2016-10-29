@@ -4,6 +4,13 @@
 ;;; Code:
 
 ;; flycheck
+(el-get-bundle flycheck)
+(el-get-bundle package-lint)
+(el-get-bundle flycheck-package)
+
+(el-get-bundle flycheck-color-mode-line)
+(el-get-bundle flycheck-pos-tip)
+
 (require 'flycheck)
 (add-hook 'after-init-hook 'global-flycheck-mode)
 

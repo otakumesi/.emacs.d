@@ -2,9 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(when load-file-name
-  (setq user-emacs-directory (file-name-directory load-file-name)))
-
 (add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
@@ -13,8 +10,15 @@
     (goto-char (point-max))
     (eval-print-last-sexp)))
 
-(el-get-bundle use-package)
-(el-get-bundle fuzzy)
+;;(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
+;;(el-get 'sync)
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(package-initialize)
+
+(when load-file-name
+  (setq user-emacs-directory (file-name-directory load-file-name)))
 
 ;;; ロードパス:
 (add-to-list 'load-path "~/.emacs.d/conf")
@@ -30,10 +34,12 @@
                     '(height . 48))
               default-frame-alist))
 
-(load "package-setting")
+;;(load "package-setting")
 ;;(load "el-get-setting")
+(el-get-bundle restart-emacs)
 
 ;; shell
+(el-get-bundle exec-path-from-shell)
 (when (memq window-system '(mac ns))
   (let ((envs '("PATH" "GOPATH")))
     (exec-path-from-shell-copy-envs envs))
@@ -41,17 +47,21 @@
 (load-file "~/.emacs.d/shellenv.el")
 
 ;; カラーテーマ
+(el-get-bundle solarized-emacs)
 (require 'solarized)
 (setq solarized-high-contrast-mode-line t)
 (load-theme 'solarized-dark t)
 (setq ns-use-srgb-colorspace nil)
 
 ;; key-chordの読み込み
+(el-get-bundle key-chord)
 (require 'key-chord)
 (key-chord-mode 1)
 
 ;; projectile
+(el-get-bundle 'projectile)
 (require 'projectile)
+(el-get-bundle 'helm-projectile)
 (require 'helm-projectile)
 (projectile-global-mode)
 (setq projectile-completion-system 'helm)
@@ -59,9 +69,11 @@
 
 (require 'eldoc)
 (eldoc-mode)
+(el-get-bundle eldoc-extension)
 (require 'eldoc-extension)
 (setq eldoc-idle-delay 0)
 (setq eldoc-echo-area-use-multiline-p t)
+(el-get-bundle anzu)
 
 (load "helm-setting")
 (load "evil-setting")
@@ -92,6 +104,7 @@
 (global-set-key (kbd "S-<left>") 'windmove-left)
 
 ;; buffer-move
+(el-get-bundle buffer-move)
 (require 'buffer-move)
 (global-set-key (kbd "<C-S-up>") 'buf-move-up)
 (global-set-key (kbd "<C-S-down>") 'buf-move-down)
@@ -99,6 +112,8 @@
 (global-set-key (kbd "<C-S-left>") 'buf-move-left)
 
 ;; Magitの読み込み
+(el-get-bundle magit)
+(el-get-bundle evil-magit)
 (require 'magit)
 (require 'evil-magit)
 (global-set-key (kbd "M-m") prefix-arg)
@@ -124,6 +139,7 @@
     (require 'skk-study)))
 
 ;;; linum
+(el-get-bundle tom-tan/hlinum-mode)
 (require 'hlinum)
 (setq linum-delay t)
 (defadvice linum-schedule (around my-linum-schedule () activate)
@@ -138,22 +154,30 @@
                               (switch-to-buffer (find-file-noselect "~/workspace"))))
 
 ;; popwin
+(el-get-bundle popwin)
 (require 'popwin)
 (popwin-mode 1)
 ;(global-set-key (kbd "A-p") (lambda () (popwin:keymap)))
 
+(el-get-bundle org)
 (require 'org)
 (load "org-setting")
 
+(el-get-bundle org)
 (autoload 'puml-mode "puml-mode" "" t)
 (add-to-list 'auto-mode-alist '("\\.puml$" . puml-mode))
 
+(el-get-bundle quickrun)
 (require 'quickrun)
 
 ;;; open memo
 (global-set-key (kbd "C-c C-m") (lambda () (interactive)
-                              (switch-to-buffer (find-file-noselect "~/memo/memo.org"))))
+                                  (switch-to-buffer (find-file-noselect "~/memo/memo.org"))))
 
+(el-get-bundle dockerfile-mode)
+(require 'dockerfile-mode)
+(el-get-bundle docker-tramp)
+(require 'docker-tramp)
 
 ;; (require 'server)
 ;; (unless (server-running-p)

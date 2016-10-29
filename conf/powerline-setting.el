@@ -3,6 +3,7 @@
 
 ;;; Code:
 ;; powerline.elの読み込み
+(el-get-bundle powerline)
 (require 'powerline)
 (powerline-default-theme)
 

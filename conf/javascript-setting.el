@@ -2,9 +2,11 @@
 ;;; Commentary:
 
 ;;; Code:
+(el-get-bundle js2-mode)
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
 (add-hook 'js-mode-hook 'js2-minor-mode)
+(el-get-bundle typescript-mode)
 (autoload 'typescript-mode "typescript-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 
@@ -23,6 +25,7 @@
 
 (add-to-list 'auto-mode-alist '("\\.jade$" . js2-mode))
 (autoload 'jade-mode "jade-mode")
+(el-get-bundle coffee-mode)
 (autoload 'coffee-mode "coffee-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 
@@ -30,6 +33,7 @@
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 
 
+;;(el-get-bundle tern-mode)
 (defun switch-tern ()
  (when (locate-library "tern")
    (setq default-tab-width 2)
@@ -42,6 +46,7 @@
 (add-hook 'js2-mode-hook 'switch-tern)
 (add-hook 'js2-jsx-mode-hook 'switch-tern)
 
+(el-get-bundle tide)
 (autoload 'tide "tide")
 (defun setup-tide-mode ()
   (setq default-tab-width 2)
@@ -68,7 +73,9 @@
   (setq ac-js2-evaluate-calls t)
   (add-to-list 'company-backends '(ac-js2-company company-jquery)))
 
+(el-get-bundle jquery-doc)
 (autoload 'jquery-doc-setup "jquery-doc")
+(el-get-bundle skewer-mode)
 (autoload 'skewer-mode "skewer-mode")
 
 (provide 'javascript-setting)

@@ -2,11 +2,14 @@
 ;;; Commentary:
 
 ;;; Code:
+(el-get-bundle company-mode)
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
+(el-get-bundle helm-company)
 (autoload 'helm-company "helm-company")
 
+(el-get-bundle company-statistics)
 (with-eval-after-load 'company
   (setq company-idle-delay 0)
   (setq company-begin-commands '(self-insert-command))
@@ -16,8 +19,8 @@
 
   ;; company-statistics
   (add-hook 'after-init-hook 'company-statistics-mode)
-  (company-quickhelp-mode 1)
-  (custom-set-variables '(company-quickhelp-delay nil))
+  ;;(company-quickhelp-mode nil)
+  ;;(custom-set-variables '(company-quickhelp-delay nil))
   (define-key company-mode-map [?\C-:] 'helm-company)
   (define-key company-active-map [?\C-:] 'helm-company)
   (define-key company-mode-map [?\C-:] 'helm-company)

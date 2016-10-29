@@ -3,6 +3,7 @@
 
 ;;; Code:
 ;; tabbar
+(el-get-bundle 'tabbar)
 (require 'tabbar)
 (tabbar-mode 1)
 (tabbar-mwheel-backward -1)

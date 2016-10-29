@@ -3,6 +3,7 @@
 
 ;;; Code:
 ;; elscreenの読み込み
+(el-get-bundle elscreen)
 (autoload 'elscreen-start "elscreen")
 (elscreen-start)
  (with-eval-after-load 'escreen
