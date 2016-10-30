@@ -13,9 +13,13 @@
 ;;(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 ;;(el-get 'sync)
 
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
-(package-initialize)
+(el-get-bundle fuzzy)
+(el-get-bundle dash)
+(el-get-bundle emacs-async)
+
+;;(require 'package)
+;;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+;;(package-initialize)
 
 (when load-file-name
   (setq user-emacs-directory (file-name-directory load-file-name)))
@@ -76,10 +80,12 @@
 (el-get-bundle anzu)
 
 (load "helm-setting")
+(el-get-bundle evil)
 (load "evil-setting")
 (load "powerline-setting")
 (load "flycheck-setting")
 (load "company-mode-setting")
+(el-get-bundle yasnippet)
 (load "yasnippet-setting")
 (load "web-mode-setting")
 (load "ruby-setting")
@@ -112,8 +118,8 @@
 (global-set-key (kbd "<C-S-left>") 'buf-move-left)
 
 ;; Magitの読み込み
-(el-get-bundle magit)
-(el-get-bundle evil-magit)
+(el-get-bundle magit/magit)
+(el-get-bundle justbur/evil-magit)
 (require 'magit)
 (require 'evil-magit)
 (global-set-key (kbd "M-m") prefix-arg)
@@ -185,3 +191,22 @@
 
 (provide 'init)
 ;;; init.el ends here
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(flycheck-disable-checker (quote (javascript-jshint javascript-jscs)))
+ '(package-selected-packages
+   (quote
+    (org robe package-lint magit-popup git-commit evil-smartparens)))
+ '(ruby-electric-expand-delimiters-list nil)
+ '(ruby-insert-encoding-magic-comment nil)
+ '(ruby-program "~/.rbenv/shims/ruby"))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(mode-line ((t (:foreground "#002b36" :background "#268bd2" :box nil))))
+ '(mode-line-inactive ((t (:foreground "#002b36" :background "#268bd2" :box nil)))))

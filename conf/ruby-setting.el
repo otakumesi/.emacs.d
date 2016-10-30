@@ -13,6 +13,16 @@
 (require 'enh-ruby-mode)
 (setq enh-ruby-program "~/.rbenv/shims/ruby")
 
+;; inf-ruby
+(el-get-bundle inf-ruby)
+(require 'inf-ruby)
+;;(autoload inf-ruby-minor-mode "inf-ruby" "Run an iferior Ruby process" t)
+(add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
+(setq inf-ruby-default-implementation "pry")
+;;(add-to-list inf-ruby-implementations ("pry" . "pry"))
+(setq  inf-ruby-console-gem (directory-file-name "/Users/niitsumatakurou/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0"))
+(setq inf-ruby-eval-binding "Pry.toplevel_binding")
+
 (add-to-list 'auto-mode-alist '("\\.rb$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.jbuilder$" . enh-ruby-mode))
@@ -34,15 +44,6 @@
 ;; bundler
 (el-get-bundle bundler)
 (require 'bundler)
-
-;; inf-ruby
-;; (el-get-bundle inf-ruby)
-;; (autoload inf-ruby-minor-mode "inf-ruby" "Run an iferior Ruby process" t)
-;; (add-hook 'enh-ruby-mode-hook 'inf-ruby-minor-mode)
-;; (add-to-list inf-ruby-implementations ("pry" . "pry"))
-;; (setq inf-ruby-default-implementation "pry")
-; (inf-ruby-console-gem (directory-file-name "/Users/niitsumatakurou/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0"))
-;; (setq inf-ruby-eval-binding "Pry.toplevel_binding")
 
 ;; Robeの起動
 (el-get-bundle robe)
