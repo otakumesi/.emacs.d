@@ -45,6 +45,9 @@
 (el-get-bundle bundler)
 (require 'bundler)
 
+;; projectile-rails
+(el-get-bundle projectile-rails)
+
 ;; Robeの起動
 (el-get-bundle robe)
 (require 'robe)

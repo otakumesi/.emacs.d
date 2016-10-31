@@ -16,6 +16,7 @@
 (el-get-bundle fuzzy)
 (el-get-bundle dash)
 (el-get-bundle emacs-async)
+(el-get-bundle fullscreen-mode)
 
 ;;(require 'package)
 ;;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
@@ -199,7 +200,7 @@
  '(flycheck-disable-checker (quote (javascript-jshint javascript-jscs)))
  '(package-selected-packages
    (quote
-    (org robe package-lint magit-popup git-commit evil-smartparens)))
+    (inflections fullscreen-mode org robe package-lint magit-popup git-commit evil-smartparens)))
  '(ruby-electric-expand-delimiters-list nil)
  '(ruby-insert-encoding-magic-comment nil)
  '(ruby-program "~/.rbenv/shims/ruby"))
