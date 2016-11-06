@@ -186,6 +186,18 @@
 (el-get-bundle docker-tramp)
 (require 'docker-tramp)
 
+(el-get-bundle gitignore-mode)
+(require 'gitignore-mode)
+
+;; 日本語入力
+(el-get-bundle mozc)
+(require 'mozc)
+
+(el-get-bundle mozc-popup)
+(require 'mozc-popup)
+
+(setq mozc-cached-header-line-height 'popup)
+
 ;; (require 'server)
 ;; (unless (server-running-p)
 ;;   (server-start))
