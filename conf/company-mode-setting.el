@@ -6,15 +6,13 @@
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 
-(el-get-bundle helm-company)
-(autoload 'helm-company "helm-company")
+;; (el-get-bundle helm-company)
+;; (autoload 'helm-company "helm-company")
 
 (el-get-bundle company-statistics)
 (with-eval-after-load 'company-mode
-  (define-key company-mode-map [?\C-:] 'helm-company)
-  (define-key company-active-map [?\C-:] 'helm-company)
-  (define-key company-mode-map [?\C-:] 'helm-company)
-  (define-key company-active-map [?\C-:] 'helm-company)
+  ;; (define-key company-mode-map [?\C-:] 'helm-company)
+  ;; (define-key company-active-map [?\C-:] 'helm-company)
   (setq company-idle-delay 0)
   ;; (setq company-begin-commands '(self-insert-command))
   (setq company-minimum-prefix-length 3)
