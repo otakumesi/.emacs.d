@@ -10,6 +10,8 @@
 (add-hook 'scala-mode-hook 'ensime)
 (add-hook 'sbt-mode-hook 'ensime)
 
+(setq scala-indent:use-javadoc-style t)
+
 (defun scala-enable-eldoc ()
   "Show error message at point by Eldoc."
   (setq-local eldoc-documentation-function

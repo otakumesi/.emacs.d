@@ -10,21 +10,21 @@
 (autoload 'helm-company "helm-company")
 
 (el-get-bundle company-statistics)
-(with-eval-after-load 'company
+(with-eval-after-load 'company-mode
+  (define-key company-mode-map [?\C-:] 'helm-company)
+  (define-key company-active-map [?\C-:] 'helm-company)
+  (define-key company-mode-map [?\C-:] 'helm-company)
+  (define-key company-active-map [?\C-:] 'helm-company)
   (setq company-idle-delay 0)
-  (setq company-begin-commands '(self-insert-command))
+  ;; (setq company-begin-commands '(self-insert-command))
   (setq company-minimum-prefix-length 3)
   (setq company-selection-wrap-around t)
-  (setq company-dabbrev-downcase nil)
+  (setq company-dabbrev-downcase nil))
 
   ;; company-statistics
   (add-hook 'after-init-hook 'company-statistics-mode)
   ;;(company-quickhelp-mode nil)
   ;;(custom-set-variables '(company-quickhelp-delay nil))
-  (define-key company-mode-map [?\C-:] 'helm-company)
-  (define-key company-active-map [?\C-:] 'helm-company)
-  (define-key company-mode-map [?\C-:] 'helm-company)
-  (define-key company-active-map [?\C-:] 'helm-company))
 
 (provide 'company-mode-setting)
 ;;; company-mode-setting ends here
