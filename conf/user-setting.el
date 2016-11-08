@@ -6,7 +6,7 @@
 (set-face-attribute 'default
                     nil
                     :family "Roboto Mono Light for Powerline"
-                    :height 120)
+                    :height 140)
 
 ;; 対応する括弧を光らせる
 (show-paren-mode 1)

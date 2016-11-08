@@ -1,4 +1,4 @@
-;;; init.el --- initialize file.
+;; init.el --- initialize file.
 ;;; Commentary:
 ;;; Code:
 
