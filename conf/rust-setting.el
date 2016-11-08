@@ -14,6 +14,7 @@
 (el-get-bundle company-racer)
 (require 'company-racer)
 (setq company-racer-executable "/usr/local/bin/racer")
+(add-to-list 'company-backends 'company-racer)
 
 (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
 (setq company-tooltip-align-annotations t)
