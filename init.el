@@ -17,6 +17,7 @@
 (el-get-bundle dash)
 (el-get-bundle emacs-async)
 (el-get-bundle fullscreen-mode)
+(el-get-bundle deferred)
 
 ;;(require 'package)
 ;;(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
@@ -93,6 +94,7 @@
 (load "javascript-setting")
 ;; (load "golang-setting")
 (load "scala-setting")
+(load "rust-setting")
 ;; (load "haskell-setting")
 (load "elisp-setting")
 (load "c-setting")
