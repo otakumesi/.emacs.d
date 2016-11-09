@@ -78,4 +78,6 @@ GTAGS
 
 shellenv.el
 
+/ensime/
+
 yasnippet-snippets
