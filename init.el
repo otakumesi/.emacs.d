@@ -141,11 +141,11 @@
 ;; (require 'restclient)
 
 ;;; skk
-(when (require 'skk nil t)
-  (global-set-key "\C-xj" 'skk-auto-fill-mode)
-  (with-eval-after-load 'skk-auto-fill-mode
-    (setq default-input-method "japanese-skk")
-    (require 'skk-study)))
+;; (when (require 'skk nil t)
+;;   (global-set-key "\C-xj" 'skk-auto-fill-mode)
+;;   (with-eval-after-load 'skk-auto-fill-mode
+;;     (setq default-input-method "japanese-skk")
+;;     (require 'skk-study)))
 
 ;;; linum
 (el-get-bundle tom-tan/hlinum-mode)
@@ -194,18 +194,20 @@
 ;; 日本語入力
 (el-get-bundle mozc)
 (require 'mozc)
+(setq default-input-method "japanese-mozc")
 
 (el-get-bundle mozc-popup)
 (require 'mozc-popup)
 
 (setq mozc-cached-header-line-height 'popup)
 
+(el-get-bundle markdown-mode)
+(require 'markdown-mode)
+
 ;; (require 'server)
 ;; (unless (server-running-p)
 ;;   (server-start))
 
-(provide 'init)
-;;; init.el ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -225,3 +227,6 @@
  ;; If there is more than one, they won't work right.
  '(mode-line ((t (:foreground "#002b36" :background "#268bd2" :box nil))))
  '(mode-line-inactive ((t (:foreground "#002b36" :background "#268bd2" :box nil)))))
+
+(provide 'init)
+;;; init.el ends here

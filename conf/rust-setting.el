@@ -4,7 +4,8 @@
 (el-get-bundle toml-mode)
 (require 'toml-mode)
 
-(el-get-bundle racer-rust/emacs-racer)
+;; githubリポジトリと通信するつもりがうまくできていないらしい
+(el-get-bundle emacs-racer)
 (require 'racer)
 
 (setq racer-rust-src-path "/usr/local/src/rust/src")
@@ -19,15 +20,19 @@
 (define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
 (setq company-tooltip-align-annotations t)
 
-(el-get-bundle cargo)
-(require 'cargo)
-(add-hook 'rust-mode-hook 'cargo-minor-mode)
+;; (el-get-bundle rust-racer)
 
-(el-get-bundle flycheck-rust)
-(require 'flycheck-rust)
+;; (el-get-bundle cargo
+;; : http
+;; :url "https://github.com/kwrooijen/cargo.el.git")
+;; (require 'cargo)
+;; (add-hook 'rust-mode-hook 'cargo-minor-mode)
 
-(add-hook 'rust-mode-hook #'rustfmt-enable-on-save)
-(add-hook 'rust-mode-hook #'flycheck-rust-setup)
+;; (el-get-bundle flycheck-rust)
+;; (require 'flycheck-rust)
 
-(el-get-bundle rustfmt)
-(require 'rustfmt)
+;; (el-get-bundle rustfmt)
+;  (require 'rustfmt)
+
+;; (add-hook 'rust-mode-hook #'rustfmt-enable-on-save)
+;; (add-hook 'rust-mode-hook #'flycheck-rust-setup)

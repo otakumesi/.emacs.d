@@ -185,5 +185,10 @@
 (eval-after-load 'rspec-mode
   '(rspec-install-snippets))
 
+(el-get-bundle myrurema
+  :type http
+  :url "https://gist.githubusercontent.com/raw/2875bd46c958ac4c74b2/2ef30e39b4b950131a03ccb57c4a092815bf0876/myrurema.el")
+(require 'myrurema)
+
 (provide 'ruby-setting)
 ;;; ruby-setting.el ends here
