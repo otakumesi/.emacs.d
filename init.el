@@ -95,7 +95,6 @@
 ;; (load "golang-setting")
 ;; (load "scala-setting")
 (load "elixir-setting")
-(load "rust-setting")
 ;; (load "haskell-setting")
 (load "elisp-setting")
 (load "c-setting")
@@ -228,6 +227,8 @@
  ;; If there is more than one, they won't work right.
  '(mode-line ((t (:foreground "#002b36" :background "#268bd2" :box nil))))
  '(mode-line-inactive ((t (:foreground "#002b36" :background "#268bd2" :box nil)))))
+
+(load "rust-setting")
 
 (provide 'init)
 ;;; init.el ends here
