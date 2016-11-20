@@ -81,6 +81,10 @@
 (setq eldoc-echo-area-use-multiline-p t)
 (el-get-bundle anzu)
 
+(el-get-bundle auto-complete)
+(require 'auto-complete)
+(setq ac-auto-start nil)
+
 (load "helm-setting")
 (el-get-bundle evil)
 (load "evil-setting")
