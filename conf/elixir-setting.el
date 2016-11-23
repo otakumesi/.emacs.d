@@ -19,3 +19,5 @@
 
 (el-get-bundle otakumesi/flycheck-dialyxir)
 (require 'flycheck-dialyxir)
+
+(flycheck-add-next-checker 'elixir 'mix-dialyzer)
