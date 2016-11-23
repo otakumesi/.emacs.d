@@ -16,3 +16,6 @@
 
 (el-get-bundle lbolla/emacs-flycheck-elixir)
 (require 'flycheck-elixir)
+
+(el-get-bundle otakumesi/flycheck-dialyxir)
+(require 'flycheck-dialyxir)
