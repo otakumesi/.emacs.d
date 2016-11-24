@@ -12,12 +12,19 @@
 
 (el-get-bundle ruby-end)
 (require 'ruby-end)
-(add-hook 'alchemist-mode-hook #'ruby-end-mode)
+(add-hook 'elixir-mode-hook #'ruby-end-mode)
 
 (el-get-bundle lbolla/emacs-flycheck-elixir)
 (require 'flycheck-elixir)
 
-(el-get-bundle otakumesi/flycheck-dialyxir)
-(require 'flycheck-dialyxir)
+(el-get-bundle otakumesi/flycheck-elixir-dialyxir)
+(require 'flycheck-elixir-dialyxir)
 
-(flycheck-add-next-checker 'elixir 'mix-dialyzer)
+(el-get-bundle smartparens)
+(el-get-bundle evil-smartparens)
+(require 'smartparens-config)
+(add-hook 'elixir-mode-hook #'smartparens-mode)
+(add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+
+(add-to-list 'flycheck-checkers 'elixir 'elixir-dialyxir)
+
