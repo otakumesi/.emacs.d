@@ -209,29 +209,12 @@
 (el-get-bundle markdown-mode)
 (require 'markdown-mode)
 
-;; (require 'server)
-;; (unless (server-running-p)
-;;   (server-start))
-
+(el-get-bundle google-translate)
+(require 'google-translate)
+(global-set-key (kbd "C-c t") 'google-translate-at-point)
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(flycheck-disable-checker (quote (javascript-jshint javascript-jscs)))
- '(package-selected-packages
-   (quote
-    (inflections fullscreen-mode org robe package-lint magit-popup git-commit evil-smartparens)))
- '(ruby-electric-expand-delimiters-list nil)
- '(ruby-insert-encoding-magic-comment nil)
- '(ruby-program "~/.rbenv/shims/ruby"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(mode-line ((t (:foreground "#002b36" :background "#268bd2" :box nil))))
- '(mode-line-inactive ((t (:foreground "#002b36" :background "#268bd2" :box nil)))))
+ '(google-translate-default-source-language "en")
+ '(google-translate-default-target-language "ja"))
 
 (provide 'init)
 ;;; init.el ends here

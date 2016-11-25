@@ -26,5 +26,7 @@
 (add-hook 'elixir-mode-hook #'smartparens-mode)
 (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
 
+(add-to-list 'auto-mode-alist '("\\.eex$" . web-mode))
+
 (add-to-list 'flycheck-checkers 'elixir 'elixir-dialyxir)
 
