@@ -212,9 +212,11 @@
 (el-get-bundle google-translate)
 (require 'google-translate)
 (global-set-key (kbd "C-c t") 'google-translate-at-point)
-(custom-set-variables
- '(google-translate-default-source-language "en")
- '(google-translate-default-target-language "ja"))
+
+(el-get-bundle hackernews)
+(require 'hackernews)
+
+;; (define-key hackernews-map (kbd "C-c h e") '(lambda () (eww-browse-url (hackernews-comment-url))))
 
 (provide 'init)
 ;;; init.el ends here
