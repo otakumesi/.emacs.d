@@ -23,10 +23,16 @@
 (el-get-bundle otakumesi/flycheck-elixir-dialyxir)
 (require 'flycheck-elixir-dialyxir)
 
-(add-to-list 'flycheck-checkers 'elixir 'elixir-dialyxir)
+(add-to-list 'flycheck-checkers 'elixir-dogma 'elixir-dialyxir)
+(flycheck-add-next-checker 'elixir-dogma 'elixir-dialyxir)
 
 (el-get-bundle smartparens)
 (el-get-bundle evil-smartparens)
 (require 'smartparens-config)
-(add-hook 'elixir-mode-hook 'smartparens-mode)
-(add-hook 'smartparens-enabled-hook 'evil-smartparens-mode)
+(add-hook 'elixir-mode-hook #'smartparens-mode)
+(add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+
+(add-to-list 'auto-mode-alist '("\\.eex$" . web-mode))
+
+(provide 'elixir-setting)
+;;; elixir-setting.el ends here

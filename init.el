@@ -209,10 +209,17 @@
 (el-get-bundle markdown-mode)
 (require 'markdown-mode)
 
-;; (require 'server)
-;; (unless (server-running-p)
-;;   (server-start))
+(el-get-bundle google-translate)
+(require 'google-translate)
+(global-set-key (kbd "C-c t") 'google-translate-at-point)
 
+(el-get-bundle hackernews)
+(require 'hackernews)
+
+;; (define-key hackernews-map (kbd "C-c h e") '(lambda () (eww-browse-url (hackernews-comment-url))))
+
+(provide 'init)
+;;; init.el ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -221,7 +228,7 @@
  '(flycheck-disable-checker (quote (javascript-jshint javascript-jscs)))
  '(package-selected-packages
    (quote
-    (inflections fullscreen-mode org robe package-lint magit-popup git-commit evil-smartparens)))
+    (hackernews rustfmt robe package-lint org mozc-popup inflections gitignore-mode fullscreen-mode f evil-smartparens elixir-mode company-racer)))
  '(ruby-electric-expand-delimiters-list nil)
  '(ruby-insert-encoding-magic-comment nil)
  '(ruby-program "~/.rbenv/shims/ruby"))
@@ -232,6 +239,3 @@
  ;; If there is more than one, they won't work right.
  '(mode-line ((t (:foreground "#002b36" :background "#268bd2" :box nil))))
  '(mode-line-inactive ((t (:foreground "#002b36" :background "#268bd2" :box nil)))))
-
-(provide 'init)
-;;; init.el ends here
