@@ -217,7 +217,6 @@
 (require 'hackernews)
 
 ;; (define-key hackernews-map (kbd "C-c h e") '(lambda () (eww-browse-url (hackernews-comment-url))))
-
 (provide 'init)
 ;;; init.el ends here
 (custom-set-variables
