@@ -216,6 +216,20 @@
 (el-get-bundle hackernews)
 (require 'hackernews)
 
+(add-to-list 'load-path "~/.emacs.d/elisp")
+(load "pm-strategy")
+
+(el-get-bundle migemo)
+(require 'migemo)
+(setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
+(setq migemo-command "cmigemo")
+(setq migemo-options '("-q" "--emacs"))
+(setq migemo-user-dictionary nil)
+(setq migemo-coding-system 'utf-8)
+(setq migemo-regex-dictionary nil)
+(load-library "migemo")
+(migemo-init)
+
 ;; (define-key hackernews-map (kbd "C-c h e") '(lambda () (eww-browse-url (hackernews-comment-url))))
 (provide 'init)
 ;;; init.el ends here

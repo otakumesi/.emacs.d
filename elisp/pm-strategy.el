@@ -1,8 +1,13 @@
 (defclass pm-strategy ()
-  ((name nil)))
+  ;; This classs is package manger strategy interface.
+  ((name :initarg :name
+         :initform nil
+         :type symbol)))
 
-(defmethod init-package ()
-  (warn "This class is interface. Please, Use the strategy inherited this class." ()))
+(cl-defgeneric init-package ((pm-strategy)))
+
+(cl-defmethod init-package ((pm pm-strategy))
+  (warn "The pm-strategy is interface.  Please, Use the strategy inherited this class.  "))
 
 (defclass pm-package-strategy (pm-strategy)
   ((name 'package)))
@@ -10,10 +15,10 @@
 (defclass pm-el-get-strategy (pm-strategy)
   ((name 'el-get)))
 
-(defmethod init-package ((pm pm-package-strategy))
+(cl-defmethod init-package ((pm pm-package-strategy))
   (package-initialize))
 
-(defmethod init-package ((pm pm-el-get-strategy))
+(cl-defmethod init-package ((pm pm-el-get-strategy))
   (unless (require 'el-get nil 'noerror)
     (with-current-buffer
         (url-retrieve-synchronously
@@ -21,5 +26,6 @@
       (goto-char (point-max))
       (eval-print-last-sexp))))
 
-(setf *pm (make-instance 'pm-strategy))
+(defvar *pm)
+(setf *pm (make-instance 'pm-el-get-strategy :name 'el-get))
 (init-package *pm)
