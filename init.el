@@ -212,7 +212,19 @@
 (el-get-bundle hackernews)
 (require 'hackernews)
 
-;; (define-key hackernews-map (kbd "C-c h e") '(lambda () (eww-browse-url (hackernews-comment-url))))
+(add-to-list 'load-path "~/.emacs.d/elisp")
+(load "pm-strategy")
+
+(el-get-bundle migemo)
+(require 'migemo)
+(setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
+(setq migemo-command "cmigemo")
+(setq migemo-options '("-q" "--emacs"))
+(setq migemo-user-dictionary nil)
+(setq migemo-coding-system 'utf-8)
+(setq migemo-regex-dictionary nil)
+(load-library "migemo")
+(migemo-init)
 
 (defclass lang-mode
   (mode nil)
@@ -234,6 +246,7 @@
   (add-hook 'elixir-mode-hook #'smartparens-mode) ;; 親クラスのmodeを取得する
   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
 
+;; (define-key hackernews-map (kbd "C-c h e") '(lambda () (eww-browse-url (hackernews-comment-url))))
 (provide 'init)
 ;;; init.el ends here
 (custom-set-variables
