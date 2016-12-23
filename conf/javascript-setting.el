@@ -2,6 +2,7 @@
 ;;; Commentary:
 
 ;;; Code:
+(el-get-bundle ac-js2)
 (el-get-bundle js2-mode)
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js2-mode))
@@ -31,7 +32,6 @@
 
 (autoload 'json-mode "json-mode")
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
-
 
 ;;(el-get-bundle tern-mode)
 (defun switch-tern ()

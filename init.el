@@ -2,6 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+;; (package-initialize)
+
 (add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
@@ -102,6 +109,28 @@
 (load "markdown-setting")
 (global-anzu-mode +1)
 (load "elscreen-setting")
+
+;;smartparens
+(el-get-bundle smartparens)
+(el-get-bundle evil-smartparens)
+(require 'smartparens-config)
+
+;; (cl-dolist (hook (list
+;;                   'emacs-lisp-mode-hook
+;;                   'c-mode-hook
+;;                   'elixir-mode-hook
+;;                   'javascript-mode-hook
+;;                   'js2-mode-hook
+;;                   'js2-jsx-mode-hook
+;;                   'typescript-mode-hook
+;;                   'web-mode-hook
+;;                   'coffee-mode-hook
+;;                   'go-mode-hook
+;;                   'haskell-mode-hook
+;;                   'scala-mode-hook))
+;;   (add-hook hook #'smartparens-mode))
+;; (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
+
 
 ;; fullscreen
 (global-set-key (kbd "C-;") 'fullscreen-mode-fullscreen-toggle)
@@ -225,26 +254,6 @@
 (setq migemo-regex-dictionary nil)
 (load-library "migemo")
 (migemo-init)
-
-(defclass lang-mode
-  (mode nil)
-  (parens-set (make-paresn-set mode parens-list))
-  (auto-mode nil)
-  (flycheck nil))
-
-(defclass parens-set
-  (parenses '()))
-
-(defmethod invoke-parens-sets ((parens-set parens-set))
-  (setq parenses (slot-value parens-set 'parenses))
-  (map parenses #'invoke-parens-set))
-
-(defmethod invoke-parens-set ((parens-set parens-set))
-  (el-get-bundle smartparens) ;; このbundleの抽象化も必要 caskとpackageに対応？ interfaceを作ってみる
-  (el-get-bundle evil-smartparens)
-  (require 'smartparens-config)
-  (add-hook 'elixir-mode-hook #'smartparens-mode) ;; 親クラスのmodeを取得する
-  (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode))
 
 ;; (define-key hackernews-map (kbd "C-c h e") '(lambda () (eww-browse-url (hackernews-comment-url))))
 (provide 'init)
