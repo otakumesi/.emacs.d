@@ -1,4 +1,4 @@
-; init.el --- initialize file.
+;;; init.el --- initialize file.
 ;;; Commentary:
 ;;; Code:
 
@@ -55,6 +55,8 @@
   (exec-path-from-shell-initialize))
 (load-file "~/.emacs.d/shellenv.el")
 
+(load "elscreen-setting")
+
 ;; カラーテーマ
 (el-get-bundle solarized-emacs)
 (require 'solarized)
@@ -89,8 +91,8 @@
 (setq ac-auto-start nil)
 
 (load "helm-setting")
-(el-get-bundle evil)
-(load "evil-setting")
+;; (el-get-bundle evil)
+;; (load "evil-setting")
 (load "powerline-setting")
 (load "flycheck-setting")
 (load "company-mode-setting")
@@ -103,34 +105,32 @@
 ;; (load "scala-setting")
 (load "elixir-setting")
 (load "rust-setting")
-;; (load "haskell-setting")
+(load "haskell-setting")
 (load "elisp-setting")
 (load "c-setting")
 (load "markdown-setting")
 (global-anzu-mode +1)
-(load "elscreen-setting")
 
 ;;smartparens
 (el-get-bundle smartparens)
-(el-get-bundle evil-smartparens)
+;; (el-get-bundle evil-smartparens)
 (require 'smartparens-config)
 
-;; (cl-dolist (hook (list
-;;                   'emacs-lisp-mode-hook
-;;                   'c-mode-hook
-;;                   'elixir-mode-hook
-;;                   'javascript-mode-hook
-;;                   'js2-mode-hook
-;;                   'js2-jsx-mode-hook
-;;                   'typescript-mode-hook
-;;                   'web-mode-hook
-;;                   'coffee-mode-hook
-;;                   'go-mode-hook
-;;                   'haskell-mode-hook
-;;                   'scala-mode-hook))
-;;   (add-hook hook #'smartparens-mode))
+(cl-dolist (hook (list
+                  'emacs-lisp-mode-hook
+                  'c-mode-hook
+                  'elixir-mode-hook
+                  'javascript-mode-hook
+                  'js2-mode-hook
+                  'js2-jsx-mode-hook
+                  'typescript-mode-hook
+                  'web-mode-hook
+                  'coffee-mode-hook
+                  'go-mode-hook
+                  'haskell-mode-hook
+                  'scala-mode-hook))
+  (add-hook hook #'smartparens-mode))
 ;; (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
-
 
 ;; fullscreen
 (global-set-key (kbd "C-;") 'fullscreen-mode-fullscreen-toggle)
@@ -152,9 +152,9 @@
 
 ;; Magitの読み込み
 (el-get-bundle magit/magit)
-(el-get-bundle justbur/evil-magit)
+;; (el-get-bundle justbur/evil-magit)
 (require 'magit)
-(require 'evil-magit)
+;; (require 'evil-magit)
 (global-set-key (kbd "M-m") prefix-arg)
 (global-set-key (kbd "M-m m") 'magit-status)
 (global-set-key (kbd "M-m i") 'magit-init)
@@ -164,6 +164,7 @@
 ;; (global-set-key "\C-x4" 'neotree-toggle)
 
 ;; undo-tree
+(el-get-bundle undo-tree)
 (require 'undo-tree)
 (global-undo-tree-mode)
 
@@ -196,7 +197,7 @@
 (el-get-bundle popwin)
 (require 'popwin)
 (popwin-mode 1)
-;(global-set-key (kbd "A-p") (lambda () (popwin:keymap)))
+                                        ;(global-set-key (kbd "A-p") (lambda () (popwin:keymap)))
 
 (el-get-bundle org)
 (require 'org)
@@ -234,6 +235,9 @@
 (el-get-bundle markdown-mode)
 (require 'markdown-mode)
 
+(el-get-bundle yaml-mode)
+(require 'yaml-mode)
+
 (el-get-bundle google-translate)
 (require 'google-translate)
 (global-set-key (kbd "C-c t") 'google-translate-at-point)
@@ -241,8 +245,7 @@
 (el-get-bundle hackernews)
 (require 'hackernews)
 
-(add-to-list 'load-path "~/.emacs.d/elisp")
-(load "pm-strategy")
+;; (load "pm-strategy")
 
 (el-get-bundle migemo)
 (require 'migemo)
@@ -254,6 +257,9 @@
 (setq migemo-regex-dictionary nil)
 (load-library "migemo")
 (migemo-init)
+
+;; (add-to-list 'load-path "~/.emacs.d/elisp")
+;; (load "drill-instructor")
 
 ;; (define-key hackernews-map (kbd "C-c h e") '(lambda () (eww-browse-url (hackernews-comment-url))))
 (provide 'init)
