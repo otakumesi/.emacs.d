@@ -30,6 +30,7 @@
 (autoload 'coffee-mode "coffee-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.coffee$" . coffee-mode))
 
+(el-get-bundle json-mode)
 (autoload 'json-mode "json-mode")
 (add-to-list 'auto-mode-alist '("\\.json$" . json-mode))
 

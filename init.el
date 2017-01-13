@@ -32,7 +32,83 @@
 
 (add-to-list 'load-path "~/.emacs.d/conf")
 (setq gc-cons-threshold (* 128 1024 1024))
-(load "user-setting")
+(when (eq system-type 'darwin)
+  (setq ns-command-modifier (quote meta)))
+;; (load "user-setting")
+
+(defun user-settings ()
+  ;; フォント設定
+  (set-face-attribute 'default
+                      nil
+                      :family "Roboto Mono Light for Powerline"
+                      :height 140)
+
+  ;; 対応する括弧を光らせる
+  (show-paren-mode 1)
+
+  ;; バッファの終端を明示する
+  (setq indicate-empty-lines t)
+
+  ;; yes-noをy-nに置き換え
+  (fset 'yes-or-no-p 'y-or-n-p)
+
+  ;; M-xでコマンドを入力する時に候補を表示する
+  (icomplete-mode 1)
+
+  ;; status-barにカーソルの位置を表示
+  (column-number-mode t)
+
+  ;; インデントをタブからスペースに
+  (setq-default indent-tabs-mode nil)
+  ;; (setq-default tab-width 2)
+
+  ;; バックアップファイルを作らない
+  (setq backup-inhibited t)
+
+  ;; ファイル名補完で大文字小文字を区別しない
+  (setq read-buffer-completion-ignore-case t)
+  (setq read-file-name-completion-ignore-case t)
+
+  ;; C-jで補完
+  ;; (global-set-key "\C-j" 'dabbrev-expand)
+
+  ;; インデントをタブからスペースに変更
+  (setq-default indent-tabs-mode nil)
+
+  ;; 行末の空白をハイライト
+  (setq-default show-trailing-whitespace t)
+
+  ;; ウィンドウの大きさ変更キーの簡易化割当（オプションキー + 矢印キー）
+  (global-set-key [(s up)] '(lambda (arg) (interactive "p") (shrink-window arg)))
+  (global-set-key [(s down)] '(lambda (arg) (interactive "p") (shrink-window (- arg))))
+  (global-set-key [(s left)] '(lambda (arg) (interactive "p") (shrink-window-horizontally (- arg))))
+  (global-set-key [(s right)] '(lambda (arg) (interactive "p") (shrink-window-horizontally arg)))
+
+  ;; ブラウザを開く設定
+  (defun open-browser ()
+    (interactive)
+    (shell-command (concat "open " (buffer-file-name))))
+  (global-set-key (kbd "M-n") 'open-browser)
+
+  ;; 現在行のハイライト
+  (require 'hl-line)
+  (defun global-hl-line-timer-function ()
+    (global-hl-line-unhighlight-all)
+    (let ((global-hl-line-mode t))
+      (global-hl-line-highlight)))
+  (setq global-hl-line-timer
+        (run-with-idle-timer 0.03 t 'global-hl-line-timer-function))
+  ;; (cancel-timer global-hl-line-timer)
+
+  (require 'font-lock)
+  (global-font-lock-mode t))
+;; end user-settings
+
+(user-settings)
+(global-set-key (kbd "C-S-f") 'forward-word)
+(global-set-key (kbd "C-S-b") 'backward-word)
+(global-set-key (kbd "C-S-d") 'kill-region)
+
 (tool-bar-mode -1)
 
 (let ((gls "/usr/local/bin/gls"))
@@ -258,10 +334,31 @@
 (load-library "migemo")
 (migemo-init)
 
+(el-get-bundle mozc)
+(require 'mozc)
+(setq default-input-method "japanese-mozc")
+(setq mozc-helper-program-name "/usr/local/bin/mozc_emacs_helper")
+
 ;; (add-to-list 'load-path "~/.emacs.d/elisp")
 ;; (load "drill-instructor")
 
 ;; (define-key hackernews-map (kbd "C-c h e") '(lambda () (eww-browse-url (hackernews-comment-url))))
+(setq hippie-expand-try-functions-list
+      '(yas/hippie-try-expand
+        try-expand-dabbrev
+        try-expand-dabbrev-all-buffers
+        try-expand-dabbrev-from-kill
+        try-complete-file-name-partially
+        try-complete-file-name
+        try-expand-list try-expand-line
+        try-complete-lisp-symbol-partially
+        try-complete-lisp-symbol))
+
+(el-get-bundle haxney/smart-tab)
+(require 'smart-tab)
+(global-smart-tab-mode 1)
+(setq smart-tab-using-hippie-expand 1)
+
 (provide 'init)
 ;;; init.el ends here
 (custom-set-variables
