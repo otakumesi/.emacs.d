@@ -2,7 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -69,9 +68,6 @@
   (setq read-buffer-completion-ignore-case t)
   (setq read-file-name-completion-ignore-case t)
 
-  ;; C-jで補完
-  ;; (global-set-key "\C-j" 'dabbrev-expand)
-
   ;; インデントをタブからスペースに変更
   (setq-default indent-tabs-mode nil)
 
@@ -84,12 +80,6 @@
   (global-set-key [(s left)] '(lambda (arg) (interactive "p") (shrink-window-horizontally (- arg))))
   (global-set-key [(s right)] '(lambda (arg) (interactive "p") (shrink-window-horizontally arg)))
 
-  ;; ブラウザを開く設定
-  (defun open-browser ()
-    (interactive)
-    (shell-command (concat "open " (buffer-file-name))))
-  (global-set-key (kbd "M-n") 'open-browser)
-
   ;; 現在行のハイライト
   (require 'hl-line)
   (defun global-hl-line-timer-function ()
@@ -98,7 +88,6 @@
       (global-hl-line-highlight)))
   (setq global-hl-line-timer
         (run-with-idle-timer 0.03 t 'global-hl-line-timer-function))
-  ;; (cancel-timer global-hl-line-timer)
 
   (require 'font-lock)
   (global-font-lock-mode t))
@@ -108,6 +97,7 @@
 (global-set-key (kbd "C-S-f") 'forward-word)
 (global-set-key (kbd "C-S-b") 'backward-word)
 (global-set-key (kbd "C-S-d") 'kill-region)
+(keyboard-translate ?\C-h ?\C-?)
 
 (tool-bar-mode -1)
 
@@ -162,9 +152,9 @@
 (setq eldoc-echo-area-use-multiline-p t)
 (el-get-bundle anzu)
 
-(el-get-bundle auto-complete)
-(require 'auto-complete)
-(setq ac-auto-start nil)
+;; (el-get-bundle auto-complete)
+;; (require 'auto-complete)
+;; (setq ac-auto-start nil)
 
 (load "helm-setting")
 ;; (el-get-bundle evil)
@@ -210,6 +200,10 @@
 
 ;; fullscreen
 (global-set-key (kbd "C-;") 'fullscreen-mode-fullscreen-toggle)
+
+;; expand-region
+(el-get-bundle magnars/expand-region.el)
+(global-set-key (kbd "C-@") 'er/expand-region)
 
 ;; windmov
 (require 'windmove)
