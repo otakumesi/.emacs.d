@@ -98,6 +98,7 @@
 (global-set-key (kbd "C-S-b") 'backward-word)
 (global-set-key (kbd "C-S-d") 'kill-region)
 (keyboard-translate ?\C-h ?\C-?)
+(keyboard-translate ?\M-h ?\M-?)
 
 (tool-bar-mode -1)
 
@@ -352,6 +353,8 @@
 (require 'smart-tab)
 (global-smart-tab-mode 1)
 (setq smart-tab-using-hippie-expand 1)
+
+(global-set-key (kbd "C-?") 'undo-tree-redo)
 
 (provide 'init)
 ;;; init.el ends here
