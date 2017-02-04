@@ -1,13 +1,11 @@
 ;;; init.el --- initialize file.
 ;;; Commentary:
 ;;; Code:
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
 ;; (package-initialize)
-
 (add-to-list 'load-path (locate-user-emacs-file "el-get/el-get"))
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
@@ -35,12 +33,25 @@
   (setq ns-command-modifier (quote meta)))
 ;; (load "user-setting")
 
+;; Magitの読み込み
+(el-get-bundle magit/magit)
+;; (el-get-bundle justbur/evil-magit)
+(add-to-list 'load-path "~/.emacs.d/el-get/magit/lisp")
+(require 'magit)
+;; (require 'evil-magit)
+(global-set-key (kbd "M-m") prefix-arg)
+(global-set-key (kbd "M-m m") 'magit-status)
+(global-set-key (kbd "M-m i") 'magit-init)
+
+(el-get-bundle purcell/package-lint)
+(require 'package-lint)
+
 (defun user-settings ()
   ;; フォント設定
   (set-face-attribute 'default
                       nil
                       :family "Roboto Mono Light for Powerline"
-                      :height 140)
+                      :height 170)
 
   ;; 対応する括弧を光らせる
   (show-paren-mode 1)
@@ -94,12 +105,6 @@
 ;; end user-settings
 
 (user-settings)
-(global-set-key (kbd "C-S-f") 'forward-word)
-(global-set-key (kbd "C-S-b") 'backward-word)
-(global-set-key (kbd "C-S-d") 'kill-region)
-(keyboard-translate ?\C-h ?\C-?)
-(keyboard-translate ?\M-h ?\M-?)
-
 (tool-bar-mode -1)
 
 (let ((gls "/usr/local/bin/gls"))
@@ -151,15 +156,8 @@
 (require 'eldoc-extension)
 (setq eldoc-idle-delay 0)
 (setq eldoc-echo-area-use-multiline-p t)
-(el-get-bundle anzu)
-
-;; (el-get-bundle auto-complete)
-;; (require 'auto-complete)
-;; (setq ac-auto-start nil)
 
 (load "helm-setting")
-;; (el-get-bundle evil)
-;; (load "evil-setting")
 (load "powerline-setting")
 (load "flycheck-setting")
 (load "company-mode-setting")
@@ -169,16 +167,22 @@
 (load "ruby-setting")
 (load "javascript-setting")
 ;; (load "golang-setting")
-;; (load "scala-setting")
 (load "elixir-setting")
 (load "rust-setting")
-(load "haskell-setting")
 (load "elisp-setting")
 (load "c-setting")
 (load "markdown-setting")
+
+;; elmacro
+(el-get-bundle elmacro)
+(require 'elmacro)
+(elmacro-mode +1)
+
+;; anzu
+(el-get-bundle anzu)
 (global-anzu-mode +1)
 
-;;smartparens
+;; smartparens
 (el-get-bundle smartparens)
 ;; (el-get-bundle evil-smartparens)
 (require 'smartparens-config)
@@ -220,15 +224,6 @@
 (global-set-key (kbd "<C-S-down>") 'buf-move-down)
 (global-set-key (kbd "<C-S-right>") 'buf-move-right)
 (global-set-key (kbd "<C-S-left>") 'buf-move-left)
-
-;; Magitの読み込み
-(el-get-bundle magit/magit)
-;; (el-get-bundle justbur/evil-magit)
-(require 'magit)
-;; (require 'evil-magit)
-(global-set-key (kbd "M-m") prefix-arg)
-(global-set-key (kbd "M-m m") 'magit-status)
-(global-set-key (kbd "M-m i") 'magit-init)
 
 ;; TreeのElisp
 ;; (require 'neotree)
@@ -355,9 +350,9 @@
 (setq smart-tab-using-hippie-expand 1)
 
 (global-set-key (kbd "C-?") 'undo-tree-redo)
+(define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
+(define-key key-translation-map (kbd "M-h") (kbd "<M-DEL>"))
 
-(provide 'init)
-;;; init.el ends here
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -377,3 +372,7 @@
  ;; If there is more than one, they won't work right.
  '(mode-line ((t (:foreground "#002b36" :background "#268bd2" :box nil))))
  '(mode-line-inactive ((t (:foreground "#002b36" :background "#268bd2" :box nil)))))
+
+(provide 'init)
+;;; init.el ends here
+
