@@ -50,8 +50,8 @@
   ;; フォント設定
   (set-face-attribute 'default
                       nil
-                      :family "Roboto Mono Light for Powerline"
-                      :height 170)
+                      :family "Sauce Code Powerline"
+                      :height 160)
 
   ;; 対応する括弧を光らせる
   (show-paren-mode 1)
