@@ -133,7 +133,7 @@
 (el-get-bundle solarized-emacs)
 (require 'solarized)
 (setq solarized-high-contrast-mode-line t)
-(load-theme 'solarized-dark t)
+(load-theme 'solarized-light t)
 (setq ns-use-srgb-colorspace nil)
 
 ;; key-chordの読み込み
