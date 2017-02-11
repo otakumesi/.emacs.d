@@ -21,8 +21,6 @@
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . web-mode))
 
 (add-to-list 'interpreter-mode-alist '("node" . js2-mode))
-(add-hook 'js2-mode-hook 'js2-refactor-mode)
-(add-hook 'js2-mode-hook 'ac-js2-mode)
 
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 (flycheck-add-mode 'javascript-eslint 'js2-jsx-mode)

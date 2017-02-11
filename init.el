@@ -52,45 +52,25 @@
                       nil
                       :family "Sauce Code Powerline"
                       :height 160)
-
   ;; 対応する括弧を光らせる
   (show-paren-mode 1)
-
   ;; バッファの終端を明示する
   (setq indicate-empty-lines t)
-
   ;; yes-noをy-nに置き換え
   (fset 'yes-or-no-p 'y-or-n-p)
-
   ;; M-xでコマンドを入力する時に候補を表示する
   (icomplete-mode 1)
-
   ;; status-barにカーソルの位置を表示
   (column-number-mode t)
-
   ;; インデントをタブからスペースに
   (setq-default indent-tabs-mode nil)
-  ;; (setq-default tab-width 2)
-
   ;; バックアップファイルを作らない
   (setq backup-inhibited t)
-
   ;; ファイル名補完で大文字小文字を区別しない
-  (setq read-buffer-completion-ignore-case t)
+  (setq read-buffer-completion-ignore-case nil)
   (setq read-file-name-completion-ignore-case t)
-
-  ;; インデントをタブからスペースに変更
-  (setq-default indent-tabs-mode nil)
-
   ;; 行末の空白をハイライト
   (setq-default show-trailing-whitespace t)
-
-  ;; ウィンドウの大きさ変更キーの簡易化割当（オプションキー + 矢印キー）
-  (global-set-key [(s up)] '(lambda (arg) (interactive "p") (shrink-window arg)))
-  (global-set-key [(s down)] '(lambda (arg) (interactive "p") (shrink-window (- arg))))
-  (global-set-key [(s left)] '(lambda (arg) (interactive "p") (shrink-window-horizontally (- arg))))
-  (global-set-key [(s right)] '(lambda (arg) (interactive "p") (shrink-window-horizontally arg)))
-
   ;; 現在行のハイライト
   (require 'hl-line)
   (defun global-hl-line-timer-function ()
@@ -98,10 +78,7 @@
     (let ((global-hl-line-mode t))
       (global-hl-line-highlight)))
   (setq global-hl-line-timer
-        (run-with-idle-timer 0.03 t 'global-hl-line-timer-function))
-
-  (require 'font-lock)
-  (global-font-lock-mode t))
+        (run-with-idle-timer 0.03 t 'global-hl-line-timer-function)))
 ;; end user-settings
 
 (user-settings)
@@ -172,6 +149,25 @@
 (load "elisp-setting")
 (load "c-setting")
 (load "markdown-setting")
+
+;; python
+(el-get-bundle elpa:jedi-core)
+(require 'python)
+(defun python-shell-parse-command ()
+  "python3 -i")
+(add-hook 'python-mode-hook 'jedi:setup)
+(el-get-bundle autopep8)
+(el-get-bundle pyflakes)
+(el-get-bundle company-jedi :depends (company-mode))
+(el-get-bundle Wilfred/flycheck-pyflakes :depends (flycheck))
+(with-eval-after-load 'jedi
+  (require 'pyflakes)
+  (require 'flycheck-pyflakes)
+  (require 'autopep8)
+  (jedi:setup)
+  (add-to-list 'company-backends 'company-jedi))
+
+(add-hook 'jedi-mode-hook (lambda () (setq jedi:complete-on-dot t)))
 
 ;; elmacro
 (el-get-bundle elmacro)
@@ -359,6 +355,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(flycheck-disable-checker (quote (javascript-jshint javascript-jscs)))
+ '(flycheck-disable-checkers (quote (javascript-jshint javascript-jscs)) t)
  '(package-selected-packages
    (quote
     (hackernews rustfmt robe package-lint org mozc-popup inflections gitignore-mode fullscreen-mode f evil-smartparens elixir-mode company-racer)))

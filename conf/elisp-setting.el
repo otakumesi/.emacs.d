@@ -11,15 +11,15 @@
 ;;         (expand-file-name "/usr/local/cellar/hyperspec/7.0/share/doc/hyperspec/HyperSpec/Data/Map_Sym.txt"))
 ;;   (require 'common-lisp-snippets))
 
-;; (with-eval-after-load 'slime
-;;   (slime-mode t)
-;;   (defalias 'sl-restart 'slime-restart-inferior-lisp)
-;;   (require 'elisp-slime-nav))
+(with-eval-after-load 'slime
+  (slime-mode t)
+  (defalias 'sl-restart 'slime-restart-inferior-lisp)
+  (require 'elisp-slime-nav))
 
-;; (with-eval-after-load 'slime
-;;   (slime-setup '(slime-repl slime-fancy slime-banner slime-company))
-;;   (setq slime-net-coding-system 'utf-8-unix)
-;;   (add-hook 'slime-mode-hook 'slime-autodoc-mode))
+(with-eval-after-load 'slime
+  (slime-setup '(slime-repl slime-fancy slime-banner slime-company))
+  (setq slime-net-coding-system 'utf-8-unix)
+  (add-hook 'slime-mode-hook 'slime-autodoc-mode))
 ;; (with-eval-after-load 'inferior-lisp-mode
 ;;   (inferior-slime-mode t)
 ;;   (setq inferior-lisp-program "ros -L sbcl -Q run -l ~/.sbclrc"))

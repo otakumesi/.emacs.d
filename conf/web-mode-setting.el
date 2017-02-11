@@ -22,11 +22,13 @@
 (require 'company-web)
 (require 'company-web-html)
 (require 'company-web-slim)
+(el-get-bundle osv/ac-html-bootstrap)
+(require 'ac-html-bootstrap)
 
 (defun eval-company-after-load (mode-symbol)
   (with-eval-after-load mode-symbol
     ;; company-web
-    (add-to-list 'company-backends '(company-web-html company-css company-web-bootstrap+ company-web-fa+))))
+    (add-to-list 'company-backends '(company-web-html company-css company-web-fa+ company-web-bootstrap+))))
 
 (with-eval-after-load 'company-web
   '(add-to-list 'company-backends '(company-css company-web-fa+ company-web-bootstrap+)))
