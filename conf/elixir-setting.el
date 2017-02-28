@@ -12,8 +12,7 @@
 (setq alchemist-hooks-text-on-save t)
 (setq alchemist-hooks-compine-on-save t)
 
-(el-get-bundle ruby-end)
-(require 'ruby-end)
+;;(el-get-bundle ruby-end)
 (el-get-bundle lbolla/emacs-flycheck-elixir)
 (add-hook 'elixir-mode-hook '(lambda ()
                                (alchemist-mode t)
@@ -21,6 +20,7 @@
                                ;; (set (make-variable-buffer-local 'ruby-end-expand-keywords-before-re) "\\(?:^\\|\\s-+\\)\\(?:do\\)" )
                                ;; (set (make-variable-buffer-local 'ruby-end-check-statement-modifiers))
                                (setq company-minimum-prefix-length 1)
+                               ;;(autoload 'ruby-end-mode "ruby-end" nil t)
                                (ruby-end-mode +1)))
 
 ;; (el-get-bundle otakumesi/flycheck-elixir-dialyxir)

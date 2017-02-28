@@ -35,10 +35,8 @@
 
 ;; Magitの読み込み
 (el-get-bundle magit/magit)
-;; (el-get-bundle justbur/evil-magit)
 (add-to-list 'load-path "~/.emacs.d/el-get/magit/lisp")
 (require 'magit)
-;; (require 'evil-magit)
 (global-set-key (kbd "M-m") prefix-arg)
 (global-set-key (kbd "M-m m") 'magit-status)
 (global-set-key (kbd "M-m i") 'magit-init)
@@ -127,6 +125,12 @@
 (setq projectile-completion-system 'helm)
 (helm-projectile-on)
 
+(el-get-bundle helm-google)
+
+(el-get-bundle ptrv/helm-smex)
+(global-set-key [remap execute-extended-command] #'helm-smex)
+(global-set-key (kbd "M-X") #'helm-smex-major-mode-commands)
+
 (require 'eldoc)
 (eldoc-mode)
 (el-get-bundle eldoc-extension)
@@ -151,7 +155,8 @@
 (load "markdown-setting")
 
 ;; python
-(el-get-bundle elpa:jedi-core)
+(el-get-bundle epc)
+(el-get-bundle jedi-core)
 (require 'python)
 (defun python-shell-parse-command ()
   "python3 -i")
@@ -169,6 +174,16 @@
 
 (add-hook 'jedi-mode-hook (lambda () (setq jedi:complete-on-dot t)))
 
+;; clojure
+(el-get-bundle clojure-mode)
+(el-get-bundle cider)
+(el-get-bundle flycheck-clojure)
+(el-get-bundle clojure-snippets)
+(add-hook #'clojure-mode (lambda () (cider-jack-in)))
+(with-eval-after-load 'clojure-mode
+  '(flycheck-clojure-setup)
+  (require 'clojure-snippets))
+
 ;; elmacro
 (el-get-bundle elmacro)
 (require 'elmacro)
@@ -180,7 +195,6 @@
 
 ;; smartparens
 (el-get-bundle smartparens)
-;; (el-get-bundle evil-smartparens)
 (require 'smartparens-config)
 
 (cl-dolist (hook (list
@@ -195,9 +209,11 @@
                   'coffee-mode-hook
                   'go-mode-hook
                   'haskell-mode-hook
+                  'enh-ruby-mode-hook
+                  'python-mode
+                  'clojure-mode
                   'scala-mode-hook))
   (add-hook hook #'smartparens-mode))
-;; (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
 
 ;; fullscreen
 (global-set-key (kbd "C-;") 'fullscreen-mode-fullscreen-toggle)
@@ -358,7 +374,7 @@
  '(flycheck-disable-checkers (quote (javascript-jshint javascript-jscs)) t)
  '(package-selected-packages
    (quote
-    (hackernews rustfmt robe package-lint org mozc-popup inflections gitignore-mode fullscreen-mode f evil-smartparens elixir-mode company-racer)))
+    (hackernews rustfmt robe package-lint org mozc-popup inflections gitignore-mode fullscreen-mode f elixir-mode company-racer)))
  '(ruby-electric-expand-delimiters-list nil)
  '(ruby-insert-encoding-magic-comment nil)
  '(ruby-program "~/.rbenv/shims/ruby"))

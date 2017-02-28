@@ -1,5 +1,6 @@
 ;;; javascruot-setting.el --- javascript-mode's settings.
 ;;; Commentary:
+(setq js-indent-level 2)
 
 ;;; Code:
 (el-get-bundle ac-js2)
@@ -25,7 +26,7 @@
 (add-to-list 'auto-mode-alist '("\\.jsx\\'" . js2-jsx-mode))
 (flycheck-add-mode 'javascript-eslint 'js2-jsx-mode)
 
-(add-to-list 'auto-mode-alist '("\\.jade\\'" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
 (autoload 'jade-mode "jade-mode")
 (el-get-bundle coffee-mode)
 (autoload 'coffee-mode "coffee-mode" nil t)
@@ -33,8 +34,8 @@
 
 (el-get-bundle json-mode)
 (autoload 'json-mode "json-mode")
+
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
-(flycheck-add-mode 'javascript-eslint 'json-mode)
 
 ;;(el-get-bundle tern-mode)
 (defun switch-tern ()

@@ -3,9 +3,6 @@
 
 ;;; Code:
 
-;; (autoload 'enh-ruby-mode "enh-ruby-mode"
-;;   "Major mode for ruby files" t)
-
 ;; enh-ruby-modeでRubyモードを導入する
 (el-get-bundle enh-ruby-mode)
 ;; (autoload 'enh-ruby-mode "enh-ruby-mode"
@@ -32,7 +29,7 @@
 (add-to-list 'interpreter-mode-alist '("ruby" . enh-ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.slim$" . slim-mode))
 
-;; yard-mode
+;; Yard-mode
 (el-get-bundle yard-mode)
 (require 'yard-mode)
 (add-hook 'enh-ruby-mode-hook 'yard-mode)
@@ -79,8 +76,6 @@
 (add-hook 'coffee-mode-hook 'projectile-rails-on)
 (add-hook 'web-mode-hook 'projectile-rails-on)
 
-(remove-hook 'enh-ruby-mode-hook 'ruby-end-mode)
-
 (setq enh-ruby-deep-indent-paren nil)
 
 (define-key robe-mode-map (kbd "C-c r d") 'robe-jump)
@@ -118,9 +113,6 @@
 ;;     "Face used for marking warning lines."
 ;;     :group 'enh-ruby))
 
-(el-get-bundle ruby-tools)
-(el-get-bundle ruby-refactor)
-(el-get-bundle ruby-electric)
 (el-get-bundle rubocop)
 
 (with-eval-after-load 'enh-ruby-mode
@@ -134,21 +126,6 @@
 
   ;; rails
   ;; (require 'helm-rails)
-
-  ;; Rubyのブロックハイライト
-  ;; (require 'ruby-block)
-  ;; (add-hook 'enh-ruby-mode-hook 'ruby-block-mode)
-
-  ;; ruby-etc
-  (require 'ruby-refactor)
-  (eval-after-load "ruby-refactor" (ruby-refactor-mode-launch))
-  (require 'ruby-tools)
-  (add-hook 'enh-ruby-mode-hook 'ruby-tools-mode)
-  (eval-after-load "ruby-tools-mode" (ruby-tools-mode t))
-  ;; 括弧のシンタックスハイライト
-  (require 'ruby-electric)
-  (ruby-electric-mode t)
-  (custom-set-variables '(ruby-electric-expand-delimiters-list nil))
 
   ;; rubocop
   (require 'rubocop))
