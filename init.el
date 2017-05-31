@@ -172,20 +172,22 @@
 
   ;; helm-gtagsの設定
   (el-get-bundle helm-gtags)
-  (use-package helm-gtags)
-  (add-hook 'c-mode-hook 'helm-gtags-mode)
-  (add-hook 'enh-ruby-mode-hook 'helm-gtags-mode)
-  (add-hook 'emacs-lisp-mode-hook 'helm-gtags-mode)
-  (add-hook 'javascript-mode-hook 'helm-gtags-mode)
-  (setq helm-gtags-path-style 'root)
-  (setq helm-gtags-auto-update t)
-  (add-hook 'helm-gtags-mode-hook
-            (lambda ()
-              (local-set-key (kbd "C-c g t") 'helm-gtags-find-tag)
-              (local-set-key (kbd "C-c g r") 'helm-gtags-find-rtag)
-              (local-set-key (kbd "C-c g s") 'helm-gtags-select)
-              (local-set-key (kbd "C-c g p") 'helm-gtags-pop-stack)
-              (local-set-key (kbd "C-c g c") 'helm-gtags-clear-stack)))
+  (use-package helm-gtags
+    :if (executable-find "global")
+    :config
+    (add-hook 'c-mode-hook 'helm-gtags-mode)
+    (add-hook 'enh-ruby-mode-hook 'helm-gtags-mode)
+    (add-hook 'emacs-lisp-mode-hook 'helm-gtags-mode)
+    (add-hook 'javascript-mode-hook 'helm-gtags-mode)
+    (setq helm-gtags-path-style 'root)
+    (setq helm-gtags-auto-update t)
+    (add-hook 'helm-gtags-mode-hook
+              (lambda ()
+                (local-set-key (kbd "C-c g t") 'helm-gtags-find-tag)
+                (local-set-key (kbd "C-c g r") 'helm-gtags-find-rtag)
+                (local-set-key (kbd "C-c g s") 'helm-gtags-select)
+                (local-set-key (kbd "C-c g p") 'helm-gtags-pop-stack)
+                (local-set-key (kbd "C-c g c") 'helm-gtags-clear-stack))))
 
   (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action))
 
@@ -528,10 +530,15 @@
 
 ;; Golang
 
-(el-get-bundle go-mode
+(el-get-bundle go-mode)
+(use-package go-mode
   :config
-  (use-package go-mode)
   (use-package go-mode-autoloads)
+
+  (add-hook 'go-mode-hook
+            '(lambda ()
+               (setq tab-width 2)
+               ))
 
   (el-get-bundle golint)
   (use-package golint)
