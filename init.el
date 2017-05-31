@@ -32,6 +32,17 @@
 (when (eq system-type 'darwin)
   (setq ns-command-modifier (quote meta)))
 
+;; shell
+(el-get-bundle purcell/exec-path-from-shell)
+(use-package exec-path-from-shell
+  :config
+  (setq explicit-shell-file-name "/usr/local/bin/zsh")
+  (setq shell-file-name "zsh")
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize))
+  (exec-path-from-shell-copy-env "GOPATH"))
+;; (load-file "~/.emacs.d/shellenv.el")
+
 ;; Magitの読み込み
 (el-get-bundle magit/magit)
 (add-to-list 'load-path "~/.emacs.d/el-get/magit/lisp")
@@ -825,24 +836,6 @@
  ;; If there is more than one, they won't work right.
  '(mode-line ((t (:foreground "#002b36" :background "#268bd2" :box nil))))
  '(mode-line-inactive ((t (:foreground "#002b36" :background "#268bd2" :box nil)))))
-
-;; shell
-;; (el-get-bundle exec-path-from-shell)
-;; (when (memq window-system '(mac ns))
-;;   (let ((envs '("PATH")))
-;;     (exec-path-from-shell-copy-envs envs))
-;;   (exec-path-from-shell-initialize))
-;; (when (eq system-type 'darwin)
-;;   (if (equal (file-name-nondirectory (getenv "SHELL")) "fish")
-;;       (progn
-;;         (setq path-separator " ")
-;;         (exec-path-from-shell-initialize)
-;;         (setq path-separator ":"))
-;;     (exec-path-from-shell-initialize)))
-;; (when (eq system-type 'darwin)
-;;  (exec-path-from-shell-initialize))
-;; (exec-path-from-shell-copy-env "PATH")
-(load-file "~/.emacs.d/shellenv.el")
 
 (provide 'init)
 ;;; init.el ends here
