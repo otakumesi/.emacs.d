@@ -61,6 +61,7 @@
                       nil
                       :family "Sauce Code Powerline"
                       :height 160)
+
   ;; 対応する括弧を光らせる
   (show-paren-mode 1)
   ;; バッファの終端を明示する
@@ -225,13 +226,73 @@
   (setq eldoc-idle-delay 0)
   (setq eldoc-echo-area-use-multiline-p t))
 
-(el-get-bundle powerline)
+(defun shorten-directory (dir max-length)
+  "Show up to `max-length' characters of a directory name `dir'."
+  (let ((path (reverse (split-string (abbreviate-file-name dir) "/")))
+        (output ""))
+    (when (and path (equal "" (car path)))
+      (setq path (cdr path)))
+    (while (and path (< (length output) (- max-length 4)))
+      (setq output (concat (car path) "/" output))
+      (setq path (cdr path)))
+    (when path
+      (setq output (concat ".../" output)))
+    output))
+
+(defun powerline-my-theme ()
+  (interactive)
+  (setq-default mode-line-format
+                '("%e"
+                  (:eval
+                   (let* ((active (powerline-selected-window-active))
+                          (mode-line (if active 'mode-line 'mode-line-inactive))
+                          (face1 (if active 'powerline-active1 'powerline-inactive1))
+                          (face2 (if active 'powerline-active2 'powerline-inactive2))
+                          (separator-left (intern (format "powerline-%s-%s"
+                                                          powerline-default-separator
+                                                          (car powerline-default-separator-dir))))
+                          (separator-right (intern (format "powerline-%s-%s"
+                                                           powerline-default-separator
+                                                           (cdr powerline-default-separator-dir))))
+                          (lhs (list (powerline-raw "%*" nil 'l)
+                                     (powerline-buffer-size nil 'l)
+                                     (powerline-raw mode-line-mule-info nil 'l)
+                                     (powerline-raw
+                                      (shorten-directory default-directory 15)
+                                      nil 'l)
+                                     (powerline-buffer-id nil 'r)
+                                     (when (and (boundp 'which-func-mode) which-func-mode)
+                                       (powerline-raw which-func-format nil 'l))
+                                     (powerline-raw " ")
+                                     (funcall separator-left mode-line face1)
+                                     (when (boundp 'erc-modified-channels-object)
+                                       (powerline-raw erc-modified-channels-object face1 'l))
+                                     (powerline-major-mode face1 'l)
+                                     (powerline-process face1)
+                                     (powerline-minor-modes face1 'l)
+                                     (powerline-narrow face1 'l)
+                                     (powerline-raw " " face1)
+                                     (funcall separator-left face1 face2)
+                                     (powerline-vc face2 'r)))
+                          (rhs (list (powerline-raw global-mode-string face2 'r)
+                                     (funcall separator-right face2 face1)
+                                     (powerline-raw "%4l" face1 'l)
+                                     (powerline-raw ":" face1 'l)
+                                     (powerline-raw "%3c" face1 'r)
+                                     (funcall separator-right face1 mode-line)
+                                     (powerline-raw " ")
+                                     (powerline-raw "%6p" nil 'r)
+                                     (powerline-hud face2 face1))))
+                     (concat (powerline-render lhs)
+                             (powerline-fill face2 (powerline-width rhs))
+                             (powerline-render rhs)))))))
+
+(el-get-bundle milkypostman/powerline)
 (use-package powerline
   :config
-  (powerline-default-theme)
-  (custom-set-faces
-   '(mode-line ((t (:foreground "#002b36" :background "#268bd2" :box nil))))
-   '(mode-line-inactive ((t (:foreground "#002b36" :background "#268bd2" :box nil)))))
+  (setq ns-use-srgb-colorspace nil)
+  (powerline-my-theme)
+
   (set-face-attribute 'mode-line nil
                       :overline  "#268bd2"
                       :foreground "#002b36"
@@ -533,6 +594,9 @@
 (el-get-bundle go-mode)
 (use-package go-mode
   :config
+  (setq gofmt-command "goimports")
+  (add-hook 'before-save-hook 'gofmt-before-save)
+
   (use-package go-mode-autoloads)
 
   (add-hook 'go-mode-hook
@@ -550,15 +614,12 @@
 
   (el-get-bundle go-dlv)
   (use-package go-dlv)
-
+  (el-get-bundle company-go :url "https://raw.githubusercontent.com/nsf/gocode/master/emacs-company/company-go.el")
+  (use-package company-go)
   ;;(add-to-list 'company-backends '(company-go company-file company-yasnippet))
-  (add-hook 'go-mode-hook
-            (lambda ()
-              (set
-               (make-local-variable 'company-backends)
-               '(company-go company-files company-yasnippet))
-              (company-mode)
-              (setq tab-width 2)))
+  (add-hook 'go-mode-hook (lambda ()
+                            (setq tab-width 2)
+                            (set (make-local-variable 'company-backends) '(company-go))))
 
   (el-get-bundle helm-go-package)
   (use-package helm-go-package
@@ -832,7 +893,7 @@
  '(flycheck-disable-checkers (quote (javascript-jshint javascript-jscs)) t)
  '(package-selected-packages
    (quote
-    (rustfmt robe package-lint org mozc-popup inflections gitignore-mode fullscreen-mode f elixir-mode company-racer)))
+    (company-go rustfmt robe package-lint org mozc-popup inflections gitignore-mode fullscreen-mode f elixir-mode company-racer)))
  '(ruby-electric-expand-delimiters-list nil)
  '(ruby-insert-encoding-magic-comment nil)
  '(ruby-program "~/.rbenv/shims/ruby"))
