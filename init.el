@@ -64,6 +64,18 @@
                       :family "Sauce Code Powerline"
                       :height 160)
 
+  (setq whitespace-style '(face
+                           trailing
+                           tabs
+                           space-mark
+                           tab-mark))
+
+  (setq whitespace-display-mappings
+        '((space-mark ?\u3000 [?\u2337])
+          (tab-mark ?\t [?\u2337 ?\u2337 ?\u2337 ?\u2337])))
+
+  (global-whitespace-mode 1)
+
   ;; 対応する括弧を光らせる
   (show-paren-mode 1)
   ;; バッファの終端を明示する
@@ -148,6 +160,7 @@
   (global-set-key (kbd "C-c <C-down>") 'elscreen-kill))
 
 ;; カラーテーマ
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
 (el-get-bundle solarized-emacs)
 (use-package solarized
   :config
