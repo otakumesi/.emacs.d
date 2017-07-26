@@ -55,6 +55,8 @@
 (el-get-bundle purcell/package-lint)
 (use-package package-lint)
 
+(load (setq custom-file (expand-file-name "custom-val.el" user-emacs-directory)))
+
 (defun user-settings ()
   ;; フォント設定
   (set-face-attribute 'default
@@ -189,6 +191,12 @@
                 (local-set-key (kbd "C-c g s") 'helm-gtags-select)
                 (local-set-key (kbd "C-c g p") 'helm-gtags-pop-stack)
                 (local-set-key (kbd "C-c g c") 'helm-gtags-clear-stack))))
+
+  (use-package helm-ag
+    :config
+    (if (executable-find "rg")
+        (custom-set-variables
+         '(helm-ag-base-command "rg --no-heading"))))
 
   (define-key helm-find-files-map (kbd "TAB") 'helm-execute-persistent-action))
 
@@ -882,28 +890,8 @@
   (global-smart-tab-mode 1)
   (setq smart-tab-using-hippie-expand 1))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(enh-ruby-deep-indent-paren nil)
- '(enh-ruby-program "~/.rbenv/shims/ruby")
- '(flycheck-disable-checker (quote (javascript-jshint javascript-jscs)))
- '(flycheck-disable-checkers (quote (javascript-jshint javascript-jscs)) t)
- '(package-selected-packages
-   (quote
-    (company-go rustfmt robe package-lint org mozc-popup inflections gitignore-mode fullscreen-mode f elixir-mode company-racer)))
- '(ruby-electric-expand-delimiters-list nil)
- '(ruby-insert-encoding-magic-comment nil)
- '(ruby-program "~/.rbenv/shims/ruby"))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(mode-line ((t (:foreground "#002b36" :background "#268bd2" :box nil))))
- '(mode-line-inactive ((t (:foreground "#002b36" :background "#268bd2" :box nil)))))
+(el-get-bundle php-mode)
+(use-package php-mode)
 
 (provide 'init)
 ;;; init.el ends here
