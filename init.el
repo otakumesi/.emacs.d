@@ -64,9 +64,34 @@
                       :family "Sauce Code Powerline"
                       :height 160)
 
+  
+  ;; クリップボードの利用
+  (cond (window-system
+         (setq x-select-enable-clipboard t)))
+  (when (eq system-type 'darwin)
+    (defun copy-from-osx ()
+      (shell-command-to-string "pbpaste"))
+
+    (defun paste-to-osx (text &optional push)
+      (let ((process-connection-type nil))
+        (let ((proc (start-process "pbcopy" "*Messages*" "pbcopy")))
+          (process-send-string proc text)
+          (process-send-eof proc))))
+
+    (setq interprogram-cut-function 'paste-to-osx)
+    (setq interprogram-paste-function 'copy-from-osx))
+
+  (when (eq system-type 'gnu/linux)
+    (el-get-bundle xclip)
+    (use-package xclip
+      :config
+      (turn-on-xclip)))
+
   (setq whitespace-style '(face
                            trailing
                            tabs
+                           spaces
+                           empty
                            space-mark
                            tab-mark))
 
@@ -191,7 +216,7 @@
   (use-package helm-gtags
     :if (executable-find "global")
     :config
-    (add-hook 'c-mode-hook 'helm-gtags-mode)
+    ;; (add-hook 'c-mode-hook 'helm-gtags-mode)
     (add-hook 'enh-ruby-mode-hook 'helm-gtags-mode)
     (add-hook 'emacs-lisp-mode-hook 'helm-gtags-mode)
     (add-hook 'javascript-mode-hook 'helm-gtags-mode)
@@ -229,7 +254,7 @@
   (global-set-key [remap execute-extended-command] #'helm-smex)
   (global-set-key (kbd "M-X") #'helm-smex-major-mode-commands)
   (el-get-bundle projectile-rails)
-    ;; projectile-rails
+  ;; projectile-rails
   (use-package projectile-rails
     :if (executable-find "rails")
     :config
@@ -348,6 +373,8 @@
                       :background "#859900"
                       :inherit 'mode-line))
 
+(el-get-bundle markdown-mode)
+(use-package markdown-mode)
 
 (el-get-bundle flycheck)
 (use-package flycheck
@@ -362,7 +389,35 @@
   (el-get-bundle flycheck-package)
   (flycheck-package-setup)
   (el-get-bundle flycheck-pos-tip)
-  (flycheck-pos-tip-mode))
+  (flycheck-pos-tip-mode)
+
+  ;; 要textlint
+  (flycheck-define-checker textlint
+    "A linter for prose."
+    :command ("textlint" "--format" "unix"
+              "--rule" "no-mix-dearu-desumasu"
+              "--rule" "max-ten"
+              "--rule" "spellcheck-tech-word"
+              "--rule" "ja-no-abusage"
+              "--rule" "no-doubled-joshi"
+              "--rule" "no-double-negative-ja"
+              "--rule" "ja-no-weak-phrase"
+              "--rule" "ja-no-redundant-expression"
+              "--rule" "textlint-rule-no-dropping-the-ra"
+              "--rule" "no-doubled-conjunctive-particle-ga"
+              "--rule" "ja-no-mixed-period"
+              "--rule" "ja-unnatural-alphabet"
+              "--rule" "@textlint-ja/textlint-rule-no-insert-dropping-sa"
+              source-inplace)
+    :error-patterns
+    ((warning line-start (file-name) ":" line ":" column ": "
+              (id (one-or-more (not (any " "))))
+              (message (one-or-more not-newline)
+                       (zero-or-more "\n" (any " ") (one-or-more not-newline)))
+              line-end))
+    :modes (text-mode markdown-mode))
+  (add-to-list 'flycheck-checkers 'textlint)
+  (add-hook 'markdown-mode-hook 'flycheck-mode))
 
 (el-get-bundle company-mode)
 (use-package company
@@ -660,13 +715,13 @@
     (setq alchemist-hooks-text-on-save t)
     (setq alchemist-hooks-compine-on-save t)
     (add-hook 'elixir-mode-hook '(lambda ()
-                               (alchemist-mode t)
-                               (add-to-list 'flycheck-checkers 'elixir-dogma)
-                               ;; (set (make-variable-buffer-local 'ruby-end-expand-keywords-before-re) "\\(?:^\\|\\s-+\\)\\(?:do\\)" )
-                               ;; (set (make-variable-buffer-local 'ruby-end-check-statement-modifiers))
-                               (setq company-minimum-prefix-length 1)
-                               ;;(autoload 'ruby-end-mode "ruby-end" nil t)
-                               (ruby-end-mode +1)))
+                                   (alchemist-mode t)
+                                   (add-to-list 'flycheck-checkers 'elixir-dogma)
+                                   ;; (set (make-variable-buffer-local 'ruby-end-expand-keywords-before-re) "\\(?:^\\|\\s-+\\)\\(?:do\\)" )
+                                   ;; (set (make-variable-buffer-local 'ruby-end-check-statement-modifiers))
+                                   (setq company-minimum-prefix-length 1)
+                                   ;;(autoload 'ruby-end-mode "ruby-end" nil t)
+                                   (ruby-end-mode +1)))
     (add-to-list 'auto-mode-alist '("\\.eex$" . web-mode))
     (el-get-bundle lbolla/emacs-flycheck-elixir)
     (el-get-bundle hisea/elixir-yasnippets)
@@ -687,14 +742,14 @@
   (add-hook 'slime-mode-hook 'slime-autodoc-mode))
 
 ;; c-lang
-(el-get-bundle cc-mode)
-(use-package cc-mode
-  :config
-  (add-hook 'c-mode-common-hook
-            (lambda ()
-              (setq c-default-style "k&r")
-              (setq indent-tabs-mode t)
-              (setq c-basic-offset 2))))
+;;(el-get-bundle cc-mode)
+;;(use-package cc-mode
+;;  :config
+;;  (add-hook 'c-mode-common-hook
+;;            (lambda ()
+;;              (setq c-default-style "k&r")
+;;              (setq indent-tabs-mode t)
+;;              (setq c-basic-offset 2))))
 
 ;; haml
 (el-get-bundle nex3/haml-mode)
@@ -769,7 +824,7 @@
 (el-get-bundle magnars/expand-region.el)
 (use-package expand-region
   :config
-  (global-set-key (kbd "C-@") 'er/expand-region))
+  (global-set-key (kbd "M-@") 'er/expand-region))
 
 ;; windmov
 (use-package windmove
@@ -860,9 +915,6 @@
 (el-get-bundle gitignore-mode)
 (use-package gitignore-mode)
 
-(el-get-bundle markdown-mode)
-(use-package markdown-mode)
-
 (el-get-bundle yaml-mode)
 (use-package yaml-mode
   :config
@@ -903,9 +955,22 @@
   (global-smart-tab-mode 1)
   (setq smart-tab-using-hippie-expand 1))
 
-(el-get-bundle php-mode)
+
+(el-get-bundle ejmr/php-mode :branch "v1.18.2")
 (use-package php-mode)
+
+(el-get-bundle hexo)
+(use-package hexo)
+(defun hexo-my-blog ()
+  (interactive)
+  (hexo "~/Documents/blog"))
+
+;; 要growl
+(el-get-bundle fsm)
+(use-package fsm
+  :config
+  (el-get-bundle jabber)
+  (use-package jabber))
 
 (provide 'init)
 ;;; init.el ends here
-
