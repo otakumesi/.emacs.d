@@ -464,6 +464,12 @@
   (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode)))
 
+(el-get-bundle vue-mode)
+(use-package vue-mode)
+
+(el-get-bundle vue-html-mode)
+(use-package vue-html-mode)
+
 (el-get-bundle scss-mode)
 (use-package scss-mode
   :config
