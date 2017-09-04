@@ -186,12 +186,13 @@
 
 ;; カラーテーマ
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(el-get-bundle solarized-emacs)
-(use-package solarized
-  :config
-  (setq solarized-high-contrast-mode-line t)
-  (load-theme 'solarized-light t)
-  (setq ns-use-srgb-colorspace nil))
+;; (el-get-bundle solarized-emacs)
+;; use-package solarized
+;;  :config
+;;  (setq solarized-high-contrast-mode-line t)
+;;  (load-theme 'solarized-dark t)
+;;  (setq ns-use-srgb-colorspace nil))
+(load-theme 'wombat t)
 
 ;; key-chordの読み込み
 (el-get-bundle key-chord)
@@ -464,11 +465,15 @@
   (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode)))
 
-(el-get-bundle vue-mode)
-(use-package vue-mode)
+(el-get-bundle mmm-mode)
+(use-package mmm-mode)
 
 (el-get-bundle vue-html-mode)
-(use-package vue-html-mode)
+(el-get-bundle ssass-mode)
+
+(el-get-bundle vue-mode
+  :depends (vue-html-mode ssass-mode))
+(use-package vue-mode)
 
 (el-get-bundle scss-mode)
 (use-package scss-mode
