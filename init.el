@@ -5,7 +5,13 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-;; (package-initialize)
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
 (unless (require 'el-get nil 'noerror)
@@ -18,12 +24,13 @@
 ;;(add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 ;;(el-get 'sync)
 
+(el-get-bundle fullscreen)
 (el-get-bundle fuzzy)
 (el-get-bundle dash)
 (el-get-bundle emacs-async)
-(el-get-bundle fullscreen-mode)
 (el-get-bundle deferred)
 (el-get-bundle use-package)
+(require 'use-package)
 
 (when load-file-name
   (setq user-emacs-directory (file-name-directory load-file-name)))
@@ -57,14 +64,17 @@
 
 (load (setq custom-file (expand-file-name "custom-val.el" user-emacs-directory)))
 
+;; (el-get-bundle zonuexe/emoji-fontset.el)
+;; (use-package emoji-fontset)
+;; (emoji-fontset-enable "Symbola")
+
 (defun user-settings ()
   ;; フォント設定
   (set-face-attribute 'default
                       nil
-                      :family "Sauce Code Powerline"
+                      :family "Noto Mono for Powerline"
                       :height 160)
 
-  
   ;; クリップボードの利用
   (cond (window-system
          (setq x-select-enable-clipboard t)))
@@ -118,6 +128,11 @@
   ;; ファイル名補完で大文字小文字を区別しない
   (setq read-buffer-completion-ignore-case nil)
   (setq read-file-name-completion-ignore-case t)
+  ;; cua-mode
+  (use-package cua-mode)
+  (cua-mode t)
+  (setq cua-enable-cua-keys nil)
+  (define-key global-map (kbd "C-x SPC") 'cua-set-rectangle-mark)
   ;; 行末の空白をハイライト
   (setq-default show-trailing-whitespace t))
 ;; end user-settings
@@ -377,7 +392,7 @@
 (el-get-bundle markdown-mode)
 (use-package markdown-mode)
 
-(el-get-bundle flycheck)
+(el-get-bundle flycheck/flycheck)
 (use-package flycheck
   :config
   (add-hook 'after-init-hook 'global-flycheck-mode)
@@ -387,10 +402,6 @@
   (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)
   (setq-default flycheck-disable-checkers '(javascript-jshint))
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (el-get-bundle flycheck-package)
-  (flycheck-package-setup)
-  (el-get-bundle flycheck-pos-tip)
-  (flycheck-pos-tip-mode)
 
   ;; 要textlint
   (flycheck-define-checker textlint
@@ -420,11 +431,19 @@
   (add-to-list 'flycheck-checkers 'textlint)
   (add-hook 'markdown-mode-hook 'flycheck-mode))
 
+;; (el-get-bundle flycheck-package
+;;   :depends (flycheck)
+;;   :config
+;;   (flycheck-package-setup))
+
+(el-get-bundle flycheck/flycheck-popup-tip :depends (flycheck))
+
 (el-get-bundle company-mode)
 (use-package company
   :config
   (add-hook 'after-init-hook 'global-company-mode)
   (el-get-bundle company-statistics)
+  (use-package company-statistics)
   (setq company-idle-delay 0)
   (setq company-minimum-prefix-length 3)
   (setq company-selection-wrap-around t)
@@ -465,15 +484,15 @@
   (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode)))
 
-(el-get-bundle mmm-mode)
-(use-package mmm-mode)
+;; (el-get-bundle mmm-mode)
+;; (use-package mmm-mode)
 
-(el-get-bundle vue-html-mode)
-(el-get-bundle ssass-mode)
+;; (el-get-bundle vue-html-mode)
+;; (el-get-bundle ssass-mode)
 
-(el-get-bundle vue-mode
-  :depends (vue-html-mode ssass-mode))
-(use-package vue-mode)
+;; (el-get-bundle vue-mode
+;;   :depends (vue-html-mode ssass-mode))
+;; (use-package vue-mode)
 
 (el-get-bundle scss-mode)
 (use-package scss-mode
@@ -551,7 +570,7 @@
   (use-package bundler)
 
   ;; Robeの起動
-  (el-get-bundle robe)
+  (el-get-bundle dgutov/robe)
   (use-package robe
     :config
     (add-hook 'enh-ruby-mode-hook 'robe-mode)
@@ -691,7 +710,7 @@
                (setq tab-width 2)
                ))
 
-  (el-get-bundle golint)
+  (el-get-bundle golint :url "https://raw.githubusercontent.com/golang/lint/master/misc/emacs/golint.el")
   (use-package golint)
 
   (el-get-bundle go-eldoc)
@@ -699,7 +718,7 @@
     :config
     (add-hook 'go-mode-hook 'go-eldoc-setup))
 
-  (el-get-bundle go-dlv)
+  (el-get-bundle benma/go-dlv.el)
   (use-package go-dlv)
   (el-get-bundle company-go :url "https://raw.githubusercontent.com/nsf/gocode/master/emacs-company/company-go.el")
   (use-package company-go)
@@ -713,7 +732,7 @@
     :config
     (substitute-key-definition 'go-import-add 'helm-go-package go-mode-map)))
 
-(el-get-bundle elixir-mode)
+(el-get-bundle elixir-editors/emacs-elixir)
 (use-package elixir-mode
   :config
   (el-get-bundle alchemist)
@@ -753,6 +772,7 @@
   (add-hook 'slime-mode-hook 'slime-autodoc-mode))
 
 ;; c-lang
+(require 'cc-mode)
 ;;(el-get-bundle cc-mode)
 ;;(use-package cc-mode
 ;;  :config
@@ -775,7 +795,7 @@
     "python3 -i")
   (add-hook 'python-mode-hook 'jedi:setup)
   (el-get-bundle autopep8)
-  (el-get-bundle pyflakes)
+  ;; (el-get-bundle pyflakes)
   (el-get-bundle company-jedi :depends (company-mode))
   (el-get-bundle Wilfred/flycheck-pyflakes :depends (flycheck))
   (with-eval-after-load 'jedi
@@ -825,7 +845,8 @@
                     'haskell-mode-hook
                     'enh-ruby-mode-hook
                     'python-mode
-                    'clojure-mode))
+                    'clojure-mode
+                    'rust-mode))
     (add-hook hook #'smartparens-mode)))
 
 ;; fullscreen
@@ -923,7 +944,6 @@
   (use-package docker-tramp
     :if (executable-find "docker")))
 
-(el-get-bundle gitignore-mode)
 (use-package gitignore-mode)
 
 (el-get-bundle yaml-mode)
@@ -935,6 +955,50 @@
 (use-package google-translate
   :config
   (global-set-key (kbd "C-c t") 'google-translate-at-point))
+
+;; emacs-lsp
+(el-get-bundle emacs-lsp/lsp-mode)
+(use-package lsp-mode
+  :config
+  (el-get-bundle emacs-lsp/lsp-rust)
+  (use-package lsp-flycheck))
+
+;; rust
+(el-get-bundle rust-mode)
+(use-package rust-mode
+  :config
+  (setq flycheck-checker 'lsp)
+  (setq flycheck-disabled-checkers '(rust-cargo))
+  (use-package lsp-rust))
+(add-hook 'rust-mode-hook #'lsp-mode)
+
+(el-get-bundle toml-mode)
+(use-package toml-mode)
+
+(el-get-bundle cargo)
+(use-package cargo
+  :config
+  (add-hook 'rust-mode-hook 'cargo-minor-mode))
+
+(el-get-bundle emacs-racer)
+(use-package racer
+  :config
+  (setq racer-cmd "/Users/otakumesi/.cargo/bin/racer")
+  (add-hook 'rust-mode-hook #'racer-mode))
+
+(el-get-bundle racer-rust/emacs-racer)
+(use-package company-racer
+  :config
+  (setq company-racer-executable "/Users/otakumesi/.cargo/bin/racer")
+  (add-to-list 'company-backends 'company-racer))
+
+(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-tooltip-align-annotations t)
+
+(el-get-bundle fbergroth/emacs-rustfmt)
+(use-package rustfmt)
+
+(add-hook 'rust-mode-hook #'rustfmt-enable-on-save)
 
 (el-get-bundle migemo)
 (use-package migemo
@@ -949,39 +1013,27 @@
   (load-library "migemo")
   (migemo-init))
 
-(el-get-bundle mozc)
-(use-package mozc
-  :if (executable-find "mozc_emacs_helper")
-  :config
-  (setq default-input-method "japanese-mozc")
-  (setq mozc-helper-program-name "/usr/local/bin/mozc_emacs_helper")
-
-  (el-get-bundle mozc-popup)
-  (use-package mozc-popup)
-  (setq mozc-cached-header-line-height 'popup))
-
 (el-get-bundle haxney/smart-tab)
 (use-package smart-tab
   :config
   (global-smart-tab-mode 1)
   (setq smart-tab-using-hippie-expand 1))
 
-
-(el-get-bundle ejmr/php-mode :branch "v1.18.2")
+(el-get-bundle ejmr/php-mode)
 (use-package php-mode)
 
-(el-get-bundle hexo)
+(el-get-bundle racer-rust/emacs-racer)
 (use-package hexo)
 (defun hexo-my-blog ()
   (interactive)
   (hexo "~/Documents/blog"))
 
 ;; 要growl
-(el-get-bundle fsm)
-(use-package fsm
-  :config
-  (el-get-bundle jabber)
-  (use-package jabber))
+;; (el-get-bundle fsm)
+;; (use-package fsm
+;;   :config
+;;   (el-get-bundle jabber)
+;;   (use-package jabber))
 
 (provide 'init)
 ;;; init.el ends here
