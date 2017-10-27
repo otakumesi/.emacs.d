@@ -134,7 +134,10 @@
   (setq cua-enable-cua-keys nil)
   (define-key global-map (kbd "C-x SPC") 'cua-set-rectangle-mark)
   ;; 行末の空白をハイライト
-  (setq-default show-trailing-whitespace t))
+  (setq-default show-trailing-whitespace t)
+
+  ;; 単語の移動単位をキャメルケースにも適用
+  (global-subword-mode 1))
 ;; end user-settings
 
 (user-settings)
@@ -512,8 +515,8 @@
 (use-package company-web
   :config
   (add-hook 'web-mode-hook 'skewer-html-mode)
-  (el-get-bundle osv/ac-html-bootstrap)
-  (use-package ac-html-bootstrap)
+  ;; (el-get-bundle osv/ac-html-bootstrap)
+  ;; (use-package ac-html-bootstrap)
   (add-to-list 'company-backends '(company-css))
   (use-package company-web-html
     :config
@@ -618,11 +621,11 @@
 
 (setq js-indent-level 2)
 
-(el-get-bundle ac-js2)
-(use-package ac-js2
-  :config
-  (setq ac-js2-evaluate-calls t)
-  (add-to-list 'company-backends '(ac-js2-company company-jquery)))
+;; (el-get-bundle ac-js2)
+;; (use-package ac-js2
+;;   :config
+;;   (setq ac-js2-evaluate-calls t)
+;;   (add-to-list 'company-backends '(ac-js2-company company-jquery)))
 
 (el-get-bundle js2-mode)
 (use-package js2-mode
