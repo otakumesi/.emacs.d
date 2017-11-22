@@ -68,6 +68,11 @@
 ;; (use-package emoji-fontset)
 ;; (emoji-fontset-enable "Symbola")
 
+(el-get-bundle TeMPOraL/nyan-mode)
+(use-package nyan-mode
+  :config
+  (nyan-mode 1))
+
 (defun user-settings ()
   ;; フォント設定
   (set-face-attribute 'default
@@ -304,94 +309,6 @@
       (setq output (concat ".../" output)))
     output))
 
-(defun powerline-my-theme ()
-  (interactive)
-  (setq-default mode-line-format
-                '("%e"
-                  (:eval
-                   (let* ((active (powerline-selected-window-active))
-                          (mode-line (if active 'mode-line 'mode-line-inactive))
-                          (face1 (if active 'powerline-active1 'powerline-inactive1))
-                          (face2 (if active 'powerline-active2 'powerline-inactive2))
-                          (separator-left (intern (format "powerline-%s-%s"
-                                                          powerline-default-separator
-                                                          (car powerline-default-separator-dir))))
-                          (separator-right (intern (format "powerline-%s-%s"
-                                                           powerline-default-separator
-                                                           (cdr powerline-default-separator-dir))))
-                          (lhs (list (powerline-raw "%*" nil 'l)
-                                     (powerline-buffer-size nil 'l)
-                                     (powerline-raw mode-line-mule-info nil 'l)
-                                     (powerline-raw
-                                      (shorten-directory default-directory 15)
-                                      nil 'l)
-                                     (powerline-buffer-id nil 'r)
-                                     (when (and (boundp 'which-func-mode) which-func-mode)
-                                       (powerline-raw which-func-format nil 'l))
-                                     (powerline-raw " ")
-                                     (funcall separator-left mode-line face1)
-                                     (when (boundp 'erc-modified-channels-object)
-                                       (powerline-raw erc-modified-channels-object face1 'l))
-                                     (powerline-major-mode face1 'l)
-                                     (powerline-process face1)
-                                     (powerline-minor-modes face1 'l)
-                                     (powerline-narrow face1 'l)
-                                     (powerline-raw " " face1)
-                                     (funcall separator-left face1 face2)
-                                     (powerline-vc face2 'r)))
-                          (rhs (list (powerline-raw global-mode-string face2 'r)
-                                     (funcall separator-right face2 face1)
-                                     (powerline-raw "%4l" face1 'l)
-                                     (powerline-raw ":" face1 'l)
-                                     (powerline-raw "%3c" face1 'r)
-                                     (funcall separator-right face1 mode-line)
-                                     (powerline-raw " ")
-                                     (powerline-raw "%6p" nil 'r)
-                                     (powerline-hud face2 face1))))
-                     (concat (powerline-render lhs)
-                             (powerline-fill face2 (powerline-width rhs))
-                             (powerline-render rhs)))))))
-
-(el-get-bundle milkypostman/powerline)
-(use-package powerline
-  :config
-  (setq ns-use-srgb-colorspace nil)
-  (powerline-my-theme)
-
-  (set-face-attribute 'mode-line nil
-                      :overline  "#268bd2"
-                      :foreground "#002b36"
-                      :background "#268bd2"
-                      :box nil)
-  (set-face-attribute 'mode-line-buffer-id nil
-                      :foreground "#002b36"
-                      :background "#268bd2"
-                      :inherit 'mode-line)
-  (set-face-attribute 'modeline-inactive nil
-                      :foreground "#002b36"
-                      :background "#268bd2"
-                      :inherit 'mode-line)
-  (set-face-attribute 'modeline-highlight nil
-                      :foreground "#002b36"
-                      :background "#6c71c4"
-                      :inherit 'mode-line)
-  (set-face-attribute 'powerline-active1 nil
-                      :foreground "#002b36"
-                      :background "#b58900"
-                      :inherit 'mode-line)
-  (set-face-attribute 'powerline-active2 nil
-                      :foreground "#002b36"
-                      :background "#859900"
-                      :inherit 'mode-line)
-  (set-face-attribute 'powerline-inactive1 nil
-                      :foreground "#002b36"
-                      :background "#b58900"
-                      :inherit 'mode-line)
-  (set-face-attribute 'powerline-inactive2 nil
-                      :foreground "#002b36"
-                      :background "#859900"
-                      :inherit 'mode-line))
-
 (el-get-bundle markdown-mode)
 (use-package markdown-mode)
 
@@ -486,16 +403,6 @@
   (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
   (add-to-list 'auto-mode-alist '("\\.css\\'" . web-mode)))
-
-;; (el-get-bundle mmm-mode)
-;; (use-package mmm-mode)
-
-;; (el-get-bundle vue-html-mode)
-;; (el-get-bundle ssass-mode)
-
-;; (el-get-bundle vue-mode
-;;   :depends (vue-html-mode ssass-mode))
-;; (use-package vue-mode)
 
 (el-get-bundle scss-mode)
 (use-package scss-mode
@@ -829,7 +736,10 @@
 (el-get-bundle anzu)
 (use-package anzu
   :config
-  (global-anzu-mode +1))
+  (global-anzu-mode +1)
+  (global-set-key [remap query-replace] 'anzu-query-replace)
+  (global-set-key [remap query-replace-regexp] 'anzu-query-replace-regexp)
+  (global-set-key (kbd "C-c C-r") 'anzu-query-replace-at-cursor))
 
 ;; smartparens
 (el-get-bundle smartparens)
@@ -869,28 +779,16 @@
   (global-set-key (kbd "S-<right>") 'windmove-right)
   (global-set-key (kbd "S-<left>") 'windmove-left))
 
-;; buffer-move
-(el-get-bundle buffer-move)
-(use-package buffer-move
-  :config
-  (global-set-key (kbd "<C-S-up>") 'buf-move-up)
-  (global-set-key (kbd "<C-S-down>") 'buf-move-down)
-  (global-set-key (kbd "<C-S-right>") 'buf-move-right)
-  (global-set-key (kbd "<C-S-left>") 'buf-move-left))
-
-;; TreeのElisp
-;; (use-package neotree
-;;   :config
-;;   (global-set-key "\C-x4" 'neotree-toggle))
-
 ;; undo-tree
 (el-get-bundle undo-tree)
 (use-package undo-tree
   :config
   (global-undo-tree-mode)
-  (global-set-key (kbd "C-?") 'undo-tree-redo)
-  (define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
-  (define-key key-translation-map (kbd "M-h") (kbd "<M-DEL>")))
+  (global-set-key (kbd "C-_") 'undo-tree-undo)
+  (global-set-key (kbd "C-S-_") 'undo-tree-redo))
+
+(define-key key-translation-map (kbd "C-h") (kbd "<DEL>"))
+(define-key key-translation-map (kbd "M-h") (kbd "<M-DEL>"))
 
 ;;; skk
 ;; (use-package skk nil t
@@ -1022,8 +920,21 @@
   (global-smart-tab-mode 1)
   (setq smart-tab-using-hippie-expand 1))
 
+
+(el-get-bundle jacktasia/dumb-jump)
+(use-package dumb-jump
+  :bind (("M-g o" . dumb-jump-go-other-window)
+         ("M-g j" . dumb-jump-go)
+         ("M-g b" . dumb-jump-back))
+  :config
+  ;; (setq dumb-jump-selector 'helm)
+  (setq dumb-jump-prefer-searcher 'rg))
+
 (el-get-bundle ejmr/php-mode)
 (use-package php-mode)
+
+(el-get-bundle Wilfred/bison-mode)
+(use-package bison-mode)
 
 (el-get-bundle racer-rust/emacs-racer)
 (use-package hexo)
